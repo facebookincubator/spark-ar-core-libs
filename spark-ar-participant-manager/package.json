@@ -1,0 +1,25 @@
+{
+  "name": "spark-ar-participant-manager",
+  "version": "0.0.2",
+  "main": "src/index.js",
+  "description": "Helper library help managing participants and provide utililties to deal with their updates.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebookincubator/spark-ar-core-libs.git"
+  },
+  "author": "spark-ar-core-libs",
+  "bugs": {
+    "url": "https://github.com/facebookincubator/spark-ar-core-libs/issues"
+  },
+  "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/tree/main/spark-ar-participant-manager",
+  "devDependencies": {
+    "@babel/core": "~7.14",
+    "@babel/preset-env": "~7.14",
+    "jest": "27.5.1"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
