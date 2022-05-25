@@ -1,6 +1,6 @@
 {
   "name": "spark-ar-participant-manager",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "src/index.js",
   "description": "Helper library help managing participants and provide utililties to deal with their updates.",
   "license": "MIT",
