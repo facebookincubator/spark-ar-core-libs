@@ -1,16 +1,32 @@
 {
   "name": "spark-state",
-  "version": "0.0.1",
+  "version": "1.1.1",
   "description": "",
-  "license": "MIT",
+  "main": "src/state.js",
+  "scripts": {
+    "test": "mocha",
+    "lint-fix": "./node_modules/.bin/eslint --fix ./test/*.js ./lib/*.js",
+    "lint": "./node_modules/.bin/eslint --fix ./test/*.js ./lib/*.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/facebookincubator/spark-ar-core-libs.git"
+    "url": "git+https://github.com/facebookincubator/spark-state.git"
   },
-  "author": "spark-ar-core-libs",
+  "author": "Xiaomeng Zhang",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/facebookincubator/spark-ar-core-libs/issues"
+    "url": "https://github.com/facebookincubator/spark-state/issues"
   },
-  "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/tree/main/spark-state",
-  "devDependencies": {}
+  "homepage": "https://github.com/facebookincubator/spark-state#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "mocha": "^9.1.0",
+    "webpack": "^5.24.0",
+    "webpack-cli": "^4.5.0"
+  }
 }
