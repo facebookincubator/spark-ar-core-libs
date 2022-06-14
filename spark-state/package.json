@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/facebookincubator/spark-state.git"
+    "url": "git+https://github.com/facebookincubator/spark-ar-core-libs/spark-state.git"
   },
   "author": "Xiaomeng Zhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/facebookincubator/spark-state/issues"
+    "url": "https://github.com/facebookincubator/spark-ar-core-libs/spark-state/issues"
   },
-  "homepage": "https://github.com/facebookincubator/spark-state#readme",
+  "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/spark-state#readme",
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^7.32.0",

@@ -11,20 +11,20 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
 ## Contents
 
 
-- [Getting started](https://github.com/facebookincubator/spark-state#getting-started)
-  - [Installation](https://github.com/facebookincubator/spark-state#installation)
-  - [Spark AR project setup](https://github.com/facebookincubator/spark-state#spark-ar-project-setup)
-  - [Loading the module](https://github.com/facebookincubator/spark-state#loading-the-module)
-- [Documentation](https://github.com/facebookincubator/spark-state#documentation)
-  - [`GlobalCounterSignal`](https://github.com/facebookincubator/spark-state#globalcountersignal)
-  - [`GlobalStringSignal`](https://github.com/facebookincubator/spark-state#globalstringsignal)
-  - [`GlobalScalarSignal`](https://github.com/facebookincubator/spark-state#globalscalarsignal)
-  - [`GlobalPeersMap`](https://github.com/facebookincubator/spark-state#globalpeersmap)
-  - [`SortedParticipantArray`](https://github.com/facebookincubator/spark-state#sortedparticipantarray)
-- [Example](https://github.com/facebookincubator/spark-state#example)
-- [Limitations](https://github.com/facebookincubator/spark-state#limitations)
-- [Additional resources](https://github.com/facebookincubator/spark-state#additional-resources)
-- [License](https://github.com/facebookincubator/spark-state#license)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Spark AR project setup](#spark-ar-project-setup)
+  - [Loading the module](#loading-the-module)
+- [Documentation](#documentation)
+  - [`GlobalCounterSignal`](#globalcountersignal)
+  - [`GlobalStringSignal`](#globalstringsignal)
+  - [`GlobalScalarSignal`](#globalscalarsignal)
+  - [`GlobalPeersMap`](#globalpeersmap)
+  - [`SortedParticipantArray`](#sortedparticipantarray)
+- [Example](#example)
+- [Limitations](#limitations)
+- [Additional resources](#additional-resources)
+- [License](#license)
 
 <br>
 
