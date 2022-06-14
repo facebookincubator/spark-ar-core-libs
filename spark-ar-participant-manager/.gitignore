@@ -41,6 +41,6 @@ jspm_packages/
 .DS_Store
 Thumbs.db
 
-# Spark AR Studio
+# Meta Spark Studio
 *.arproj
 *.arprojbk
