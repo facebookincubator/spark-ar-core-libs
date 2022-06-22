@@ -6,8 +6,8 @@
  */
 
 const Participants = require('Participants');
-const GlobalString = require('./global_yjs_string');
-const GlobalScalar = require('./global_yjs_scalar');
+const Reactive = require('Reactive');
+const YDoc = require('./yjs_doc');
 
 const UNSUPPORTED_MAP_VALUE_MESSAGE =
   '`participantsStartValue` should be a number or string. Map values can only be Global Scalar or Global Strings';
@@ -24,14 +24,14 @@ async function getAllParticipantsIds() {
   return allParticipantsIds;
 }
 
-async function addCurrentParticipants(map, participantsStartValue) {
+async function addCurrentParticipants(peersMap, participantsStartValue) {
   const allParticipantsIds = await getAllParticipantsIds();
   for (const participantId of allParticipantsIds) {
-    await map.set(participantId, participantsStartValue);
+    await peersMap.set(participantId, participantsStartValue);
   }
 }
 
-async function addNewParticipants(map, participantsStartValue) {
+async function addNewParticipants(peersMap, participantsStartValue) {
   async function addNewParticipantsToMap(event) {
     const newPeersIds = [];
     const newCount = event.newValue;
@@ -41,8 +41,8 @@ async function addNewParticipants(map, participantsStartValue) {
       newPeersIds.push(allPeersIds[i]);
     }
     for (const newPeerId of newPeersIds) {
-      if (!Object.prototype.hasOwnProperty.call(map, newPeerId)) {
-        await map.set(newPeerId, participantsStartValue);
+      if (!Object.prototype.hasOwnProperty.call(peersMap, newPeerId)) {
+        await peersMap.set(newPeerId, participantsStartValue);
       }
     }
     return newPeersIds;
@@ -50,7 +50,7 @@ async function addNewParticipants(map, participantsStartValue) {
 
   Participants.otherParticipantCount.monitor().subscribe(addNewParticipantsToMap);
 
-  map.setOnNewPeerCallback = callback => {
+  peersMap.setOnNewPeerCallback = callback => {
     Participants.otherParticipantCount.monitor().subscribe(async event => {
       const newPeersIds = await addNewParticipantsToMap(event);
       for (const newPeerId of newPeersIds) {
@@ -60,30 +60,43 @@ async function addNewParticipants(map, participantsStartValue) {
   };
 }
 
-function getCreateValueSignalFunction(participantsStartValue) {
-  let createValueSignal;
-  if (typeof participantsStartValue === 'number') {
-    createValueSignal = GlobalScalar.createGlobalScalarSignal;
-  } else if (typeof participantsStartValue === 'string') {
-    createValueSignal = GlobalString.createGlobalStringSignal;
-  } else {
-    throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
-  }
-  return createValueSignal;
-}
-
 /**
- * Creates a new `GlobalPeersMap` with a globally unique name as specified by `signalName`, and with the initial value set by `participantsStartValue`.
+ * Creates a new `GlobalPeersMap` with a globally unique name as specified by `name`, and with the initial value set by `participantsStartValue`.
  */
-export async function createGlobalPeersMap(participantsStartValue, signalName) {
+export async function createGlobalPeersMap(participantsStartValue, name) {
   // Currently the values can only be counters
   // startValue should be a number
-  const map = {};
+  let sources = {};
+  const peersMap = {};
 
-  const createValueSignal = getCreateValueSignalFunction(participantsStartValue);
+  const doc = await YDoc.createYDoc(name);
 
-  map.getName = () => signalName;
-  map.keys = async () => {
+  doc.on('update', _ => {
+    // iterate over the doc then set each corresponding source
+    for (let [participantId, value] of doc.getMap(name)) {
+      if (!sources.hasOwnProperty(participantId)) {
+        let source;
+        const sourceName = `${name}${participantId}`;
+
+        // set up source based on typeof participantsStartValue
+        if (typeof participantsStartValue === 'number') {
+          source = Reactive.scalarSignalSource(sourceName);
+        } else if (typeof participantsStartValue === 'string') {
+          source = Reactive.stringSignalSource(sourceName);
+        } else {
+          throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
+        }
+        sources[participantId] = source;
+      }
+      sources[participantId].set(value);
+    }
+  });
+
+  /* Start of External API */
+
+  peersMap.getName = () => name;
+
+  peersMap.keys = async () => {
     const keys = [];
     const allParticipantsIds = await getAllParticipantsIds();
     for (const participantId of allParticipantsIds) {
@@ -94,20 +107,18 @@ export async function createGlobalPeersMap(participantsStartValue, signalName) {
     return keys;
   };
 
-  map.get = participantId => {
-    return map[participantId];
+  peersMap.get = participantId => {
+    return sources[participantId].signal;
   };
 
-  map.set = async (participantId, value) => {
-    if (Object.prototype.hasOwnProperty.call(map, participantId)) {
-      map[participantId].set(value);
-    } else {
-      map[participantId] = await createValueSignal(value, `${signalName}${participantId}`);
-    }
+  peersMap.set = (participantId, value) => {
+    doc.getMap(name).set(participantId, value);
   };
 
-  await addCurrentParticipants(map, participantsStartValue);
-  await addNewParticipants(map, participantsStartValue);
+  /* End of External API */
 
-  return map;
+  await addCurrentParticipants(peersMap, participantsStartValue);
+  await addNewParticipants(peersMap, participantsStartValue);
+
+  return peersMap;
 }
