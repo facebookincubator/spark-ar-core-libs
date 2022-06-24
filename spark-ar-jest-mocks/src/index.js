@@ -8,6 +8,8 @@
 export * from './Diagnostics.mock.js';
 export * from './Participants.mock.js';
 export * from './Multipeer.mock.js';
+export * from './Time.mock.js';
+export * from './Patches.mock.js';
 
 jest.mock(
   'Diagnostics',
@@ -32,6 +34,24 @@ jest.mock(
   () => {
     const {MultipeerMock} = jest.requireActual('./Multipeer.mock.js');
     return new MultipeerMock();
+  },
+  {virtual: true},
+);
+
+jest.mock(
+  'Time',
+  () => {
+    const {TimeMock} = jest.requireActual('./Time.mock.js');
+    return new TimeMock();
+  },
+  {virtual: true},
+);
+
+jest.mock(
+  'Patches',
+  () => {
+    const {PatchesMock} = jest.requireActual('./Patches.mock.js');
+    return new PatchesMock();
   },
   {virtual: true},
 );
