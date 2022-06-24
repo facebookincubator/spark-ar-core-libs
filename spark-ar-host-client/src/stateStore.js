@@ -8,6 +8,7 @@
 import {createHostManager} from './hostManager';
 import Time from 'Time';
 import Multipeer from 'Multipeer';
+import Patches from 'Patches';
 import Diagnostics from 'Diagnostics';
 
 let channelIndex = 0;
@@ -173,6 +174,35 @@ export class StateStore {
 
   getHostManager() {
     return this._hostManager;
+  }
+
+  async bindToSubscribe(key, patchInputKey) {
+    this.subscribe([key], async curState => {
+      await Patches.inputs.set(patchInputKey, curState[key]);
+    });
+  }
+
+  async bindToDispatch(eventType, triggerKey, payloadKeys) {
+    const trigger = await Patches.outputs.getPulse(triggerKey);
+    if (!trigger) {
+      throw `Can't find Patch output with name ${triggerKey}`;
+    }
+    let payloadSingals = {};
+    for await (const payloadKey of payloadKeys) {
+      const payloadSignal = await Patches.outputs.get(payloadKey);
+      if (!payloadSignal) {
+        throw `Can't find Patch output with name ${payloadKey}`;
+      }
+      payloadSingals[payloadKey] = payloadSignal;
+    }
+
+    trigger.subscribe(async () => {
+      let payload = {};
+      for (const payloadKey in payloadSingals) {
+        payload[payloadKey] = payloadSingals[payloadKey].pinLastValue();
+      }
+      await this.dispatch(eventType, payload);
+    });
   }
 }
 
