@@ -6,6 +6,7 @@
  */
 
 import {createHostManager} from './hostManager';
+import {SyncTimeProvider} from './syncTimeProvider';
 import Time from 'Time';
 import Multipeer from 'Multipeer';
 import Patches from 'Patches';
@@ -40,6 +41,7 @@ export class StateStore {
 
   async init() {
     this._hostManager = await createHostManager(this._config);
+    this._timeProvider = new SyncTimeProvider(this._hostManager, this._config.useSyncTime);
 
     this._stateBroadcastChannel.onMessage.subscribe(messsage => {
       this._onReceivedHostState(messsage.host, messsage.state);
@@ -66,7 +68,7 @@ export class StateStore {
     let updatePayload = {
       type: type,
       payload,
-      t: Date.now(),
+      t: this._timeProvider.now(),
       id: this._hostManager.getParticipantManager().self.id,
     };
     if (this._hostManager.getIsSelfHost()) {
