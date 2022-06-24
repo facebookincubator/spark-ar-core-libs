@@ -5,12 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import Time from 'Time';
+import Multipeer from 'Multipeer';
 import {createParticipantManager} from 'spark-ar-participant-manager';
+
+const HostState = {
+  PENDING: 0,
+  FINALISED: 1,
+};
 
 export class HostManager {
   constructor(config) {
     this._participantManager = undefined;
-    this._currentHost = undefined;
+    this._currentHostInfo = undefined;
+    this._hostManagerChannel = Multipeer.getMessageChannel('host_manager');
+    this._subscriptions = [];
+
+    this._hostHeartBeatInterval = config.hostHeartBeatInterval || 1000;
+    this._hostFinaliseDuration = config.hostFinaliseDuration || 3000;
   }
 
   async init() {
@@ -20,15 +32,22 @@ export class HostManager {
       // when someone left, check if we need to resolve a new host
       this._resolveNewHost();
     });
+
+    this._hostManagerChannel.onMessage.subscribe(hostInfo => {
+      this._handleHostInfo(hostInfo);
+    });
+    this.updateEventHandle = Time.setInterval(() => {
+      this._hostHeartbeat();
+    }, this._hostHeartBeatInterval);
   }
 
   _validateHost() {
-    if (!this._currentHost) {
+    if (!this._currentHostInfo) {
       return false;
     }
     return (
-      this._currentHost.isActiveInCall.pinLastValue() &&
-      this._currentHost.isActiveInSameEffect.pinLastValue()
+      this._currentHostInfo.host.isActiveInCall.pinLastValue() &&
+      this._currentHostInfo.host.isActiveInSameEffect.pinLastValue()
     );
   }
 
@@ -39,7 +58,14 @@ export class HostManager {
       return;
     }
 
-    this._currentHost = this._participantManager.currentHost;
+    this._currentHostInfo = {
+      state: HostState.PENDING,
+      host: this._participantManager.currentHost,
+      claimTimestamp: undefined,
+    };
+    this._dispatchHostChange();
+
+    this._hostHeartbeat();
   }
 
   getParticipantManager() {
@@ -47,11 +73,107 @@ export class HostManager {
   }
 
   getHost() {
-    return this._currentHost;
+    return this._currentHostInfo.host;
   }
 
   getIsSelfHost() {
-    return this._currentHost.id === this._participantManager.self.id;
+    return this._currentHostInfo.host.id === this._participantManager.self.id;
+  }
+
+  getIsHostPending() {
+    return this._currentHostInfo.state === HostState.PENDING;
+  }
+
+  _hostHeartbeat() {
+    if (!this.getIsSelfHost()) {
+      return;
+    }
+
+    if (!this._currentHostInfo.claimTimestamp) {
+      this._currentHostInfo.claimTimestamp = Date.now();
+    }
+
+    if (Date.now() - this._currentHostInfo.claimTimestamp >= this._hostFinaliseDuration) {
+      this._currentHostInfo.state = HostState.FINALISED;
+      this._dispatchHostChange();
+    }
+
+    const hostInfo = {
+      id: this._currentHostInfo.host.id,
+      s: this._currentHostInfo.state,
+      t: this._currentHostInfo.claimTimestamp,
+    };
+    // use non-RTP channel to gurantee it's received
+    this._hostManagerChannel.sendMessage(hostInfo, false);
+  }
+
+  _handleHostInfo(hostInfo) {
+    const newHost = this.getActiveParticipantById(hostInfo.id);
+    if (!newHost) {
+      // if the message is from a host already offline, ignore.
+      return;
+    }
+    const newClaimTimestamp = hostInfo.t;
+    const newState = hostInfo.s;
+
+    // if the message is from a finalised host, update
+    if (newState === HostState.FINALISED) {
+      this._currentHostInfo.host = newHost;
+      this._currentHostInfo.state = HostState.FINALISED;
+      this._currentHostInfo.claimTimestamp = newClaimTimestamp;
+      this._dispatchHostChange();
+      return;
+    }
+
+    // If it's a pending host, resolve if it's the best pending host
+    // The pending host with lower timestamp should win
+    // If timestamp equal(very rare), compare id
+    if (
+      !this._currentHostInfo.claimTimestamp ||
+      this._currentHostInfo.claimTimestamp > newClaimTimestamp ||
+      (this._currentHostInfo.claimTimestamp === newClaimTimestamp &&
+        this._currentHostInfo.host.id > newHost.id)
+    ) {
+      this._currentHostInfo.host = newHost;
+      this._currentHostInfo.state = HostState.PENDING;
+      this._currentHostInfo.claimTimestamp = newClaimTimestamp;
+      this._dispatchHostChange();
+    }
+  }
+
+  getActiveParticipantById(id) {
+    for (const activeParticipant of this._participantManager.activeParticipants) {
+      if (activeParticipant.id === id) {
+        return activeParticipant;
+      }
+    }
+    return undefined;
+  }
+
+  addListener(eventType, callback) {
+    const subscription = {type: eventType, callback};
+    this._subscriptions.push(subscription);
+  }
+
+  removeListener(eventType, callback) {
+    this._subscriptions = this._subscriptions.filter(subscription => {
+      return subscription.callback !== callback || subscription.type !== eventType;
+    });
+  }
+
+  _dispatchEvent(event) {
+    this._subscriptions.forEach(subscription => {
+      if (subscription.type === event.type) {
+        subscription.callback(event);
+      }
+    });
+  }
+
+  _dispatchHostChange() {
+    this._dispatchEvent({
+      type: 'hostStateChange',
+      ...this._currentHostInfo,
+    });
   }
 }
 

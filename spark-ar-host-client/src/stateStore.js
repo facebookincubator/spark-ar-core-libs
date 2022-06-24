@@ -40,10 +40,8 @@ export class StateStore {
   async init() {
     this._hostManager = await createHostManager(this._config);
 
-    this._stateBroadcastChannel.onMessage.subscribe(hostState => {
-      if (!this._hostManager.getIsSelfHost()) {
-        this._updateStates(hostState);
-      }
+    this._stateBroadcastChannel.onMessage.subscribe(messsage => {
+      this._onReceivedHostState(messsage.host, messsage.state);
     });
 
     // everyone all record all the requests, in case we lost host
@@ -157,8 +155,24 @@ export class StateStore {
     // 2. Hasn't broadcast for a while (in case some client missed previous updates)
     if (hasUpdate || Date.now() - this._lastBroadcastTimestamp >= this._forceBroadcastInterval) {
       this._lastBroadcastTimestamp = Date.now();
-      await this._stateBroadcastChannel.sendMessage(curState);
+      await this._stateBroadcastChannel.sendMessage({
+        host: this._hostManager.getParticipantManager().self.id,
+        state: curState,
+      });
     }
+  }
+
+  _onReceivedHostState(hostId, hostState) {
+    if (this._hostManager.getHost().id !== hostId) {
+      // ignore if the state update is not from the expected host
+      return;
+    }
+
+    this._updateStates(hostState);
+  }
+
+  getHostManager() {
+    return this._hostManager;
   }
 }
 
