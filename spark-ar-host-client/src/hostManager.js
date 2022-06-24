@@ -23,14 +23,15 @@ export class HostManager {
 
     this._hostHeartBeatInterval = config.hostHeartBeatInterval || 1000;
     this._hostFinaliseDuration = config.hostFinaliseDuration || 3000;
+    this._hostStuckDuration = config.hostStuckDuration || 3000;
   }
 
   async init() {
     this._participantManager = await createParticipantManager();
-    this._resolveNewHost();
+    this._resolveNewHost(false);
     this._participantManager.addListener('leave', () => {
       // when someone left, check if we need to resolve a new host
-      this._resolveNewHost();
+      this._resolveNewHost(false);
     });
 
     this._hostManagerChannel.onMessage.subscribe(hostInfo => {
@@ -38,6 +39,7 @@ export class HostManager {
     });
     this.updateEventHandle = Time.setInterval(() => {
       this._hostHeartbeat();
+      this._checkStuck();
     }, this._hostHeartBeatInterval);
   }
 
@@ -51,19 +53,25 @@ export class HostManager {
     );
   }
 
-  _resolveNewHost() {
-    if (this._validateHost()) {
+  _resolveNewHost(forceNewHost) {
+    if (!forceNewHost && this._validateHost()) {
       // if we already have a valid host, or a valid pending host, don't need to resolve
       // a new host
       return;
     }
 
+    // if `forceNewHost`, it's to unblock possible stuck host, so we let every participant
+    // to compete to be host to avoid everyone waiting on the stuck host.
+    const hostCandidate = forceNewHost
+      ? this._participantManager.self
+      : this._participantManager.currentHost;
     this._currentHostInfo = {
       state: HostState.PENDING,
-      host: this._participantManager.currentHost,
+      host: hostCandidate,
       claimTimestamp: undefined,
     };
     this._dispatchHostChange();
+    this._lastHostUpdateTimestamp = Date.now();
 
     this._hostHeartbeat();
   }
@@ -115,6 +123,7 @@ export class HostManager {
     }
     const newClaimTimestamp = hostInfo.t;
     const newState = hostInfo.s;
+    this._lastHostUpdateTimestamp = Date.now();
 
     // if the message is from a finalised host, update
     if (newState === HostState.FINALISED) {
@@ -138,6 +147,17 @@ export class HostManager {
       this._currentHostInfo.state = HostState.PENDING;
       this._currentHostInfo.claimTimestamp = newClaimTimestamp;
       this._dispatchHostChange();
+    }
+  }
+
+  _checkStuck() {
+    // if not receiving heartbeat from host for a long time, it may
+    // mean host is stuck, try resolve a new host
+    if (
+      !this.getIsSelfHost() &&
+      Date.now() - this._lastHostUpdateTimestamp > this._hostStuckDuration
+    ) {
+      this._resolveNewHost(true);
     }
   }
 
