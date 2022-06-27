@@ -10,6 +10,9 @@ export * from './Participants.mock.js';
 export * from './Multipeer.mock.js';
 export * from './Time.mock.js';
 export * from './Patches.mock.js';
+export * from './Reactive.mock.js';
+export * from './Signal.mock.js';
+export * from './SignalSource.mock.js';
 
 jest.mock(
   'Diagnostics',
@@ -52,6 +55,33 @@ jest.mock(
   () => {
     const {PatchesMock} = jest.requireActual('./Patches.mock.js');
     return new PatchesMock();
+  },
+  {virtual: true},
+);
+
+jest.mock(
+  'Reactive',
+  () => {
+    const {ReactiveMock} = jest.requireActual('./Reactive.mock.js');
+    return new ReactiveMock();
+  },
+  {virtual: true},
+);
+
+jest.mock(
+  'Signal',
+  () => {
+    const {SignalMock} = jest.requireActual('./Signal.mock.js');
+    return new SignalMock();
+  },
+  {virtual: true},
+);
+
+jest.mock(
+  'SignalSource',
+  () => {
+    const {SignalSourceMock} = jest.requireActual('./SignalSource.mock.js');
+    return new SignalSourceMock();
   },
   {virtual: true},
 );

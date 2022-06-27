@@ -38,4 +38,11 @@ export class MultipeerMock {
     }
     return this._channels[topic];
   }
+
+  getBinaryMessageChannel(topic) {
+    if (this._channels[topic] == undefined) {
+      this._channels[topic] = new EchoMessageChannelMock(topic);
+    }
+    return this._channels[topic];
+  }
 }

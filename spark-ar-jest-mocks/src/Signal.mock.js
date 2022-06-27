@@ -13,6 +13,10 @@ export class SignalMock {
     this._value = value;
   }
 
+  get value() {
+    return this._value;
+  }
+
   monitor(config) {
     const eventSource = new EventSourceMock(config, this);
     this._eventSources.push(eventSource);
@@ -32,6 +36,10 @@ export class SignalMock {
       oldValue: this._value,
       newValue: this._value,
     };
+  }
+
+  set(value) {
+    this._value = value;
   }
 
   async mockUpdate(newValue) {
