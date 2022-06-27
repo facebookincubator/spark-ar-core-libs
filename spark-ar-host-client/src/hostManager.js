@@ -208,3 +208,8 @@ export async function createHostManager(config) {
   }
   return hostManager;
 }
+
+export function resetHostManagerTestOnly() {
+  // Should only be used for jest test to reset the singleton
+  hostManager = undefined;
+}
