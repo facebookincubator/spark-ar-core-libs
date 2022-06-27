@@ -89,6 +89,7 @@ export async function createGlobalPeersMap(participantsStartValue, name) {
         sources[participantId] = source;
       }
       sources[participantId].set(value);
+      peersMap[participantId] = sources[participantId].signal;
     }
   });
 
@@ -100,7 +101,7 @@ export async function createGlobalPeersMap(participantsStartValue, name) {
     const keys = [];
     const allParticipantsIds = await getAllParticipantsIds();
     for (const participantId of allParticipantsIds) {
-      if (Object.prototype.hasOwnProperty.call(map, participantId)) {
+      if (Object.prototype.hasOwnProperty.call(peersMap, participantId)) {
         keys.push(participantId);
       }
     }
