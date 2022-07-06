@@ -7,7 +7,7 @@
 
 import {SignalMock} from './Signal.mock';
 
-export class SignalSourceMock {
+export class ScalarSignalSourceMock {
   constructor(name) {
     this._name = name;
     this._signal = new SignalMock(0);
@@ -18,8 +18,21 @@ export class SignalSourceMock {
   }
 
   set(value) {
-    this._signal.set(value);
+    this._signal.mockUpdate(value);
+  }
+}
+
+export class StringSignalSourceMock {
+  constructor(name) {
+    this._name = name;
+    this._signal = new SignalMock('');
   }
 
-  dispose() {}
+  get signal() {
+    return this._signal;
+  }
+
+  set(value) {
+    this._signal.mockUpdate(value);
+  }
 }

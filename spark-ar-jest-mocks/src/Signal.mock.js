@@ -38,10 +38,6 @@ export class SignalMock {
     };
   }
 
-  set(value) {
-    this._value = value;
-  }
-
   async mockUpdate(newValue) {
     if (this._value !== newValue) {
       const event = {

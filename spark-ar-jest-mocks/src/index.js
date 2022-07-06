@@ -12,7 +12,6 @@ export * from './Time.mock.js';
 export * from './Patches.mock.js';
 export * from './Reactive.mock.js';
 export * from './Signal.mock.js';
-export * from './SignalSource.mock.js';
 
 jest.mock(
   'Diagnostics',
@@ -73,15 +72,6 @@ jest.mock(
   () => {
     const {SignalMock} = jest.requireActual('./Signal.mock.js');
     return new SignalMock();
-  },
-  {virtual: true},
-);
-
-jest.mock(
-  'SignalSource',
-  () => {
-    const {SignalSourceMock} = jest.requireActual('./SignalSource.mock.js');
-    return new SignalSourceMock();
   },
   {virtual: true},
 );
