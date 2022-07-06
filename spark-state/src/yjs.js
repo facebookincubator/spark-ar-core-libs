@@ -11,7 +11,7 @@
     : typeof define === 'function' && define.amd
     ? define(['exports'], factory)
     : ((globalx = globalx || self), factory((globalx.Y = {})));
-})(this, function (exports) {
+})(this, exports => {
   'use strict';
 
   /**
@@ -8037,7 +8037,7 @@
     clear() {
       if (this.doc !== null) {
         transact(this.doc, transaction => {
-          this.forEach(function (value, key, map) {
+          this.forEach((value, key, map) => {
             typeMapDelete(transaction, map, key);
           });
         });
@@ -8261,8 +8261,8 @@
             attributes[/** @type {ContentFormat} */ (currPos.right.content).key] || null,
             /** @type {ContentFormat} */ (currPos.right.content).value,
           ))
-      );
-      else {
+      ) {
+      } else {
         break;
       }
       currPos.forward();

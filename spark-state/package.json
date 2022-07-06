@@ -5,8 +5,8 @@
   "main": "src/state.js",
   "scripts": {
     "test": "jest",
-    "lint-fix": "./node_modules/.bin/eslint --fix ./test/*.js ./lib/*.js",
-    "lint": "./node_modules/.bin/eslint --fix ./test/*.js ./lib/*.js"
+    "lint-fix": "./node_modules/.bin/eslint --fix ./test/*.js ./src/*.js",
+    "lint": "./node_modules/.bin/eslint --fix ./test/*.js ./src/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "chai": "4.3.4",
     "eslint": "7.32.0",
-    "eslint-config-standard": "16.0.3",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "2.24.2",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "5.1.0",
