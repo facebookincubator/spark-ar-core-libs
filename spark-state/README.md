@@ -12,7 +12,6 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
 
 
 - [Getting started](#getting-started)
-  - [Installation](#installation)
   - [Spark AR project setup](#spark-ar-project-setup)
   - [Loading the module](#loading-the-module)
 - [Documentation](#documentation)
@@ -23,7 +22,6 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
   - [`GlobalMap`](#globalmap)
   - [`SortedParticipantArray`](#sortedparticipantarray)
 - [Example](#example)
-- [Limitations](#limitations)
 - [Additional resources](#additional-resources)
 - [License](#license)
 
@@ -97,7 +95,7 @@ const State = require('spark-state');
 (async function () {
 
     // Initializes a new global counter signal with the initial value: 1
-    const globalCounter = await State.creatCounterGlobalSignal(1, 'globalCounter');
+    const globalCounter = await State.createCounterGlobalSignal(1, 'globalCounter');
 
     // Increments the counter signal value by 2
     globalCounter.increment(2);
@@ -144,7 +142,7 @@ const State = require('spark-state');
 (async function () {
 
     // Initializes a new global string signal with the initial value: 'Hello'
-    const globalString = await State.creatStringGlobalSignal('Hello', 'globalString');
+    const globalString = await State.createStringGlobalSignal('Hello', 'globalString');
 
     // Sets the value of the signal to 'Hello world'
     globalString.set('Hello world');
@@ -191,7 +189,7 @@ const State = require('spark-state');
 (async function () {
 
     // Initializes a new global scalar signal with the initial value: 0
-    const globalScalar = await State.creatScalarGlobalSignal(0, 'globalScalar');
+    const globalScalar = await State.createScalarGlobalSignal(0, 'globalScalar');
 
     // Sets the value of the signal to 42
     globalScalar.set(42);
@@ -350,9 +348,7 @@ const State = require('spark-state');
 
 ## Example
 
-The sample code found in the [`script.js`](./src/script.js) file shows practical usage for all of the global types currently supported by the **Spark State** library.
-
-You can also check out <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/articles/video-calling-effects/synchronizing-data-across-participants-with-the-state-api" target="_blank">this tutorial</a> on the official Spark AR documentation site, which uses the `State` API to synchronize data across participants.
+You can check out <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/articles/video-calling-effects/synchronizing-data-across-participants-with-the-state-api" target="_blank">this tutorial</a> on the official Spark AR documentation site, which uses the `State` API to synchronize data across participants.
 
 <br><br>
 
