@@ -20,6 +20,7 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
   - [`GlobalStringSignal`](#globalstringsignal)
   - [`GlobalScalarSignal`](#globalscalarsignal)
   - [`GlobalPeersMap`](#globalpeersmap)
+  - [`GlobalMap`](#globalmap)
   - [`SortedParticipantArray`](#sortedparticipantarray)
 - [Example](#example)
 - [Limitations](#limitations)
@@ -241,6 +242,52 @@ const Participants = require('Participants');
 
     // Get the GlobalScalarSignal from the specified participant
     const pointCounter = points.get(myParticipantId);
+
+})();
+```
+
+</p>
+</details>
+
+<br><br>
+
+
+
+### `GlobalMap`
+
+`GlobalMap` is a key-value pair data type which allows synchronizing arbitrary key-value pairs in a group effect.
+
+Values of types `GlobalScalarSignal` and `GlobalStringSignal` are supported.
+
+<br>
+
+| Methods | Description |
+|---|---|
+| `createGlobalMap(name: string)` | Creates a new `GlobalMap` with a globally unique name as specified by `name`. |
+| `get(key: string)` | Returns the `GlobalScalarSignal` or `GlobalStringSignal` assigned to the `key`. |
+| `set(key: string, value: number \| string)` | Sets the value of the `GlobalScalarSignal` or `GlobalStringSignal` to the value specified by `value`, for the `key`. |
+| `keys()` | Returns all keys from the `GlobalMap` in a form of `Array<String>`. |
+| `subscribe(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the `GlobalMap`.|
+| `subscribeOnNewKey(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever a new key is added to the `GlobalMap`. |
+
+<br>
+
+<details><summary><b>Click to view example</b></summary>
+<p>
+
+```js
+const State = require('spark-state');
+
+(async function () {
+
+    // Initializes a new global map
+    const globalMap = await State.createGlobalMap('globalMap');
+
+    // Sets new key-value pair
+    globalMap.set('key', 1);
+
+    // Gets the signal specified by the key
+    const keySignal = globalMap.get('key');
 
 })();
 ```
