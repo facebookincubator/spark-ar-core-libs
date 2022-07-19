@@ -17,74 +17,74 @@ function callCallbacks(callBackArray, event) {
   }
 }
 
+function createSource(val, sourceName) {
+  // set up source based on typeof val
+  let source;
+  if (typeof val === 'number') {
+    source = Reactive.scalarSignalSource(sourceName);
+  } else if (typeof val === 'string') {
+    source = Reactive.stringSignalSource(sourceName);
+  } else {
+    throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
+  }
+  return source;
+}
+
 /**
  * Creates a new `GlobalMap` with a globally unique name as specified by `name`.
  */
 export async function createGlobalMap(name) {
   const globalMap = {};
-  const sources = {};
   const callbacks = [];
   const callbacksKeys = [];
 
   const doc = await YDoc.createYDoc(name);
+  const yMap = doc.getMap(name);
 
-  doc.on('update', _ => {
-    let event = {};
-
-    // iterate over the doc then set each corresponding source
-    for (let [key, val] of doc.getMap(name)) {
-      if (!sources.hasOwnProperty(key)) {
-        let source;
-        const sourceName = `${name}${key}`;
-
-        // set up source based on typeof val
-        if (typeof val === 'number') {
-          source = Reactive.scalarSignalSource(sourceName);
-        } else if (typeof val === 'string') {
-          source = Reactive.stringSignalSource(sourceName);
-        } else {
-          throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
-        }
-        sources[key] = source;
-
-        // callback for the subscribeOnNewKey
-        callCallbacks(callbacksKeys, {[key]: sources[key].signal});
-
-        // new key added, track event for subscribe the method
-        event = {newValue: {[key]: val}};
-      } else {
-        // value of existing key is changed, track event for the subscribe method
-        const prevVal = sources[key].signal.pinLastValue();
-        if (prevVal !== val) {
-          event = {oldValue: {[key]: prevVal}, newValue: {[key]: val}};
-        }
+  yMap.observe(yMapEvent => {
+    yMapEvent.changes.keys.forEach((change, key) => {
+      let event = {};
+      const newKey = yMap.get(key);
+      const newVal = newKey.source.signal.pinLastValue();
+      if (change.action === 'add') {
+        callCallbacks(callbacksKeys, {[key]: newKey.source.signal});
+        event = {newValue: {[key]: newVal}};
+      } else if (change.action === 'update') {
+        event = {oldValue: {[key]: newKey.prevVal}, newValue: {[key]: newVal}};
       }
-      sources[key].set(val);
-    }
-    // callback for the subscribe
-    callCallbacks(callbacks, event);
+      callCallbacks(callbacks, event);
+    });
   });
 
   globalMap.get = key => {
-    return sources[key].signal;
+    return yMap.get(key).source.signal;
   };
 
   globalMap.set = (key, val) => {
-    doc.getMap(name).set(key, val);
+    let sourceVal;
+    let prev = null;
+    if (yMap.has(key)) {
+      sourceVal = yMap.get(key).source;
+      prev = sourceVal.signal.pinLastValue();
+    } else {
+      sourceVal = createSource(val, `${name}${key}`);
+    }
+    sourceVal.set(val);
+    yMap.set(key, {source: sourceVal, prevVal: prev});
   };
 
   globalMap.keys = () => {
-    return Object.keys(sources);
+    return Array.from(yMap.keys());
   };
 
   globalMap.subscribe = (callback, fireOnInitialValue = false) => {
     // subscribe to changes in the globalMap
     // if fireOnInitialValue is True, then callback all the existing key-value pairs
     if (fireOnInitialValue) {
-      let event = {newValue: {}};
-      for (const key of Object.keys(sources)) {
-        event.newValue[key] = sources[key].signal.pinLastValue();
-      }
+      const event = {newValue: {}};
+      yMap.forEach((value, key) => {
+        event.newValue[key] = value.source.signal.pinLastValue();
+      });
       callback(event);
     }
     callbacks.push(callback);
@@ -94,10 +94,10 @@ export async function createGlobalMap(name) {
     // subscribe to the new keys added to the globalMap
     // if fireOnInitialValue is True, then callback all the existing keys
     if (fireOnInitialValue) {
-      let event = {};
-      for (const key of Object.keys(sources)) {
-        event[key] = sources[key].signal;
-      }
+      const event = {};
+      yMap.forEach((value, key) => {
+        event[key] = value.source.signal;
+      });
       callback(event);
     }
     callbacksKeys.push(callback);

@@ -14,14 +14,6 @@ afterEach(() => {
   Time.mockReset();
 });
 
-async function waitForTheNextRound() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    });
-  });
-}
-
 test('When first time called, map should contain 5 basic functions', async () => {
   const globalMap = await createGlobalMap('map');
   expect(globalMap).toBeDefined();
@@ -41,7 +33,13 @@ test('When setted the key-value pair, the map should only contain one key-value 
   const globalMap2 = await createGlobalMap('map2');
   globalMap2.set(2, 'abc');
   expect(globalMap2.get(2).value).toBe('abc');
-  expect(globalMap2.keys()).toStrictEqual(['2']);
+  expect(globalMap2.keys()).toStrictEqual([2]);
+
+  expect(() => {
+    globalMap.set('a', [1]);
+  }).toThrow(
+    '`value` should be a number or string. Map values can only be Global Scalar or Global Strings',
+  );
 });
 
 test('When set function called on already existing key, value should be updated', async () => {
@@ -49,6 +47,7 @@ test('When set function called on already existing key, value should be updated'
   globalMap.set('key', 1);
   expect(globalMap.get('key').value).toBe(1);
   expect(globalMap.keys()).toStrictEqual(['key']);
+
   globalMap.set('key', 5);
   expect(globalMap.get('key').value).toBe(5);
   expect(globalMap.keys()).toStrictEqual(['key']);
@@ -56,10 +55,11 @@ test('When set function called on already existing key, value should be updated'
   const globalMap2 = await createGlobalMap('map2');
   globalMap2.set(2, 'abc');
   expect(globalMap2.get(2).value).toBe('abc');
-  expect(globalMap2.keys()).toStrictEqual(['2']);
+  expect(globalMap2.keys()).toStrictEqual([2]);
+
   globalMap2.set(2, 'def');
   expect(globalMap2.get(2).value).toBe('def');
-  expect(globalMap2.keys()).toStrictEqual(['2']);
+  expect(globalMap2.keys()).toStrictEqual([2]);
 });
 
 test('When new key is entered, callback for subscribeOnNewKey function should be called', async () => {
@@ -68,7 +68,6 @@ test('When new key is entered, callback for subscribeOnNewKey function should be
 
   globalMap.subscribeOnNewKey(keyCallback, false);
   globalMap.set('a', 1);
-  await waitForTheNextRound();
 
   expect(keyCallback).toHaveBeenCalledTimes(1);
   expect(keyCallback).toHaveBeenCalledWith(
@@ -85,7 +84,6 @@ test('When subscribeOnNewKey is called with fireOnInitialValue is true, existing
   globalMap.set('a', 1);
   globalMap.set('b', 2);
   globalMap.set('c', 3);
-  await waitForTheNextRound();
   globalMap.subscribeOnNewKey(keyCallback, true);
 
   expect(keyCallback).toHaveBeenCalledTimes(1);
@@ -98,8 +96,6 @@ test('When subscribeOnNewKey is called with fireOnInitialValue is true, existing
   );
 
   globalMap.set('d', 4);
-  await waitForTheNextRound();
-
   expect(keyCallback).toHaveBeenCalledTimes(2);
   expect(keyCallback).toHaveBeenCalledWith(
     expect.objectContaining({
@@ -108,7 +104,6 @@ test('When subscribeOnNewKey is called with fireOnInitialValue is true, existing
   );
 
   globalMap.set('d', 5);
-  await waitForTheNextRound();
   expect(keyCallback).toHaveBeenCalledTimes(2);
 });
 
@@ -118,7 +113,6 @@ test('When new key is entered, depending on fireOnInitialValue, callback for sub
   const keyCallback2 = jest.fn();
 
   globalMap.set('a', 1);
-  await waitForTheNextRound();
 
   globalMap.subscribe(keyCallback, true);
   globalMap.subscribe(keyCallback2, false);
@@ -132,7 +126,6 @@ test('When new key is entered, depending on fireOnInitialValue, callback for sub
   );
 
   globalMap.set('a', 2);
-  await waitForTheNextRound();
 
   expect(keyCallback).toHaveBeenCalledTimes(2);
   expect(keyCallback2).toHaveBeenCalledTimes(1);
@@ -162,7 +155,6 @@ test('When several callbacks are subscribed, all of them should be called', asyn
   expect(keyCallback2).toHaveBeenCalled();
 
   globalMap.set('a', 1);
-  await waitForTheNextRound();
 
   expect(keyCallback).toHaveBeenCalledTimes(2);
   expect(keyCallback2).toHaveBeenCalledTimes(2);
@@ -178,7 +170,6 @@ test('When several callbacks are subscribed, all of them should be called', asyn
   );
 
   globalMap.set('a', 2);
-  await waitForTheNextRound();
 
   expect(keyCallback).toHaveBeenCalledTimes(3);
   expect(keyCallback2).toHaveBeenCalledTimes(3);
