@@ -27,37 +27,22 @@ async function getAllParticipantsIds() {
 async function addCurrentParticipants(peersMap, participantsStartValue) {
   const allParticipantsIds = await getAllParticipantsIds();
   for (const participantId of allParticipantsIds) {
-    await peersMap.set(participantId, participantsStartValue);
+    peersMap.set(participantId, participantsStartValue);
   }
 }
 
-async function addNewParticipants(peersMap, participantsStartValue) {
-  async function addNewParticipantsToMap(event) {
-    const newPeersIds = [];
-    const newCount = event.newValue;
-    const oldCount = event.oldValue;
-    for (let i = oldCount; i < newCount; i++) {
-      const allPeersIds = await getAllPeersIds();
-      newPeersIds.push(allPeersIds[i]);
-    }
-    for (const newPeerId of newPeersIds) {
-      if (!Object.prototype.hasOwnProperty.call(peersMap, newPeerId)) {
-        await peersMap.set(newPeerId, participantsStartValue);
-      }
-    }
-    return newPeersIds;
+function createSource(val, sourceName) {
+  // set up source based on typeof val
+  let source;
+  if (typeof val === 'number') {
+    source = Reactive.scalarSignalSource(sourceName);
+  } else if (typeof val === 'string') {
+    source = Reactive.stringSignalSource(sourceName);
+  } else {
+    throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
   }
-
-  Participants.otherParticipantCount.monitor().subscribe(addNewParticipantsToMap);
-
-  peersMap.setOnNewPeerCallback = callback => {
-    Participants.otherParticipantCount.monitor().subscribe(async event => {
-      const newPeersIds = await addNewParticipantsToMap(event);
-      for (const newPeerId of newPeersIds) {
-        callback(newPeerId);
-      }
-    });
-  };
+  source.set(val);
+  return source;
 }
 
 /**
@@ -66,46 +51,31 @@ async function addNewParticipants(peersMap, participantsStartValue) {
 export async function createGlobalPeersMap(participantsStartValue, name) {
   // Currently the values can only be counters
   // startValue should be a number
-  let sources = {};
   const peersMap = {};
+  const sources = {};
 
   const doc = await YDoc.createYDoc(name);
+  const yMap = doc.getMap(name);
 
-  doc.on('update', _ => {
-    // iterate over the doc then set each corresponding source
-    for (let [participantId, value] of doc.getMap(name)) {
-      if (!sources.hasOwnProperty(participantId)) {
-        let source;
-        const sourceName = `${name}${participantId}`;
-
-        // set up source based on typeof participantsStartValue
-        if (typeof participantsStartValue === 'number') {
-          source = Reactive.scalarSignalSource(sourceName);
-        } else if (typeof participantsStartValue === 'string') {
-          source = Reactive.stringSignalSource(sourceName);
-        } else {
-          throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
-        }
-        sources[participantId] = source;
+  yMap.observe(yMapEvent => {
+    yMapEvent.changes.keys.forEach((change, key) => {
+      if (change.action === 'add') {
+        sources[key] = createSource(yMap.get(key), `${name}${key}`);
+        // callback can also be called here with callback(yMap.get(key))
+      } else if (change.action === 'update') {
+        sources[key].set(yMap.get(key));
+      } else if (change.action === 'delete') {
+        delete sources[key]; // is this needed? does YDoc deletes user when he leaves?
       }
-      sources[participantId].set(value);
-      peersMap[participantId] = sources[participantId].signal;
-    }
+    });
   });
 
   /* Start of External API */
 
   peersMap.getName = () => name;
 
-  peersMap.keys = async () => {
-    const keys = [];
-    const allParticipantsIds = await getAllParticipantsIds();
-    for (const participantId of allParticipantsIds) {
-      if (Object.prototype.hasOwnProperty.call(peersMap, participantId)) {
-        keys.push(participantId);
-      }
-    }
-    return keys;
+  peersMap.keys = () => {
+    return Object.keys(sources);
   };
 
   peersMap.get = participantId => {
@@ -113,13 +83,22 @@ export async function createGlobalPeersMap(participantsStartValue, name) {
   };
 
   peersMap.set = (participantId, value) => {
-    doc.getMap(name).set(participantId, value);
+    yMap.set(participantId, value);
+  };
+
+  peersMap.setOnNewPeerCallback = callback => {
+    Participants.onOtherParticipantAdded().subscribe(participant => {
+      callback(participant.id);
+    });
   };
 
   /* End of External API */
 
+  Participants.onOtherParticipantAdded().subscribe(participant => {
+    yMap.set(participant.id, participantsStartValue); // aka peersMap.set();
+  });
+
   await addCurrentParticipants(peersMap, participantsStartValue);
-  await addNewParticipants(peersMap, participantsStartValue);
 
   return peersMap;
 }

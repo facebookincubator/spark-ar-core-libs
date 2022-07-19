@@ -7,6 +7,7 @@
 
 import Time from 'Time';
 import Participants from 'Participants';
+import {ParticipantMock} from '../../spark-ar-jest-mocks';
 import {createGlobalPeersMap} from '../src/global_yjs_peers_map.js';
 
 afterEach(() => {
@@ -15,7 +16,7 @@ afterEach(() => {
 
 test('When start with only self, peersMap should only contain self', async () => {
   const myId = (await Participants.self).id;
-  const globalPeersMap = await createGlobalPeersMap(0, 'self');
+  const globalPeersMap = await createGlobalPeersMap(0, 'globalPeersMap');
 
   expect(globalPeersMap).toBeDefined();
   expect(globalPeersMap).toHaveProperty('getName');
@@ -24,9 +25,9 @@ test('When start with only self, peersMap should only contain self', async () =>
   expect(globalPeersMap).toHaveProperty('set');
   expect(globalPeersMap).toHaveProperty('setOnNewPeerCallback');
 
-  expect(globalPeersMap.getName()).toBe('self');
+  expect(globalPeersMap.getName()).toBe('globalPeersMap');
 
-  expect((await globalPeersMap.keys())[0]).toBe('self');
+  expect(globalPeersMap.keys()[0]).toBe('self');
 
   expect(globalPeersMap.get(myId).value).toBe(0);
   expect(globalPeersMap.get(myId)).toHaveProperty('_eventSources');
@@ -35,7 +36,7 @@ test('When start with only self, peersMap should only contain self', async () =>
 
 test('When set function called with scalar, value should be changed', async () => {
   const myId = (await Participants.self).id;
-  const globalPeersMap = await createGlobalPeersMap(0, 'self');
+  const globalPeersMap = await createGlobalPeersMap(0, 'globalPeersMap');
 
   expect(globalPeersMap.get(myId).value).toBe(0);
 
@@ -51,7 +52,7 @@ test('When set function called with scalar, value should be changed', async () =
 
 test('When set function called with string, value should be changed', async () => {
   const myId = (await Participants.self).id;
-  const globalPeersMap = await createGlobalPeersMap('hello', 'self');
+  const globalPeersMap = await createGlobalPeersMap('hello', 'globalPeersMap');
 
   expect(globalPeersMap.get(myId).value).toBe('hello');
 
@@ -60,4 +61,21 @@ test('When set function called with string, value should be changed', async () =
 
   expect(globalPeersMap.set(myId, '')).toBeUndefined();
   expect(globalPeersMap.get(myId).value).toBe('');
+});
+
+test('When new participant joins, setOnNewPeerCallback should be called', async () => {
+  const globalPeersMap = await createGlobalPeersMap(0, 'globalPeersMap');
+  const callback = jest.fn();
+  globalPeersMap.setOnNewPeerCallback(callback);
+
+  await Participants.mockAddParticipant(new ParticipantMock('1', true, true));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith('1');
+
+  await Participants.mockAddParticipant(new ParticipantMock('2', false, false));
+  await Participants.mockAddParticipant(new ParticipantMock('3', true, true));
+  expect(callback).toHaveBeenCalledTimes(3);
+  expect(callback).toHaveBeenCalledWith('3');
+
+  expect(globalPeersMap.keys()).toStrictEqual(['1', '2', '3', 'self']);
 });
