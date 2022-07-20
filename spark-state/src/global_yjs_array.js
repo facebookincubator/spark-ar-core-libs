@@ -78,6 +78,28 @@ export async function createGlobalArray(name) {
     );
   };
 
+  array.insert = (ind, val) => {
+    checkIndexError(ind);
+    doc.transact(
+      () => {
+        yArray.insert(ind, [val]);
+      },
+      {event: 'insert', index: ind, newVal: val},
+    );
+  };
+
+  array.remove = ind => {
+    checkIndexError(ind);
+    const oldValue = yArray.get(ind);
+    doc.transact(
+      () => {
+        yArray.delete(ind);
+      },
+      {event: 'remove', index: ind, oldVal: oldValue},
+    );
+    return oldValue;
+  };
+
   array.getArray = () => {
     return yArray.toArray();
   };
