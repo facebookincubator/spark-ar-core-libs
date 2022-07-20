@@ -53,6 +53,36 @@ test('When set elements, element value should be changed', async () => {
   }).toThrow('Length exceeded!');
 });
 
+test('When insert elements, element value should be inserted', async () => {
+  const globalArray = await createGlobalArray('array');
+
+  globalArray.insert(0, 1);
+  expect(globalArray.getArray()).toStrictEqual([1]);
+
+  expect(() => {
+    globalArray.insert(2, 2);
+  }).toThrow('Length exceeded!');
+
+  globalArray.insert(0, 2);
+  expect(globalArray.getArray()).toStrictEqual([2, 1]);
+});
+
+test('When remove elements, element value should be removed', async () => {
+  const globalArray = await createGlobalArray('array');
+
+  globalArray.push(1);
+  globalArray.push(2);
+  globalArray.remove(1);
+  expect(globalArray.getArray()).toStrictEqual([1]);
+
+  expect(() => {
+    globalArray.remove(1);
+  }).toThrow('Length exceeded!');
+
+  globalArray.remove(0);
+  expect(globalArray.getArray()).toStrictEqual([]);
+});
+
 test('When subscribed, callback should be called with appropriate event', async () => {
   const globalArray = await createGlobalArray('array');
   const callBack = jest.fn();
@@ -72,6 +102,24 @@ test('When subscribed, callback should be called with appropriate event', async 
   expect(callBack2).toHaveBeenCalledWith({event: 'set', index: 0, oldVal: 1, newVal: 0});
   expect(callBack).toHaveBeenCalledTimes(2);
   expect(callBack).toHaveBeenCalledWith({event: 'set', index: 0, oldVal: 1, newVal: 0});
+
+  globalArray.insert(0, 2);
+  expect(callBack2).toHaveBeenCalledTimes(2);
+  expect(callBack2).toHaveBeenCalledWith({event: 'insert', index: 0, newVal: 2});
+  expect(callBack).toHaveBeenCalledTimes(3);
+  expect(callBack).toHaveBeenCalledWith({event: 'insert', index: 0, newVal: 2});
+
+  globalArray.remove(1);
+  expect(callBack2).toHaveBeenCalledTimes(3);
+  expect(callBack2).toHaveBeenCalledWith({event: 'remove', index: 1, oldVal: 0});
+  expect(callBack).toHaveBeenCalledTimes(4);
+  expect(callBack).toHaveBeenCalledWith({event: 'remove', index: 1, oldVal: 0});
+
+  expect(() => {
+    globalArray.insert(2, 0);
+  }).toThrow('Length exceeded!');
+  expect(callBack2).toHaveBeenCalledTimes(3);
+  expect(callBack).toHaveBeenCalledTimes(4);
 });
 
 test('When fireOnInitialValue is set to True, initial array should be called', async () => {
