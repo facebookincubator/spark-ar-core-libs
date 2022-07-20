@@ -10,7 +10,7 @@ const GlobalString = require('./global_yjs_string');
 const GlobalPeersMap = require('./global_yjs_peers_map');
 const GlobalMap = require('./global_yjs_map');
 const GlobalScalar = require('./global_yjs_scalar');
-// const GlobalAppendOnlyArray = require('./global_append_only_array')
+const GlobalArray = require('./global_yjs_array');
 const SortedParticipantArray = require('./global_yjs_sorted_participant_array');
 const GlobalBoolean = require('./global_yjs_boolean');
 
@@ -19,6 +19,6 @@ module.exports.createGlobalStringSignal = GlobalString.createGlobalStringSignal;
 module.exports.createGlobalPeersMap = GlobalPeersMap.createGlobalPeersMap;
 module.exports.createGlobalMap = GlobalMap.createGlobalMap;
 module.exports.createGlobalScalarSignal = GlobalScalar.createGlobalScalarSignal;
-// module.exports.createGlobalAppendOnlyArray = GlobalAppendOnlyArray.createGlobalAppendOnlyArray
+module.exports.createGlobalArray = GlobalArray.createGlobalArray;
 module.exports.createSortedParticipantArray = SortedParticipantArray.createSortedParticipantArray;
 module.exports.createGlobalBooleanSignal = GlobalBoolean.createGlobalBooleanSignal;
