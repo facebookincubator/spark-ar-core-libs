@@ -20,6 +20,7 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
   - [`GlobalScalarSignal`](#globalscalarsignal)
   - [`GlobalPeersMap`](#globalpeersmap)
   - [`GlobalMap`](#globalmap)
+  - [`GlobalArray`](#globalarray)
   - [`SortedParticipantArray`](#sortedparticipantarray)
 - [Example](#example)
 - [Additional resources](#additional-resources)
@@ -202,7 +203,6 @@ const State = require('spark-state');
 <br><br>
 
 
-
 ### `GlobalPeersMap`
 
 `GlobalPeersMap` is a key-value pair data type which contains the IDs of all <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/participantsmodule.participant" target="_blank">participants</a> in a group effect as keys, and their global signals as values.
@@ -250,7 +250,6 @@ const Participants = require('Participants');
 <br><br>
 
 
-
 ### `GlobalMap`
 
 `GlobalMap` is a key-value pair data type which allows synchronizing arbitrary key-value pairs in a group effect.
@@ -292,6 +291,58 @@ const State = require('spark-state');
 
 </p>
 </details>
+
+<br><br>
+
+
+### `GlobalArray`
+
+`GlobalArray` is an array-like data structure that allows users to store and modify similar items and subscribe to the changes made to the array in a group effect.
+
+Only `Number` and `String` types are supported, ‘GlobalScalarSignal’ and ‘GlobalStringSignal’ will be supported in the next version.
+
+
+<br>
+
+| Methods | Description |
+|---|---|
+| `createGlobalArray(name: string)` | Creates a new `GlobalArray` with a globally unique name as specified by `name`. |
+| `push(val: number \| string)` | Pushes the `value` to the end of the array. |
+| `set(ind: number, val: number \| string)` | Changes the `value` at the specified `index`. |
+| `insert(ind: number, val: number \| string)` | Inserts the `value` at the specified `index`. |
+| `remove(ind: number)` | Removes and returns the `value` at the specified `index`. |
+| `getArray()` | Returns JS Array. |
+| `subscribe(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the array.|
+
+
+<br>
+
+<details><summary><b>Click to view example</b></summary>
+<p>
+
+```js
+const State = require('spark-state');
+
+(async function () {
+
+    // Initializes a new global array
+    const globalArray = await State.createGlobalArray('globalArray');
+
+    // Pushes 1 to the array
+    globalArray.push(1);
+
+    // Inserts 0 at the index 1
+    globalArray.insert(1,0);
+
+    // Returns the array
+    globalArray.getArray();
+
+})();
+```
+
+</p>
+</details>
+
 
 <br><br>
 
