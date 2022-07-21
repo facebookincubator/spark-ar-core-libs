@@ -41,7 +41,6 @@ function createSource(val, sourceName) {
   } else {
     throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
   }
-  source.set(val);
   return source;
 }
 
@@ -49,41 +48,34 @@ function createSource(val, sourceName) {
  * Creates a new `GlobalPeersMap` with a globally unique name as specified by `name`, and with the initial value set by `participantsStartValue`.
  */
 export async function createGlobalPeersMap(participantsStartValue, name) {
-  // Currently the values can only be counters
-  // startValue should be a number
   const peersMap = {};
-  const sources = {};
 
   const doc = await YDoc.createYDoc(name);
   const yMap = doc.getMap(name);
-
-  yMap.observe(yMapEvent => {
-    yMapEvent.changes.keys.forEach((change, key) => {
-      if (change.action === 'add') {
-        sources[key] = createSource(yMap.get(key), `${name}${key}`);
-        // callback can also be called here with callback(yMap.get(key))
-      } else if (change.action === 'update') {
-        sources[key].set(yMap.get(key));
-      } else if (change.action === 'delete') {
-        delete sources[key]; // is this needed? does YDoc deletes user when he leaves?
-      }
-    });
-  });
 
   /* Start of External API */
 
   peersMap.getName = () => name;
 
   peersMap.keys = () => {
-    return Object.keys(sources);
+    return Array.from(yMap.keys());
   };
 
   peersMap.get = participantId => {
-    return sources[participantId].signal;
+    return yMap.get(participantId).source.signal;
   };
 
   peersMap.set = (participantId, value) => {
-    yMap.set(participantId, value);
+    let sourceVal;
+    let prev = null;
+    if (yMap.has(participantId)) {
+      sourceVal = yMap.get(participantId).source;
+      prev = sourceVal.signal.pinLastValue();
+    } else {
+      sourceVal = createSource(value, `${name}${participantId}`);
+    }
+    sourceVal.set(value);
+    yMap.set(participantId, {source: sourceVal, prevVal: prev});
   };
 
   peersMap.setOnNewPeerCallback = callback => {
@@ -95,7 +87,7 @@ export async function createGlobalPeersMap(participantsStartValue, name) {
   /* End of External API */
 
   Participants.onOtherParticipantAdded().subscribe(participant => {
-    yMap.set(participant.id, participantsStartValue); // aka peersMap.set();
+    peersMap.set(participant.id, participantsStartValue);
   });
 
   await addCurrentParticipants(peersMap, participantsStartValue);

@@ -77,5 +77,5 @@ test('When new participant joins, setOnNewPeerCallback should be called', async 
   expect(callback).toHaveBeenCalledTimes(3);
   expect(callback).toHaveBeenCalledWith('3');
 
-  expect(globalPeersMap.keys()).toStrictEqual(['1', '2', '3', 'self']);
+  expect(globalPeersMap.keys()).toStrictEqual(['self', '1', '2', '3']);
 });
