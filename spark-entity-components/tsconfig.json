@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "checkJs": false,
+      "incremental": true,
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "types": [
+        "node"
+      ],
+      "declaration": true,
+      "outDir": "out-tsc",
+      "skipLibCheck": true,
+      "noImplicitAny": false
+    },
+    "include": [
+      "./src/*.js",
+      "./src/*.ts"
+    ]
+}
