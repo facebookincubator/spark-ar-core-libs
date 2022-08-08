@@ -7,6 +7,8 @@
 
 const YDoc = require('./yjs_doc');
 
+const UNSUPPORTED_VALUE_MESSAGE = '`value` should be a number or string.';
+
 function callCallbacks(callBackArray, event) {
   for (const callback of callBackArray) {
     callback(event);
@@ -19,6 +21,12 @@ function checkIndexError(ind) {
   }
 }
 
+function checkValueError(val) {
+  if (typeof val !== 'number' && typeof val !== 'string') {
+    throw TypeError(UNSUPPORTED_VALUE_MESSAGE);
+  }
+}
+
 function deltaToEvent(eventArray) {
   // converts the delta message to more friendly event message
   let currentIndex = 0;
@@ -28,7 +36,7 @@ function deltaToEvent(eventArray) {
       currentIndex += event.retain;
     } else {
       for (let val of event.insert) {
-        newEvent.events.push({event: 'insert', index: currentIndex, newVal: val});
+        newEvent.events.push({event: 'insert', index: currentIndex, newValue: val});
         currentIndex += 1;
       }
     }
@@ -56,12 +64,17 @@ export async function createGlobalArray(name) {
 
   /* Start of External API */
 
+  array.get = ind => {
+    return yArray.get(ind);
+  };
+
   array.push = val => {
+    checkValueError(val);
     doc.transact(
       () => {
         yArray.push([val]);
       },
-      {event: 'push', newVal: val},
+      {event: 'push', newValue: val},
     );
   };
 
@@ -69,35 +82,37 @@ export async function createGlobalArray(name) {
     // YArray does not have a native set method yet. Currently the most efficient way
     // is to use delete + insert in a transact as to fire a single event for the changes.
     checkIndexError(ind);
+    checkValueError(val);
     doc.transact(
       () => {
         yArray.delete(ind);
         yArray.insert(ind, [val]);
       },
-      {event: 'set', index: ind, oldVal: yArray.get(ind), newVal: val},
+      {event: 'set', index: ind, oldValue: yArray.get(ind), newValue: val},
     );
   };
 
   array.insert = (ind, val) => {
     checkIndexError(ind);
+    checkValueError(val);
     doc.transact(
       () => {
         yArray.insert(ind, [val]);
       },
-      {event: 'insert', index: ind, newVal: val},
+      {event: 'insert', index: ind, newValue: val},
     );
   };
 
   array.remove = ind => {
     checkIndexError(ind);
-    const oldValue = yArray.get(ind);
+    const oldVal = yArray.get(ind);
     doc.transact(
       () => {
         yArray.delete(ind);
       },
-      {event: 'remove', index: ind, oldVal: oldValue},
+      {event: 'remove', index: ind, oldValue: oldVal},
     );
-    return oldValue;
+    return oldVal;
   };
 
   array.getArray = () => {
@@ -108,7 +123,7 @@ export async function createGlobalArray(name) {
     if (fireOnInitialValue) {
       const event = {events: []};
       yArray.forEach((val, ind) => {
-        event.events.push({event: 'insert', index: ind, newVal: val});
+        event.events.push({event: 'insert', index: ind, newValue: val});
       });
       callback(event);
     }

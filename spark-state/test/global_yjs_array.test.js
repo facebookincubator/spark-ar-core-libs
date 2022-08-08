@@ -93,27 +93,27 @@ test('When subscribed, callback should be called with appropriate event', async 
   expect(callBack).toHaveBeenCalledTimes(0);
   globalArray.push(1);
   expect(callBack).toHaveBeenCalledTimes(1);
-  expect(callBack).toHaveBeenCalledWith({event: 'push', newVal: 1});
+  expect(callBack).toHaveBeenCalledWith({event: 'push', newValue: 1});
 
   globalArray.subscribe(callBack2);
 
   globalArray.set(0, 0);
   expect(callBack2).toHaveBeenCalledTimes(1);
-  expect(callBack2).toHaveBeenCalledWith({event: 'set', index: 0, oldVal: 1, newVal: 0});
+  expect(callBack2).toHaveBeenCalledWith({event: 'set', index: 0, oldValue: 1, newValue: 0});
   expect(callBack).toHaveBeenCalledTimes(2);
-  expect(callBack).toHaveBeenCalledWith({event: 'set', index: 0, oldVal: 1, newVal: 0});
+  expect(callBack).toHaveBeenCalledWith({event: 'set', index: 0, oldValue: 1, newValue: 0});
 
   globalArray.insert(0, 2);
   expect(callBack2).toHaveBeenCalledTimes(2);
-  expect(callBack2).toHaveBeenCalledWith({event: 'insert', index: 0, newVal: 2});
+  expect(callBack2).toHaveBeenCalledWith({event: 'insert', index: 0, newValue: 2});
   expect(callBack).toHaveBeenCalledTimes(3);
-  expect(callBack).toHaveBeenCalledWith({event: 'insert', index: 0, newVal: 2});
+  expect(callBack).toHaveBeenCalledWith({event: 'insert', index: 0, newValue: 2});
 
   globalArray.remove(1);
   expect(callBack2).toHaveBeenCalledTimes(3);
-  expect(callBack2).toHaveBeenCalledWith({event: 'remove', index: 1, oldVal: 0});
+  expect(callBack2).toHaveBeenCalledWith({event: 'remove', index: 1, oldValue: 0});
   expect(callBack).toHaveBeenCalledTimes(4);
-  expect(callBack).toHaveBeenCalledWith({event: 'remove', index: 1, oldVal: 0});
+  expect(callBack).toHaveBeenCalledWith({event: 'remove', index: 1, oldValue: 0});
 
   expect(() => {
     globalArray.insert(2, 0);
@@ -140,9 +140,9 @@ test('When fireOnInitialValue is set to True, initial array should be called', a
   expect(callBack2).toHaveBeenCalledTimes(1);
   expect(callBack2).toHaveBeenCalledWith({
     events: [
-      {event: 'insert', index: 0, newVal: 1},
-      {event: 'insert', index: 1, newVal: 2},
-      {event: 'insert', index: 2, newVal: 3},
+      {event: 'insert', index: 0, newValue: 1},
+      {event: 'insert', index: 1, newValue: 2},
+      {event: 'insert', index: 2, newValue: 3},
     ],
   });
 });
