@@ -13,6 +13,7 @@ const GlobalScalar = require('./global_yjs_scalar');
 const GlobalArray = require('./global_yjs_array');
 const SortedParticipantArray = require('./global_yjs_sorted_participant_array');
 const GlobalBoolean = require('./global_yjs_boolean');
+const GlobalDatabase = require('./global_yjs_database');
 
 module.exports.createGlobalCounterSignal = GlobalCounter.createGlobalCounterSignal;
 module.exports.createGlobalStringSignal = GlobalString.createGlobalStringSignal;
@@ -22,3 +23,4 @@ module.exports.createGlobalScalarSignal = GlobalScalar.createGlobalScalarSignal;
 module.exports.createGlobalArray = GlobalArray.createGlobalArray;
 module.exports.createSortedParticipantArray = SortedParticipantArray.createSortedParticipantArray;
 module.exports.createGlobalBooleanSignal = GlobalBoolean.createGlobalBooleanSignal;
+module.exports.createGlobalDatabase = GlobalDatabase.createGlobalDatabase;
