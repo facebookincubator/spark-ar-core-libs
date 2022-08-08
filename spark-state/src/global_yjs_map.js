@@ -8,8 +8,8 @@
 const Reactive = require('Reactive');
 const YDoc = require('./yjs_doc');
 
-const UNSUPPORTED_MAP_VALUE_MESSAGE =
-  '`value` should be a number or string. Map values can only be Global Scalar or Global Strings';
+const UNSUPPORTED_VALUE_MESSAGE =
+  '`value` should be a number or string. Map values can only be Global Scalar or Global Strings.';
 
 function callCallbacks(callBackArray, event) {
   for (const callback of callBackArray) {
@@ -19,15 +19,20 @@ function callCallbacks(callBackArray, event) {
 
 function createSource(val, sourceName) {
   // set up source based on typeof val
-  let source;
-  if (typeof val === 'number') {
-    source = Reactive.scalarSignalSource(sourceName);
-  } else if (typeof val === 'string') {
-    source = Reactive.stringSignalSource(sourceName);
-  } else {
-    throw TypeError(UNSUPPORTED_MAP_VALUE_MESSAGE);
+  const sourceVal =
+    typeof val === 'number'
+      ? Reactive.scalarSignalSource(sourceName)
+      : Reactive.stringSignalSource(sourceName);
+  sourceVal.set(val);
+  return sourceVal;
+}
+
+function toJSONSignal(localMap) {
+  const map = {};
+  for (const key of Object.keys(localMap)) {
+    map[key] = localMap[key].signal;
   }
-  return source;
+  return map;
 }
 
 /**
@@ -35,57 +40,56 @@ function createSource(val, sourceName) {
  */
 export async function createGlobalMap(name) {
   const globalMap = {};
+  const localMap = {};
   const callbacks = [];
   const callbacksKeys = [];
 
   const doc = await YDoc.createYDoc(name);
   const yMap = doc.getMap(name);
 
-  yMap.observe(yMapEvent => {
-    yMapEvent.changes.keys.forEach((change, key) => {
-      let event = {};
-      const newKey = yMap.get(key);
-      const newVal = newKey.source.signal.pinLastValue();
-      if (change.action === 'add') {
-        callCallbacks(callbacksKeys, {[key]: newKey.source.signal});
-        event = {newValue: {[key]: newVal}};
-      } else if (change.action === 'update') {
-        event = {oldValue: {[key]: newKey.prevVal}, newValue: {[key]: newVal}};
+  yMap.observe(yMapEvents => {
+    yMapEvents.changes.keys.forEach((change, key) => {
+      if (localMap.hasOwnProperty(key)) {
+        localMap[key].set(yMap.get(key));
+        callCallbacks(callbacks, {
+          newValue: {[key]: yMap.get(key)},
+          oldValue: {[key]: change.oldValue},
+        });
+      } else {
+        localMap[key] = createSource(yMap.get(key), `${name}${key}`);
+        callCallbacks(callbacksKeys, {[key]: localMap[key].signal});
+        callCallbacks(callbacks, {newValue: {[key]: yMap.get(key)}});
       }
-      callCallbacks(callbacks, event);
     });
   });
 
+  /* Start of External API */
+
   globalMap.get = key => {
-    return yMap.get(key).source.signal;
+    return localMap[key].signal;
   };
 
   globalMap.set = (key, val) => {
-    let sourceVal;
-    let prev = null;
-    if (yMap.has(key)) {
-      sourceVal = yMap.get(key).source;
-      prev = sourceVal.signal.pinLastValue();
+    if (typeof val === 'number' || typeof val === 'string') {
+      yMap.set(key.toString(), val);
     } else {
-      sourceVal = createSource(val, `${name}${key}`);
+      throw TypeError(UNSUPPORTED_VALUE_MESSAGE);
     }
-    sourceVal.set(val);
-    yMap.set(key, {source: sourceVal, prevVal: prev});
   };
 
   globalMap.keys = () => {
-    return Array.from(yMap.keys());
+    return Object.keys(localMap);
+  };
+
+  globalMap.getMap = () => {
+    return yMap.toJSON();
   };
 
   globalMap.subscribe = (callback, fireOnInitialValue = false) => {
     // subscribe to changes in the globalMap
     // if fireOnInitialValue is True, then callback all the existing key-value pairs
     if (fireOnInitialValue) {
-      const event = {newValue: {}};
-      yMap.forEach((value, key) => {
-        event.newValue[key] = value.source.signal.pinLastValue();
-      });
-      callback(event);
+      callback({newValue: yMap.toJSON()});
     }
     callbacks.push(callback);
   };
@@ -94,14 +98,12 @@ export async function createGlobalMap(name) {
     // subscribe to the new keys added to the globalMap
     // if fireOnInitialValue is True, then callback all the existing keys
     if (fireOnInitialValue) {
-      const event = {};
-      yMap.forEach((value, key) => {
-        event[key] = value.source.signal;
-      });
-      callback(event);
+      callback(toJSONSignal(localMap));
     }
     callbacksKeys.push(callback);
   };
+
+  /* End of External API */
 
   return globalMap;
 }

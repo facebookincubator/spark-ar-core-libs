@@ -33,7 +33,7 @@ test('When setted the key-value pair, the map should only contain one key-value 
   const globalMap2 = await createGlobalMap('map2');
   globalMap2.set(2, 'abc');
   expect(globalMap2.get(2).value).toBe('abc');
-  expect(globalMap2.keys()).toStrictEqual([2]);
+  expect(globalMap2.keys()).toStrictEqual(['2']);
 
   expect(() => {
     globalMap.set('a', [1]);
@@ -55,11 +55,11 @@ test('When set function called on already existing key, value should be updated'
   const globalMap2 = await createGlobalMap('map2');
   globalMap2.set(2, 'abc');
   expect(globalMap2.get(2).value).toBe('abc');
-  expect(globalMap2.keys()).toStrictEqual([2]);
+  expect(globalMap2.keys()).toStrictEqual(['2']);
 
   globalMap2.set(2, 'def');
   expect(globalMap2.get(2).value).toBe('def');
-  expect(globalMap2.keys()).toStrictEqual([2]);
+  expect(globalMap2.keys()).toStrictEqual(['2']);
 });
 
 test('When new key is entered, callback for subscribeOnNewKey function should be called', async () => {
