@@ -21,6 +21,7 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
   - [`GlobalPeersMap`](#globalpeersmap)
   - [`GlobalMap`](#globalmap)
   - [`GlobalArray`](#globalarray)
+  - [`GlobalDatabase`](#globaldatabase)
   - [`SortedParticipantArray`](#sortedparticipantarray)
 - [Example](#example)
 - [Additional resources](#additional-resources)
@@ -343,6 +344,53 @@ const State = require('spark-state');
 </p>
 </details>
 
+<br><br>
+
+
+### `GlobalDatabase`
+
+`GlobalDatabase` is a key-value pair data type like `GlobalMap` but also allows to nest maps and perform atomic transactions.
+
+<br>
+
+| Methods | Description |
+|---|---|
+| `createGlobalDatabase(name: string)` | Creates a new `GlobalDatabase` with a globally unique name as specified by `name`. |
+| `get(key: string)` | Returns the `value` assigned to the `key`. |
+| `set(key: string, value: number \| string \| JS Object(Map))` | Sets the `value` to the specified `key`. |
+| `keys()` | Returns all keys from the `GlobalDatabase` in a form of `Array<String>`. |
+| `getJSON()` | Returns the JSON representation of the `GlobalDatabase`.|
+| `transact(f: Function)` | Makes the changes inside of a function as a single transaction. |
+| `subscribe(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the `GlobalDatabase`.|
+
+<br>
+
+<details><summary><b>Click to view example</b></summary>
+<p>
+
+```js
+const State = require('spark-state');
+
+(async function () {
+
+    // Initializes a new global database
+    const globalDatabase = await State.createGlobalDatabase('database');
+
+    // Sets new key-value pairs
+    globalDatabase.set('companyA/personA', 100);
+    globalDatabase.set('companyB/personB', 0);
+
+    // Applies the changes as one transcation
+    globalDatabase.transact(() => {
+      globalDatabase.set('companyA/personA', 50);
+      globalDatabase.set('companyB/personB', 50);
+    });
+
+})();
+```
+
+</p>
+</details>
 
 <br><br>
 
