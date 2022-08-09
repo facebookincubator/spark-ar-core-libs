@@ -265,6 +265,7 @@ Values of types `GlobalScalarSignal` and `GlobalStringSignal` are supported.
 | `get(key: string)` | Returns the `GlobalScalarSignal` or `GlobalStringSignal` assigned to the `key`. |
 | `set(key: string, value: number \| string)` | Sets the value of the `GlobalScalarSignal` or `GlobalStringSignal` to the value specified by `value`, for the `key`. |
 | `keys()` | Returns all keys from the `GlobalMap` in a form of `Array<String>`. |
+| `getMap()` | Returns the JS Map. |
 | `subscribe(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the `GlobalMap`.|
 | `subscribeOnNewKey(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever a new key is added to the `GlobalMap`. |
 
@@ -308,6 +309,7 @@ Only `Number` and `String` types are supported, ‘GlobalScalarSignal’ and ‘
 | Methods | Description |
 |---|---|
 | `createGlobalArray(name: string)` | Creates a new `GlobalArray` with a globally unique name as specified by `name`. |
+| `get(ind: number)` | Returns element at the specified `index`. |.
 | `push(val: number \| string)` | Pushes the `value` to the end of the array. |
 | `set(ind: number, val: number \| string)` | Changes the `value` at the specified `index`. |
 | `insert(ind: number, val: number \| string)` | Inserts the `value` at the specified `index`. |
