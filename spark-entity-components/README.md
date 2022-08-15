@@ -1,6 +1,6 @@
-![Spark AR Studio](./documentation_src/SparkARDark.png#gh-dark-mode-only)
+![Spark AR Studio](../documentation_src/SparkARDark.png#gh-dark-mode-only)
 
-![Spark AR Studio](./documentation_src/SparkARLight.png#gh-light-mode-only)
+![Spark AR Studio](../documentation_src/SparkARLight.png#gh-light-mode-only)
 
 # spark-entity-components
 Attach reusable scripts to scene objects, which allow for on-frame callbacks and imperative coding paradigm within Spark.
@@ -38,9 +38,9 @@ Your component can optionally contain any of these methods:
 1. **onCreate:** Optionally asynchronous function which will be called for all the known components at the start before onStart for any is called. Good place to setup additional components / get transform components etc.
 2. **onStart:** Optionally asynchronous function called after onCreate, and exactly once.
 3. **onEnable:** Synchronous function called once when the scene object becomes visible. Also called once before the first onFrame. (Called after start has happened)
-4. **onDisable: **Synchronous function called once when the scene object becomes invisible. (Called after start has happened)
+4. **onDisable:** Synchronous function called once when the scene object becomes invisible. (Called after start has happened)
 5. **onFrame:** Synchronous function called every frame in which the scene object is visible. (Called after start has happened)
-6. **onDestroy: **Synchronous function called once when the scene entity is "destroyed" and no longer valid.
+6. **onDestroy:** Synchronous function called once when the scene entity is "destroyed" and no longer valid.
 
 Example Component:
 
