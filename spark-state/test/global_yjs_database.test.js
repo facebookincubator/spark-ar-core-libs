@@ -7,10 +7,8 @@
 
 import Time from 'Time';
 import {createGlobalDatabase} from '../src/global_yjs_database.js';
-const YDoc = require('../src/yjs_doc');
 
 afterEach(async () => {
-  YDoc.GLOBALDOC = await YDoc.createYDoc('');
   Time.mockReset();
 });
 
@@ -170,4 +168,28 @@ test('Transact', async () => {
       },
     },
   });
+});
+
+test('Subscribed to the child and change is made directly there', async () => {
+  const db = await createGlobalDatabase('score');
+  const teamA = {John: 2, Josh: 5, David: 3, Michael: 8};
+  const teamB = {Jake: 1, Trevor: 7, Ben: 4};
+
+  db.set('teamA', teamA);
+  db.set('teamB', teamB);
+
+  const callback = jest.fn();
+  db.subscribe(callback, 'teamA');
+  db.set('teamA/David', 4);
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith({
+    newValue: {
+      David: 4,
+    },
+    oldValue: {
+      David: 3,
+    },
+  });
+  db.set('teamC', {Calob: 1});
+  expect(callback).toHaveBeenCalledTimes(1);
 });

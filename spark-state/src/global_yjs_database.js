@@ -107,7 +107,7 @@ export async function createGlobalDatabase(name) {
     yMapEvents.forEach(yMapEvent => {
       yMapEvent.changes.keys.forEach((change, key) => {
         for (const [callback, yMap] of callbacks) {
-          if (yMapEvent.target === yMapEvent.currentTarget) {
+          if (yMapEvent.target === yMap && yMapEvent.target === yMapEvent.currentTarget) {
             // change has happened in this YMap
             change.action === 'add'
               ? callback({
@@ -117,7 +117,7 @@ export async function createGlobalDatabase(name) {
                   newValue: {[key]: yDb.get(key)._map ? yDb.get(key).toJSON() : yDb.get(key)},
                   oldValue: {[key]: change.oldValue},
                 });
-          } else if (isChild(yMapEvent.target, yMap)) {
+          } else if (yMapEvent.target === yMap || isChild(yMapEvent.target, yMap)) {
             // change has happened in one of the children of this YMap
             change.action === 'add'
               ? callback({
