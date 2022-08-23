@@ -363,7 +363,7 @@ const State = require('spark-state');
 | `keys()` | Returns all keys from the `GlobalDatabase` in a form of `Array<String>`. |
 | `getJSON()` | Returns the JSON representation of the `GlobalDatabase`.|
 | `transact(f: Function)` | Makes the changes inside of a function as a single transaction. |
-| `subscribe(callback: Function, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the `GlobalDatabase`.|
+| `subscribe(callback: Function, path: String, fireOnInitialValue: Boolean)` | Sets a `callback` function to call whenever there is a change in the map specified by `path`.|
 
 <br>
 
