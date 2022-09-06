@@ -1,6 +1,6 @@
-![Spark AR Studio](../documentation_src/SparkARDark.png#gh-dark-mode-only)
+![Meta Spark Studio](../documentation_src/SparkARDark.png#gh-dark-mode-only)
 
-![Spark AR Studio](../documentation_src/SparkARLight.png#gh-light-mode-only)
+![Meta Spark Studio](../documentation_src/SparkARLight.png#gh-light-mode-only)
 
 # spark-entity-components
 Attach reusable scripts to scene objects, which allow for on-frame callbacks and imperative coding paradigm within Spark.

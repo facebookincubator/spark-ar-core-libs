@@ -1,16 +1,16 @@
-![Spark AR Studio](../documentation_src/SparkARDark.png#gh-dark-mode-only)
+![Meta Spark Studio](../documentation_src/SparkARDark.png#gh-dark-mode-only)
 
-![Spark AR Studio](../documentation_src/SparkARLight.png#gh-light-mode-only)
+![Meta Spark Studio](../documentation_src/SparkARLight.png#gh-light-mode-only)
 
 # Participant Manager
 
 ## Getting started
-### Spark AR project setup
+### Meta Spark project setup
 
 You need AR Studio version to be >133 to use this library.
 
-1. <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/downloads/" target="_blank">Download</a> Spark AR Studio.
-2. Open your project in Spark AR Studio.
+1. <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/downloads/" target="_blank">Download</a> Meta Spark Studio.
+2. Open your project in Meta Spark Studio.
 3. Open the AR Library from within the Assets panel and select the **Script Packages** tab.
 4. Search the "spark-ar-participant-manager" and import to the project.
 5. If you hasn't used `multipeer` and `participants` capability, please manually enable them.

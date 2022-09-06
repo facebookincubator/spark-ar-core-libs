@@ -1,6 +1,6 @@
-![Spark AR Studio](./documentation_src/SparkARDark.png#gh-dark-mode-only)
+![Meta Spark Studio](./documentation_src/MetaSparkDark.png#gh-dark-mode-only)
 
-![Spark AR Studio](./documentation_src/SparkARLight.png#gh-light-mode-only)
+![Meta Spark Studio](./documentation_src/MetaSparkLight.png#gh-light-mode-only)
 
 # Spark State
 
@@ -12,7 +12,7 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
 
 
 - [Getting started](#getting-started)
-  - [Spark AR project setup](#spark-ar-project-setup)
+  - [Meta Spark project setup](#spark-ar-project-setup)
   - [Loading the module](#loading-the-module)
 - [Documentation](#documentation)
   - [`GlobalCounterSignal`](#globalcountersignal)
@@ -31,10 +31,10 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
 
 ## Getting started
 
-### Spark AR project setup
+### Meta Spark project setup
 
-1. <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/downloads/" target="_blank">Download</a> or upgrade to Spark AR Studio v134 or higher.
-2. Open your project in Spark AR Studio.
+1. <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/downloads/" target="_blank">Download</a> or upgrade to Meta Spark Studio v134 or higher.
+2. Open your project in Meta Spark Studio.
 3. Open the AR Library from within the Assets panel and select the **Script Packages** tab.
 4. Import the `spark-state` package to the project.
 5. In the project's Properties, add the **Scripting Writeable Signal Source** capability.
@@ -64,7 +64,7 @@ The **Spark State** library introduces a solution to manage a <a href="https://s
 
 ### `GlobalCounterSignal`
 
-`GlobalCounterSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.scalarsignal/" target="_blank">`ScalarSignal`</a> class from the Spark AR API's <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the scalar value contained by the signal is synchronized globally across all participants in a group effect.
+`GlobalCounterSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.scalarsignal/" target="_blank">`ScalarSignal`</a> class from the Meta Spark API's <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the scalar value contained by the signal is synchronized globally across all participants in a group effect.
 
 Additionally, it's possible to subscribe to a `GlobalCounterSignal` like you would with an <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.eventsource/" target="_blank">`EventSource`</a>:
 
@@ -112,7 +112,7 @@ const State = require('spark-state');
 
 ### `GlobalStringSignal`
 
-`GlobalStringSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.stringsignal/" target="_blank">`StringSignal`</a> class from the Spark AR API's <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the string value contained by the signal is synchronised globally across all participants in a group effect.
+`GlobalStringSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.stringsignal/" target="_blank">`StringSignal`</a> class from the Meta Spark API's <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the string value contained by the signal is synchronised globally across all participants in a group effect.
 
 Additionally, it's possible to subscribe to a `GlobalStringSignal` like you would with an <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/reactivemodule.eventsource/" target="_blank">`EventSource`</a>:
 
@@ -159,7 +159,7 @@ const State = require('spark-state');
 
 ### `GlobalScalarSignal`
 
-`GlobalScalarSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/reference/classes/ReactiveModule.ScalarSignal" target="_blank">`ScalarSignal`</a> class from the Spark AR API's <a href="https://sparkar.facebook.com/ar-studio/learn/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the scalar value contained by the signal is synchronised globally across all participants in a group effect.
+`GlobalScalarSignal` is a wrapper object for the <a href="https://sparkar.facebook.com/ar-studio/learn/reference/classes/ReactiveModule.ScalarSignal" target="_blank">`ScalarSignal`</a> class from the Meta Spark API's <a href="https://sparkar.facebook.com/ar-studio/learn/reference/classes/reactivemodule/" target="_blank">`ReactiveModule`</a>. However, the scalar value contained by the signal is synchronised globally across all participants in a group effect.
 
 Additionally, it's possible to subscribe to a `GlobalScalarSignal` like you would with an <a href="https://sparkar.facebook.com/ar-studio/learn/reference/classes/reactivemodule.eventsource/" target="_blank">`EventSource`</a>:
 
@@ -210,7 +210,7 @@ const State = require('spark-state');
 
 Values of types `GlobalScalarSignal` and `GlobalStringSignal` are supported.
 
-The `participantId` parameters in the method calls refer to each effect participant's unique ID string as returned by the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/participantsmodule.participant#properties" target="_blank">`Participant.id`</a> property from the Spark AR API.
+The `participantId` parameters in the method calls refer to each effect participant's unique ID string as returned by the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/participantsmodule.participant#properties" target="_blank">`Participant.id`</a> property from the Meta Spark API.
 
 <br>
 
@@ -443,19 +443,19 @@ const State = require('spark-state');
 
 <br><br>
 
-> Full Spark AR API documentation is available on the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/scripting/summary" target="_blank">main documentation site</a>.
+> Full Meta Spark API documentation is available on the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/scripting/summary" target="_blank">main documentation site</a>.
 
 <br><br>
 
 ## Example
 
-You can check out <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/articles/video-calling-effects/synchronizing-data-across-participants-with-the-state-api" target="_blank">this tutorial</a> on the official Spark AR documentation site, which uses the `State` API to synchronize data across participants.
+You can check out <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/articles/video-calling-effects/synchronizing-data-across-participants-with-the-state-api" target="_blank">this tutorial</a> on the official Meta Spark documentation site, which uses the `State` API to synchronize data across participants.
 
 <br><br>
 
 ### Additional resources
 
-The following resources are available on the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/getting-started" target="_blank">**Spark AR Studio**</a> documentation site:
+The following resources are available on the <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/getting-started" target="_blank">**Meta Spark Studio**</a> documentation site:
 
 - <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/participantsmodule" target="_blank">`ParticipantsModule`</a>
 - <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/reference/classes/multipeermodule" target="_blank">`MultipeerModule`</a>
