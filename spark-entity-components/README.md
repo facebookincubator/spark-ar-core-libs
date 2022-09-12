@@ -487,8 +487,10 @@ To get one off values:
 
 
 ```
-const values = await SceneEntityFrameUpdateListener.instance.snapshotSignals({
-"signal1": …, "signal2:" …});
+const values = await SceneEntityFrameUpdateListener.instance.snapshotSignals(new Map([
+   ['signal1', ....],
+   ['signal2', ....],
+]);
 ```
 
 
@@ -496,8 +498,10 @@ To get a subscription which will give you a new value in every frame:
 
 
 ```
-const valueSubscriptions = SceneEntityFrameUpdateListener.instance.monitorSignals({
-"signal1": …, "signal2:" …});
+const valueSubscriptions = SceneEntityFrameUpdateListener.instance.monitorSignals(new Map([
+   ['signal1', ....],
+   ['signal2', ....],
+]);
 ```
 
 
