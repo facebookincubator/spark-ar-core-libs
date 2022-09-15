@@ -7,7 +7,7 @@
 ## Getting started
 ### Meta Spark project setup
 
-You need AR Studio version to be >133 to use this library.
+You need Meta Spark Studio version to be >133 to use this library.
 
 1. <a href="https://sparkar.facebook.com/ar-studio/learn/documentation/downloads/" target="_blank">Download</a> Meta Spark Studio.
 2. Open your project in Meta Spark Studio.
