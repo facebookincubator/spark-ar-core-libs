@@ -1,6 +1,6 @@
 {
   "name": "spark-state",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Helper library that introduces the solution to manage a group effect's global state by creating globally synchronized data signals",
   "main": "src/state.js",
   "scripts": {
