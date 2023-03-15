@@ -48,6 +48,7 @@ export class SceneEntityComponent {
 
   private set _state(newState: SceneEntityComponentState) {
     this._internalState = newState;
+    this.addOrRemoveComponentToManager();
   }
 
   // The individual enable state of the component. This is not connected to the visibility state of the Scene Object
@@ -58,6 +59,24 @@ export class SceneEntityComponent {
 
   // SceneEntityComponentManager
   private _componentManager: SceneEntityComponentManager = SceneEntityManager.instance;
+
+  // Every status change check if components need to be added or removed from manager
+  private addOrRemoveComponentToManager() {
+    if (this._state === SceneEntityComponentState.UNSET) {
+      // There is no entity attached so no sense to check state
+      return;
+    }
+
+    if (
+      this._state === SceneEntityComponentState.CREATED &&
+      this._enabled === true &&
+      hasFunction(this, 'onFrame')
+    ) {
+      this._componentManager.addComponentToRegistry(this);
+    } else {
+      this._componentManager.removeComponentFromRegistry(this);
+    }
+  }
 
   constructor(manager: SceneEntityComponentManager) {
     this._state = SceneEntityComponentState.UNSET;
@@ -151,6 +170,9 @@ export class SceneEntityComponent {
       return;
     }
     this._enabled = shouldEnable;
+
+    this.addOrRemoveComponentToManager();
+
     shouldEnable && this._sceneEntity.isVisible
       ? invokeIfExists(this, 'onEnable')
       : invokeIfExists(this, 'onDisable');
