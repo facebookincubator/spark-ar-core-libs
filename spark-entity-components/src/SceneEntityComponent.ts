@@ -103,24 +103,28 @@ export class SceneEntityComponent {
   /**
    * Called by the manager when the component is to be created
    */
-  async create(): Promise<void> {
+  async create(sceneEntity: SceneEntity): Promise<void> {
+    this._sceneEntity = sceneEntity;
     this._state = SceneEntityComponentState.CREATING;
     await invokeAndWaitIfExists(this, 'onCreate');
     if (!this['_manageCreationState']) {
       this._state = SceneEntityComponentState.CREATED;
-    }
 
-    // For the backward compatibility reasons
-    await invokeAndWaitIfExists(this, 'onStart');
+      // For the backward compatibility reasons
+      await invokeAndWaitIfExists(this, 'onStart');
+    }
   }
 
   /**
    * Notifies when creation is complete.
    * Should only be used when has _manageCreationState and is creating the object
    */
-  public onManagedCreation() {
+  public async onManagedCreation() {
     if (this['_manageCreationState'] && this._state == SceneEntityComponentState.CREATING) {
       this._state = SceneEntityComponentState.CREATED;
+
+      // For the backward compatibility reasons
+      await invokeAndWaitIfExists(this, 'onStart');
     }
   }
 
@@ -132,18 +136,6 @@ export class SceneEntityComponent {
       throw new Error('Component not attached to any scene object');
     }
     return this._sceneEntity;
-  }
-
-  /**
-   * Attachs the component to the Scene Object.
-   * DO NOT call this method directly, and instead use sceneObject.addComponent
-   * or sceneObject.getOrAddComponent instead
-   */
-  public attachToSceneObject(sceneEntity: SceneEntity): void {
-    if (this._sceneEntity != null && this._sceneEntity.identifier != sceneEntity.identifier) {
-      throw new Error('Cannot overide the scene object attached to component');
-    }
-    this._sceneEntity = sceneEntity;
   }
 
   /**

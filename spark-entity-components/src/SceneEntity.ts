@@ -163,7 +163,7 @@ export class SceneEntity {
    */
   async create(): Promise<void> {
     this._state = SceneEntityState.CREATING;
-    await Promise.all(this._components.map(component => component.create()));
+    await Promise.all(this._components.map(component => component.create(this)));
     await Promise.all(this.children.map(child => child.create()));
     this.ensureCreationState();
   }
@@ -179,7 +179,7 @@ export class SceneEntity {
     );
     // Likely a new component got added
     if (unsetComponents.length > 0) {
-      unsetComponents.forEach(c => c.create());
+      unsetComponents.forEach(c => c.create(this));
       return true;
     }
 
@@ -351,7 +351,6 @@ export class SceneEntity {
       );
     }
 
-    instance.attachToSceneObject(this);
     this._components.push(instance);
 
     SceneEntityManager.instance.onEntityUpdate(this);

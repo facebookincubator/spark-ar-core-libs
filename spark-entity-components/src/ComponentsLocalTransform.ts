@@ -9,7 +9,6 @@
 
 import {Quaternion} from './MathQuaternion';
 import {Vector3} from './MathVectors';
-import {SceneEntity} from './SceneEntity';
 import {SceneEntityComponent} from './SceneEntityComponent';
 import {SceneEntityComponentWithProps, SceneObjectProperty} from './SceneEntitySignals';
 
@@ -189,8 +188,7 @@ export class Transform extends SceneEntityComponent {
   public rotation: TransformRotation;
   public scale: TransformScale;
 
-  public attachToSceneObject(sceneEntity: SceneEntity): void {
-    super.attachToSceneObject(sceneEntity);
+  public onCreate(): void {
     this.position = this.sceneEntity.getOrAddComponent(TransformPosition);
     this.rotation = this.sceneEntity.getOrAddComponent(TransformRotation);
     this.scale = this.sceneEntity.getOrAddComponent(TransformScale);
