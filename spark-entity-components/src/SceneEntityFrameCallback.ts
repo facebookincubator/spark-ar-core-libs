@@ -35,28 +35,27 @@ export type SignalLike = BoolSignal | StringSignal | ScalarSignal;
  * A subscription class which holds on a mutable value which can be accessed by the caller
  */
 export class ValueSubscription<Type> implements Subscription {
-  private _heldValue: Type;
+  private _getter: () => Type;
   private _unsubscribeCallback: () => void;
-  constructor(value: Type, unsubscribeCallback: () => void) {
-    this._heldValue = value;
+  constructor(getter: () => Type, unsubscribeCallback: () => void) {
+    this._getter = getter;
     this._unsubscribeCallback = unsubscribeCallback;
   }
 
   // held value in the subscription
   public get value(): Type {
-    return this._heldValue;
-  }
-
-  // update the value in the subscription
-  public updateInstance(value: Type): void {
-    this._heldValue = value;
+    return this._getter();
   }
 
   // unsubscribe from the subscription
   public unsubscribe() {
-    const callback = this._unsubscribeCallback;
-    delete this._unsubscribeCallback;
-    callback();
+    if (this._unsubscribeCallback) {
+      const callback = this._unsubscribeCallback;
+      const lastValue = this._getter();
+      this._getter = () => lastValue;
+      delete this._unsubscribeCallback;
+      callback();
+    }
   }
 }
 
@@ -129,7 +128,11 @@ export class SceneEntityFrameUpdateListener {
   public registerCallback(callback: FrameUpdateCallback): Subscription {
     const callbackId = this.createNewSignalId();
     this._frameUpdateCallbacks.set(callbackId, callback);
-    return new ValueSubscription(callback, () => this._frameUpdateCallbacks.delete(callbackId));
+    // TODO: Extract Subscription into its own class
+    return new ValueSubscription(
+      () => {},
+      () => this._frameUpdateCallbacks.delete(callbackId),
+    );
   }
 
   /**
@@ -166,23 +169,22 @@ export class SceneEntityFrameUpdateListener {
       // removal from monitored signals on unsubscribe
       disposableSignalValues.set(
         signalName,
-        new ValueSubscription(signalLike.pinLastValue(), () => {
-          this._monitoredSignals.delete(signalId);
-          this._monitoredSignalsDirty = true;
-        }),
+        new ValueSubscription(
+          () => {
+            if (this._monitoredSignalSnapshots.has(signalId)) {
+              return this._monitoredSignalSnapshots.get(signalId);
+            }
+            return signalLike.pinLastValue();
+          },
+          () => {
+            this._monitoredSignals.delete(signalId);
+            this._monitoredSignalsDirty = true;
+          },
+        ),
       );
       this._monitoredSignalsDirty = true;
     });
 
-    // Create a callback which updates the value in the disposable returned to the caller
-    this.registerCallback(() => {
-      signals.forEach((_, signalName) => {
-        const signalId = signalNameToSignalIds.get(signalName);
-        disposableSignalValues
-          .get(signalName)
-          .updateInstance(this._monitoredSignalSnapshots.get(signalId));
-      });
-    });
     return disposableSignalValues;
   }
 
