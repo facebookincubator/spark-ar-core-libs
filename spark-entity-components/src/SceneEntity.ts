@@ -438,7 +438,7 @@ export class SceneEntity {
    * Trigger the actual functionality of destroying a scene entity and it's children
    */
   protected _triggerDestruction(): void {
-    this.components.forEach(c => invokeIfExists(c, 'onDestroy'));
+    this.components.forEach(c => c.destroy());
     this.children.forEach(c => c._triggerDestruction());
     SceneEntityManager.instance.forgetEntity(this.identifier);
 

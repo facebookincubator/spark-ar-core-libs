@@ -123,3 +123,31 @@ test('After calling Create component with _manageCreationState should wait for m
   expect((component as any).onCreate).toHaveBeenCalledTimes(1);
   expect((component as any).onStart).toHaveBeenCalledTimes(1);
 });
+
+test('After calling Destroy component should change its state and be removed from registry', async () => {
+  const component = new SceneEntityComponent(managerMock as any);
+  (component as any).onCreate = jest.fn();
+  (component as any).onStart = jest.fn();
+  (component as any).onFrame = jest.fn();
+  (component as any).onDestroy = jest.fn();
+  await component.create(jest.fn() as any);
+
+  // Component should be in the registry
+  expect(managerMock.componentInRegistry).toBe(true);
+
+  // Component successfully created
+  expect(component.state).toBe(SceneEntityComponentState.CREATED);
+
+  // Component's callbacks onCreate and onStart should be called
+  expect((component as any).onCreate).toHaveBeenCalledTimes(1);
+  expect((component as any).onStart).toHaveBeenCalledTimes(1);
+
+  component.destroy();
+
+  // Component should be removed from the registry
+  expect(managerMock.componentInRegistry).toBe(false);
+  expect((component as any).onDestroy).toHaveBeenCalledTimes(1);
+
+  // Component destroyed
+  expect(component.state).toBe(SceneEntityComponentState.DESTROYED);
+});

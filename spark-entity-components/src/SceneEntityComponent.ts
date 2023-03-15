@@ -116,6 +116,14 @@ export class SceneEntityComponent {
   }
 
   /**
+   * Called by connected Entity when it is being destroyed.
+   */
+  public destroy() {
+    invokeAndWaitIfExists(this, 'onDestroy');
+    this._state = SceneEntityComponentState.DESTROYED;
+  }
+
+  /**
    * Notifies when creation is complete.
    * Should only be used when has _manageCreationState and is creating the object
    */
