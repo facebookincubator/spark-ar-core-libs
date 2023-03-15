@@ -154,7 +154,9 @@ export class SceneEntityComponentWithProps extends SceneEntityComponent {
     super();
   }
 
-  onCreate() {
+  async create(sceneEntity: SceneEntity): Promise<void> {
+    await super.create(sceneEntity);
+
     // Setup the properties. The x,y,z properties need to overriden at runtime to work correctly
     const propertyInits = this['defineProperties'];
     delete this['defineProperties'];

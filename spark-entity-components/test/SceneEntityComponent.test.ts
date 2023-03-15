@@ -7,19 +7,42 @@
  * @format
  */
 
-import {expect, test, jest} from '@jest/globals';
+import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntityComponent, SceneEntityComponentState} from '../src/SceneEntityComponent';
 
 class ManagerMock {
   componentInRegistry = false;
-  removeComponentFromRegistry() {
+  removeComponentFromRegistry(): boolean {
+    const oldValue = this.componentInRegistry;
     this.componentInRegistry = false;
+    return oldValue !== false;
   }
-  addComponentToRegistry() {
+
+  addComponentToRegistry(): boolean {
+    const oldValue = this.componentInRegistry;
     this.componentInRegistry = true;
+    return oldValue !== true;
+  }
+
+  reset() {
+    this.componentInRegistry = false;
   }
 }
 const managerMock = new ManagerMock();
+
+class EntityMock {
+  isVisible = false;
+
+  reset() {
+    this.isVisible = false;
+  }
+}
+const entityMock = new EntityMock();
+
+beforeEach(() => {
+  managerMock.reset();
+  entityMock.reset();
+});
 
 test('Just created component should have state UNSET', async () => {
   const component = new SceneEntityComponent(managerMock as any);
@@ -48,7 +71,10 @@ test('After calling Create component and defining onFrame function it should be 
   (component as any).onCreate = jest.fn();
   (component as any).onStart = jest.fn();
   (component as any).onFrame = jest.fn();
-  await component.create(jest.fn() as any);
+
+  // Entity component attached to is visible
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
 
   // Component should be in the registry
   expect(managerMock.componentInRegistry).toBe(true);
@@ -68,13 +94,14 @@ test('After component added to registry if set enable to false - should be remov
   (component as any).onFrame = jest.fn();
   (component as any).onEnable = jest.fn();
   (component as any).onDisable = jest.fn();
-  // Make Entity be visible
-  await component.create({isVisible: true} as any);
+
+  // Entity component attached to is visible
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
+  expect((component as any).onEnable).toHaveBeenCalledTimes(1);
 
   // Component should be in the registry
   expect(managerMock.componentInRegistry).toBe(true);
-  // Enable callback will not be firing just after creation of component
-  expect((component as any).onEnable).toHaveBeenCalledTimes(0);
 
   // Component successfully created
   expect(component.state).toBe(SceneEntityComponentState.CREATED);
@@ -93,7 +120,7 @@ test('After component added to registry if set enable to false - should be remov
 
   // Component should be in the registry again
   expect(managerMock.componentInRegistry).toBe(true);
-  expect((component as any).onEnable).toHaveBeenCalledTimes(1);
+  expect((component as any).onEnable).toHaveBeenCalledTimes(2);
 });
 
 test('After calling Create component with _manageCreationState should wait for manually finished creation', async () => {
@@ -101,7 +128,10 @@ test('After calling Create component with _manageCreationState should wait for m
   (component as any)._manageCreationState = true;
   (component as any).onCreate = jest.fn();
   (component as any).onStart = jest.fn();
-  await component.create(jest.fn() as any);
+
+  // Entity component attached to is visible
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
 
   // Component doesn't have onFrame function so shouldn't be added to registry
   expect(managerMock.componentInRegistry).toBe(false);
@@ -130,7 +160,10 @@ test('After calling Destroy component should change its state and be removed fro
   (component as any).onStart = jest.fn();
   (component as any).onFrame = jest.fn();
   (component as any).onDestroy = jest.fn();
-  await component.create(jest.fn() as any);
+
+  // Entity component attached to is visible
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
 
   // Component should be in the registry
   expect(managerMock.componentInRegistry).toBe(true);

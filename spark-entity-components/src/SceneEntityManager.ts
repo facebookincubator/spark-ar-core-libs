@@ -35,8 +35,6 @@ export class SceneEntityManager implements SceneEntityComponentManager {
   private _state: SceneEntityManagerState;
   // All the scene objects registered for lifecycle events
   private _sceneEntities: Map<string, SceneEntity>;
-  // Scene entities or their components have been recently modified
-  private _sceneEntitiesDirty = false;
 
   private _sceneGraphRoot: Map<string, string[]>;
 
@@ -96,43 +94,6 @@ export class SceneEntityManager implements SceneEntityComponentManager {
    * @param frameUpdateInfo frame information
    */
   public async onFrame(frameUpdateInfo: FrameUpdateInfo): Promise<void> {
-    // If the scene graph is enabled, only send the top level scene entities
-    // and recursion will call the children
-    const sceneObjects =
-      this._sceneGraphRoot == null
-        ? [...this._sceneEntities.values()]
-        : this.getEntitySceneChildren('root');
-
-    // We are filtering the objects before so that we do not call start on the
-    // same frame as the create is called.
-    const uncreated = sceneObjects.filter(entity => entity.state == SceneEntityState.UNSET);
-    const creating = sceneObjects.filter(entity => entity.state == SceneEntityState.CREATING);
-    const unstarted = sceneObjects.filter(entity => entity.state == SceneEntityState.CREATED);
-    const started = sceneObjects.filter(entity => entity.state == SceneEntityState.STARTED);
-
-    // There are some uncreated scene objects
-    uncreated.forEach(entity => entity.create());
-    creating.forEach(entity => entity.ensureCreationState());
-
-    // We have yet finished creating all the scene objects atleast once.
-    if (
-      this._state == SceneEntityManagerState.CREATING &&
-      (uncreated.length != 0 || creating.length != 0)
-    ) {
-      return;
-    }
-
-    this._state = SceneEntityManagerState.CREATED;
-    unstarted.forEach(entity => entity.start());
-
-    // Can avoid expensive await call to start pending if there are no changes
-    // that happened to components recently
-    if (this._sceneEntitiesDirty) {
-      await Promise.all(started.map(entity => entity.startPending()));
-      this._sceneEntitiesDirty = false;
-    }
-    started.forEach(entity => entity.onFrame(frameUpdateInfo));
-
     this._activeComponents.forEach(component => {
       if (component.sceneEntity.activeSelf) {
         // We already checked that `onFrame` exists in component before adding to `activeComponents`
@@ -142,30 +103,13 @@ export class SceneEntityManager implements SceneEntityComponentManager {
   }
 
   /**
-   * Notifies the creation or update of components in a scene object
-   * We dont want to look at the visibility of all the scene objects which have components,
-   * as that can be inefficient. This keeps a minimum set of signals which really require it
+   * Notifies the creation or update of entities in a scene object
    * @param trackedObject the scene object
    */
   public onEntityUpdate(trackedObject: SceneEntity): void {
-    this._sceneEntitiesDirty = true;
     const sceneObjectIdentifier = trackedObject.identifier;
     if (!this._sceneEntities.has(sceneObjectIdentifier)) {
       this._sceneEntities.set(sceneObjectIdentifier, trackedObject);
-    }
-
-    const needsVisibilitySignal =
-      this._sceneGraphRoot != null ||
-      trackedObject.components.find(component => component.requiresVisibilitySignal()) != null;
-    if (needsVisibilitySignal && trackedObject.isHiddenSignal == null) {
-      // Need to start tracking visibility
-      trackedObject.isHiddenSignal = SceneEntityFrameUpdateListener.instance
-        .monitorSignals(new Map([['hidden', trackedObject.sceneObject.hidden]]))
-        .get('hidden');
-    } else if (!needsVisibilitySignal && trackedObject.isHiddenSignal != null) {
-      // Can stop tracking visibility
-      trackedObject.isHiddenSignal.unsubscribe();
-      trackedObject.isHiddenSignal = null;
     }
   }
 
@@ -203,14 +147,27 @@ export class SceneEntityManager implements SceneEntityComponentManager {
     this._sceneEntities.delete(identifier);
   }
 
-  // SceneEntityComponentManager implementation
-  public addComponentToRegistry(component: SceneEntityComponent): void {
-    this._activeComponents.add(component);
-    this.onEntityUpdate(component.sceneEntity);
+  /**
+   * Called by component in order to add itself to per-frame execution registry
+   * Shouldn't be called directly
+   */
+  public addComponentToRegistry(component: SceneEntityComponent): boolean {
+    if (!this._activeComponents.has(component)) {
+      this._activeComponents.add(component);
+      return true;
+    }
+    return false;
   }
 
-  public removeComponentFromRegistry(component: SceneEntityComponent): void {
-    this._activeComponents.delete(component);
-    this.onEntityUpdate(component.sceneEntity);
+  /**
+   * Called by component in order to remove itself from per-frame execution registry
+   * Shouldn't be called directly
+   */
+  public removeComponentFromRegistry(component: SceneEntityComponent): boolean {
+    if (this._activeComponents.has(component)) {
+      this._activeComponents.delete(component);
+      return true;
+    }
+    return false;
   }
 }

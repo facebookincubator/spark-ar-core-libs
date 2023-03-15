@@ -12,8 +12,7 @@ import Reactive from 'Reactive';
 import Scene from 'Scene';
 import {SceneEntityComponent, SceneEntityComponentState} from './SceneEntityComponent';
 import {SceneEntityManager} from './SceneEntityManager';
-import {FrameUpdateInfo, ValueSubscription} from './SceneEntityFrameCallback';
-import {hasFunction, invokeIfExists} from './SceneEntityFunctionsUtil';
+import {hasFunction} from './SceneEntityFunctionsUtil';
 
 /**
  * State of the scene entity.
@@ -22,10 +21,7 @@ import {hasFunction, invokeIfExists} from './SceneEntityFunctionsUtil';
  */
 export enum SceneEntityState {
   UNSET,
-  CREATING,
   CREATED,
-  STARTING,
-  STARTED,
   DESTROYED,
 }
 
@@ -41,13 +37,16 @@ export class SceneEntity {
    * @param sceneObject the scene object
    * @returns the scene object with component
    */
-  static create(sceneObject: SceneObjectBase): SceneEntity {
+  static create(sceneObject: Scene.SceneObjectBase): SceneEntity {
     const existing = SceneEntityManager.instance.getEntityById(sceneObject.identifier);
     if (existing) {
       return existing;
     }
     const newInstance = new SceneEntity(sceneObject);
+    newInstance.subscribeToVisibilityChanges();
+    newInstance._activeSelf = !sceneObject.hidden.pinLastValue();
     SceneEntityManager.instance.onEntityUpdate(newInstance);
+    newInstance._state = SceneEntityState.CREATED;
     return newInstance;
   }
 
@@ -84,35 +83,38 @@ export class SceneEntity {
     return allSceneObjects.map(sceneObject => SceneEntity.create(sceneObject));
   }
 
+  private subscribeToVisibilityChanges(): void {
+    this._sceneObject.hidden.monitor({fireOnInitialValue: false}).subscribe(event => {
+      this.updateVisibility(event.newValue);
+    });
+  }
+
   // The underlying scene object instance
-  private _sceneObject: SceneObjectBase;
+  private _sceneObject: Scene.SceneObjectBase;
   // The list of behaviour components attached to the scene object
   private _components: SceneEntityComponent[];
   // The visibility of the scene object in the last frame
   private _activeSelf: boolean;
   // The visibility of the scene object in the hierarchy
   private _activeInHierarchy: boolean;
-  // The subsciption which holds the value of whether the scene object is visible or not
-  public isHiddenSignal: ValueSubscription<boolean>;
   // The state of the scene entity
   private _state: SceneEntityState;
   // The scene entity has been destroyed
   private _destroyed: boolean;
 
-  constructor(sceneObject: SceneObjectBase) {
+  constructor(sceneObject: Scene.SceneObjectBase) {
     this._sceneObject = sceneObject;
     this._state = SceneEntityState.UNSET;
     this._components = [];
     this._activeSelf = false;
     this._activeInHierarchy = true;
     this._destroyed = false;
-    this.isHiddenSignal = null;
   }
 
   /**
    * The underlying scene object instance
    */
-  get sceneObject(): SceneObjectBase {
+  get sceneObject(): Scene.SceneObjectBase {
     return this._sceneObject;
   }
 
@@ -158,124 +160,39 @@ export class SceneEntity {
     return this._state;
   }
 
-  /**
-   * Called by the manager when the scene entity is to be created
-   */
-  async create(): Promise<void> {
-    this._state = SceneEntityState.CREATING;
-    await Promise.all(this._components.map(component => component.create(this)));
-    await Promise.all(this.children.map(child => child.create()));
-    this.ensureCreationState();
-  }
-
-  /**
-   * Checks if all components have been created correctly. Any uncreated components will be created
-   * Useful when some components support "_manageCreationState", and lazily added components.
-   * @returns if the scene object is still creating
-   */
-  ensureCreationState(): boolean {
-    const unsetComponents = this._components.filter(
-      c => c.state == SceneEntityComponentState.UNSET,
-    );
-    // Likely a new component got added
-    if (unsetComponents.length > 0) {
-      unsetComponents.forEach(c => c.create(this));
-      return true;
-    }
-
-    // Still creating some components
-    if (this._components.some(c => c.state == SceneEntityComponentState.CREATING)) {
-      return true;
-    }
-
-    if (this.children.some(child => child.ensureCreationState())) {
-      // Still creating some children
-      return true;
-    }
-    // Everything is created
-    if (this.state == SceneEntityState.CREATING) {
-      this._state = SceneEntityState.CREATED;
-    }
-    return false;
-  }
-
-  /**
-   * Called by the manager when the scene entity is to be started
-   */
-  async start(): Promise<void> {
-    if (this._state === SceneEntityState.UNSET) {
-      await this.create();
-    }
-    this._state = SceneEntityState.STARTING;
-    this.startPending();
-    await Promise.all(this.children.map(child => child.start()));
-    this._state = SceneEntityState.STARTED;
-  }
-
-  async startPending(): Promise<void> {
-    await Promise.all(
-      this.children
-        .filter(child => child.state === SceneEntityState.UNSET)
-        .map(child => child.start()),
-    );
-    await Promise.all(
-      this.children
-        .filter(child => child.state === SceneEntityState.STARTED)
-        .map(child => child.startPending()),
-    );
-  }
-
-  /**
-   * Called by the manager on frame whether the scene object is visible or not
-   */
-  onFrame(frameUpdateInfo: FrameUpdateInfo): void {
-    // The scene object is not visible in hierarchy. No onFrame callback is needed
-    if (!this._activeInHierarchy) {
-      return;
-    }
-
-    // Call enable or disable depending on whether the visibility change of the scene object
-    // Hierarchical effects will automatically be handled by enableInHierarchy methods
+  private propagateVisibility(newVisibility: boolean): void {
     const enabledComponents = this._components.filter(
       component => component.state === SceneEntityComponentState.CREATED && component.enabled,
     );
-    const currentVisibility = this._activeSelf;
-    const newVisibility = this.isHiddenSignal && !this.isHiddenSignal.value;
-    if (currentVisibility !== newVisibility) {
-      enabledComponents.forEach(component =>
-        invokeIfExists(component, newVisibility ? 'onEnable' : 'onDisable'),
-      );
-      this.children.forEach(child => child.enableInHierarchy(newVisibility));
-      if (this._destroyed) {
-        this._triggerDestruction();
-      }
+
+    enabledComponents.forEach(component => component.updateState());
+
+    this.children.forEach(child => child.enableInHierarchy(newVisibility));
+  }
+
+  private enableInHierarchy(newVisibility: boolean): void {
+    this._activeInHierarchy = newVisibility;
+    if (this.activeSelf != newVisibility) {
+      this.propagateVisibility(newVisibility);
     }
+  }
+
+  private updateVisibility(newVisibility: boolean): void {
+    // If entity is hidden from parent nothing to do
+    if (!this._activeInHierarchy) {
+      this._activeSelf = newVisibility;
+      return;
+    }
+
+    // if visibility doesn't change nothing to do
+    if (this._activeSelf == newVisibility) {
+      return;
+    }
+
     this._activeSelf = newVisibility;
 
-    // Call on frame on components if the scene object is visible
-    if (this._activeSelf) {
-      this.children.forEach(child => child.onFrame(frameUpdateInfo));
-    }
-  }
-
-  /**
-   * Called by the parent scene entity when the scene entity is not visible in hierarchy or otherwise
-   */
-  enableInHierarchy(isEnabled: boolean): void {
-    const currentVisibility = this.isHiddenSignal && !this.isHiddenSignal.value;
-    if (!currentVisibility) {
-      // No need to act since nothing would matter
-      return;
-    }
-
-    this._activeInHierarchy = isEnabled;
-    const enabledComponents = this._components.filter(
-      component => component.state === SceneEntityComponentState.CREATED && component.enabled,
-    );
-    enabledComponents.forEach(component =>
-      invokeIfExists(component, isEnabled ? 'onEnable' : 'onDisable'),
-    );
-    this.children.map(child => child.enableInHierarchy(isEnabled));
+    //propagate new visibility to components and children
+    this.propagateVisibility(newVisibility);
   }
 
   /**
@@ -352,8 +269,7 @@ export class SceneEntity {
     }
 
     this._components.push(instance);
-
-    SceneEntityManager.instance.onEntityUpdate(this);
+    instance.create(this);
     return instance;
   }
 
@@ -369,7 +285,7 @@ export class SceneEntity {
 
   /**
    * Removes the behaviuour component of the given type from the scene object if present
-   * @param type the type of the behaviour component to be removed
+   * @param type of the behaviour component to be removed
    * @returns the behaviour component if it existed or null
    */
   removeComponent<T extends SceneEntityComponent>(type: new () => T): T {
@@ -382,8 +298,8 @@ export class SceneEntity {
     // eslint-disable-next-line security/detect-object-injection
     const component = this._components[index];
     this._components.splice(index, 1);
+    component.destroy();
 
-    SceneEntityManager.instance.onEntityUpdate(this);
     return component as T;
   }
 
@@ -402,6 +318,7 @@ export class SceneEntity {
     // eslint-disable-next-line security/detect-object-injection
     const component = this._components[index];
     this._components.splice(index, 1);
+    component.destroy();
 
     SceneEntityManager.instance.onEntityUpdate(this);
     return component;
@@ -417,34 +334,20 @@ export class SceneEntity {
 
   /**
    * 'Destroy' the current scene entity.
-   * - Hide a scene entity created from a SceneObject, and call the onDisable and onDestroy functions on it.
-   * - Hide a scene entity created from a Block/Prefab, call the onDisable and onDestroy functions, and destroy/pool the underlying scene object.
+   * - Hide a scene entity created from a SceneObject
+   * - Hide a scene entity created from a Block/Prefab, and destroy/pool the underlying scene object.
    *
    * A destroyed scene entity cannot be reused, and you should create a new instance from the same scene object if possible.
    */
   destroy(): void {
-    const activeOnStart = this.isVisible;
-    this._destroyed = true;
     this.setActive(false);
     this.children.forEach(c => c.destroy());
-
-    // Already not active. Can destroy immediately, since onFrame/onDisable will not be called anyways.
-    if (!activeOnStart) {
-      this._triggerDestruction();
-    }
-  }
-
-  /**
-   * Trigger the actual functionality of destroying a scene entity and it's children
-   */
-  protected _triggerDestruction(): void {
     this.components.forEach(c => c.destroy());
-    this.children.forEach(c => c._triggerDestruction());
-    SceneEntityManager.instance.forgetEntity(this.identifier);
 
+    SceneEntityManager.instance.forgetEntity(this.identifier);
     // Reset state, since this scene object can be re-used
     this.components.length = 0;
-    this._state = SceneEntityState.UNSET;
+    this._state = SceneEntityState.DESTROYED;
   }
 
   /**

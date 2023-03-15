@@ -28,8 +28,8 @@ export enum SceneEntityComponentState {
  * Interface for a management for componenets to be run onFrame
  */
 export interface SceneEntityComponentManager {
-  addComponentToRegistry(component: SceneEntityComponent): void;
-  removeComponentFromRegistry(component: SceneEntityComponent): void;
+  addComponentToRegistry(component: SceneEntityComponent): boolean;
+  removeComponentFromRegistry(component: SceneEntityComponent): boolean;
 }
 
 /**
@@ -70,11 +70,16 @@ export class SceneEntityComponent {
     if (
       this._state === SceneEntityComponentState.CREATED &&
       this._enabled === true &&
-      hasFunction(this, 'onFrame')
+      hasFunction(this, 'onFrame') &&
+      this._sceneEntity.isVisible
     ) {
-      this._componentManager.addComponentToRegistry(this);
+      if (this._componentManager.addComponentToRegistry(this)) {
+        invokeIfExists(this, 'onEnable');
+      }
     } else {
-      this._componentManager.removeComponentFromRegistry(this);
+      if (this._componentManager.removeComponentFromRegistry(this)) {
+        invokeIfExists(this, 'onDisable');
+      }
     }
   }
 
@@ -171,23 +176,13 @@ export class SceneEntityComponent {
     this._enabled = shouldEnable;
 
     this.addOrRemoveComponentToManager();
-
-    shouldEnable && this._sceneEntity.isVisible
-      ? invokeIfExists(this, 'onEnable')
-      : invokeIfExists(this, 'onDisable');
   }
 
   /**
-   * Checks if the component needs the scene object to be aware of it's visibility.
-   * This allows us to be optimal with signals
-   * @returns if requires visibility
+   * Called by entity when entity's visibility changes
    */
-  public requiresVisibilitySignal(): boolean {
-    return (
-      hasFunction(this, 'onEnable') ||
-      hasFunction(this, 'onDisable') ||
-      hasFunction(this, 'onFrame')
-    );
+  public updateState(): void {
+    this.addOrRemoveComponentToManager();
   }
 
   /**
