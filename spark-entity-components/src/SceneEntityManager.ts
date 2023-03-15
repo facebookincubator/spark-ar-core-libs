@@ -10,6 +10,7 @@
 import Scene from 'Scene';
 import {SceneEntityFrameUpdateListener, FrameUpdateInfo} from './SceneEntityFrameCallback';
 import {SceneEntity, SceneEntityState} from './SceneEntity';
+import {SceneEntityComponent, SceneEntityComponentManager} from './SceneEntityComponent';
 
 /**
  * State of the scene entity component.
@@ -22,7 +23,7 @@ export enum SceneEntityManagerState {
   CREATED,
 }
 
-export class SceneEntityManager {
+export class SceneEntityManager implements SceneEntityComponentManager {
   private static _instance: SceneEntityManager;
   static get instance(): SceneEntityManager {
     if (!SceneEntityManager._instance) {
@@ -38,6 +39,9 @@ export class SceneEntityManager {
   private _sceneEntitiesDirty = false;
 
   private _sceneGraphRoot: Map<string, string[]>;
+
+  // All enablemd components with onFrame
+  private _activeComponents: Set<SceneEntityComponent> = new Set();
 
   constructor() {
     this._state = SceneEntityManagerState.UNSET;
@@ -190,5 +194,16 @@ export class SceneEntityManager {
       this._sceneGraphRoot.delete(identifier);
     }
     this._sceneEntities.delete(identifier);
+  }
+
+  // SceneEntityComponentManager implementation
+  public addComponentToRegistry(component: SceneEntityComponent): void {
+    this._activeComponents.add(component);
+    this.onEntityUpdate(component.sceneEntity);
+  }
+
+  public removeComponentFromRegistry(component: SceneEntityComponent): void {
+    this._activeComponents.delete(component);
+    this.onEntityUpdate(component.sceneEntity);
   }
 }

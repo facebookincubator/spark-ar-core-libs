@@ -10,6 +10,7 @@
 import Diagnostics from 'Diagnostics';
 import {SceneEntity} from './SceneEntity';
 import {hasFunction, invokeAndWaitIfExists, invokeIfExists} from './SceneEntityFunctionsUtil';
+import {SceneEntityManager} from './SceneEntityManager';
 
 /**
  * State of the scene entity component.
@@ -21,6 +22,14 @@ export enum SceneEntityComponentState {
   CREATING,
   CREATED,
   DESTROYED,
+}
+
+/**
+ * Interface for a management for componenets to be run onFrame
+ */
+export interface SceneEntityComponentManager {
+  addComponentToRegistry(component: SceneEntityComponent): void;
+  removeComponentFromRegistry(component: SceneEntityComponent): void;
 }
 
 /**
@@ -47,10 +56,16 @@ export class SceneEntityComponent {
   // The scene object instance holding on to this component
   private _sceneEntity: SceneEntity;
 
-  constructor() {
+  // SceneEntityComponentManager
+  private _componentManager: SceneEntityComponentManager = SceneEntityManager.instance;
+
+  constructor(manager: SceneEntityComponentManager) {
     this._state = SceneEntityComponentState.UNSET;
     this._enabled = true;
     this._sceneEntity = null;
+    if (manager) {
+      this._componentManager = manager;
+    }
   }
 
   /**
