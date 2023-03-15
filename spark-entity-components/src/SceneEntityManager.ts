@@ -132,6 +132,13 @@ export class SceneEntityManager implements SceneEntityComponentManager {
       this._sceneEntitiesDirty = false;
     }
     started.forEach(entity => entity.onFrame(frameUpdateInfo));
+
+    this._activeComponents.forEach(component => {
+      if (component.sceneEntity.activeSelf) {
+        // We already checked that `onFrame` exists in component before adding to `activeComponents`
+        component.onFrame(frameUpdateInfo);
+      }
+    });
   }
 
   /**

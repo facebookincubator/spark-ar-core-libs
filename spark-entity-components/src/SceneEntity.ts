@@ -254,7 +254,6 @@ export class SceneEntity {
 
     // Call on frame on components if the scene object is visible
     if (this._activeSelf) {
-      enabledComponents.forEach(component => invokeIfExists(component, 'onFrame', frameUpdateInfo));
       this.children.forEach(child => child.onFrame(frameUpdateInfo));
     }
   }
