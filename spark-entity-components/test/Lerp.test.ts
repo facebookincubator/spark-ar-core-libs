@@ -7,6 +7,8 @@
  * @format
  */
 
+import {expect, test} from '@jest/globals';
+
 import {Quaternion} from '../src/MathQuaternion';
 import {Vector3} from '../src/MathVectors';
 import {Lerp, Slerp} from './../src/MathLerp';
