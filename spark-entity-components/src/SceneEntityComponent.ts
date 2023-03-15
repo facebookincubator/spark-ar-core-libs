@@ -58,7 +58,7 @@ export class SceneEntityComponent {
   private _sceneEntity: SceneEntity;
 
   // SceneEntityComponentManager
-  private _componentManager: SceneEntityComponentManager = SceneEntityManager.instance;
+  private _componentManager: SceneEntityComponentManager;
 
   // Every status change check if components need to be added or removed from manager
   private addOrRemoveComponentToManager() {
@@ -78,13 +78,11 @@ export class SceneEntityComponent {
     }
   }
 
-  constructor(manager: SceneEntityComponentManager) {
+  constructor(manager: SceneEntityComponentManager = SceneEntityManager.instance) {
     this._state = SceneEntityComponentState.UNSET;
     this._enabled = true;
     this._sceneEntity = null;
-    if (manager) {
-      this._componentManager = manager;
-    }
+    this._componentManager = manager;
   }
 
   /**
