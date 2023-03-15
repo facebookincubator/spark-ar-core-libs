@@ -106,8 +106,8 @@ export class SceneEntityComponent {
   async create(sceneEntity: SceneEntity): Promise<void> {
     this._sceneEntity = sceneEntity;
     this._state = SceneEntityComponentState.CREATING;
-    await invokeAndWaitIfExists(this, 'onCreate');
     if (!this['_manageCreationState']) {
+      await invokeAndWaitIfExists(this, 'onCreate');
       this._state = SceneEntityComponentState.CREATED;
 
       // For the backward compatibility reasons
@@ -121,6 +121,7 @@ export class SceneEntityComponent {
    */
   public async onManagedCreation() {
     if (this['_manageCreationState'] && this._state == SceneEntityComponentState.CREATING) {
+      await invokeAndWaitIfExists(this, 'onCreate');
       this._state = SceneEntityComponentState.CREATED;
 
       // For the backward compatibility reasons
