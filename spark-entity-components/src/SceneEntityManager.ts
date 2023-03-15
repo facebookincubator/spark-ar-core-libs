@@ -23,6 +23,25 @@ export enum SceneEntityManagerState {
   CREATED,
 }
 
+export class UIAssignedComponentInfo {
+  constructor(
+    component: SceneEntityComponent,
+    sceneObjectName: string,
+    enabled: boolean,
+    properties: Map<string, any>,
+  ) {
+    this.sceneObjectName = sceneObjectName;
+    this.component = component;
+    this.enabled = enabled;
+    this.properties = properties;
+  }
+
+  sceneObjectName: string;
+  component: SceneEntityComponent;
+  enabled: boolean;
+  properties: Map<string, string>;
+}
+
 export class SceneEntityManager implements SceneEntityComponentManager {
   private static _instance: SceneEntityManager;
   static get instance(): SceneEntityManager {
@@ -40,6 +59,8 @@ export class SceneEntityManager implements SceneEntityComponentManager {
 
   // All enablemd components with onFrame
   private _activeComponents: Set<SceneEntityComponent> = new Set();
+
+  private _uiAssignedComponents: Array<UIAssignedComponentInfo> = [];
 
   constructor() {
     this._state = SceneEntityManagerState.UNSET;
@@ -174,5 +195,46 @@ export class SceneEntityManager implements SceneEntityComponentManager {
    */
   public get state(): SceneEntityManagerState {
     return this._state;
+  }
+
+  /**
+   * Adds UI assigned components that will be created in one shot before other components
+   * Shouldn't be called directly
+   */
+  public addUiAssignedComponent<T extends SceneEntityComponent>(
+    componentType: new () => T,
+    entityName: string,
+    enabled: boolean,
+    properties: Map<string, any>,
+  ) {
+    const component = new componentType();
+    this._uiAssignedComponents.push(
+      new UIAssignedComponentInfo(
+        component,
+        entityName,
+        enabled,
+        properties == null ? new Map<string, any>() : properties,
+      ),
+    );
+  }
+
+  /**
+   * Create all Ui assigned compoenents in one shot
+   * Shouldn't be called directly
+   */
+  public async createAllUiAssignedComponents() {
+    const entities = await Promise.all(
+      this._uiAssignedComponents.map(componentInfo =>
+        SceneEntity.findFirst(componentInfo.sceneObjectName),
+      ),
+    );
+
+    this._uiAssignedComponents.forEach(async (componentInfo, index) => {
+      const component = entities[index].addComponent(componentInfo.component);
+      component.enabled = componentInfo.enabled;
+      componentInfo.properties.forEach((value, key) => {
+        component[key] = value;
+      });
+    });
   }
 }

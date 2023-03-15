@@ -8,9 +8,8 @@
  */
 
 import {expect, test, jest, beforeEach} from '@jest/globals';
-import {SceneEntity, SceneEntityState} from '../src/SceneEntity';
 import {SceneEntityManager} from '../src/SceneEntityManager';
-import {SceneEntityComponentState, SceneEntityComponent} from '../src/SceneEntityComponent';
+import {SceneEntityComponent} from '../src/SceneEntityComponent';
 import {SceneEntityFrameUpdateListener} from '../src/SceneEntityFrameCallback';
 import Scene from 'Scene';
 
@@ -20,6 +19,18 @@ class TestComponent extends SceneEntityComponent {
   onFrame = jest.fn();
   onEnable = jest.fn();
   onCreate = jest.fn();
+  onDisable = jest.fn();
+  onStart = jest.fn();
+  onDestroy = jest.fn();
+}
+
+class TestComponentWithCustomeOnCreate extends SceneEntityComponent {
+  static customOnCreate = jest.fn();
+  static anotherComponent;
+
+  onFrame = jest.fn();
+  onEnable = jest.fn();
+  onCreate = TestComponentWithCustomeOnCreate.customOnCreate;
   onDisable = jest.fn();
   onStart = jest.fn();
   onDestroy = jest.fn();
@@ -118,4 +129,56 @@ test('Run manager on visible SceneObjects with loadScene, then add components an
 
   // entity set underlying scene object visibility to false
   expect(entity1['setActive']).lastCalledWith(false);
+});
+
+test('When we add UI assigned components - manager adds them in one shot so duting onCreate all of them are available to each other', async () => {
+  const subscribeMock = jest.fn();
+  SceneEntityFrameUpdateListener['instance'] = {
+    registerCallback: subscribeMock,
+  };
+
+  const childSceneObject1 = getActiveSceneObject('sceneObject1');
+  const childSceneObject2 = getActiveSceneObject('sceneObject2');
+
+  // Scene root returns two children
+  Scene.mockRoot = {
+    findFirst: jest
+      .fn()
+      .mockImplementationOnce(() => childSceneObject1)
+      .mockImplementationOnce(() => childSceneObject2),
+  };
+  TestComponentWithCustomeOnCreate.customOnCreate = jest
+    .fn()
+    .mockImplementationOnce(jest.fn())
+    .mockImplementationOnce(() => {
+      TestComponentWithCustomeOnCreate.anotherComponent = SceneEntityManager.instance
+        .getEntityById('sceneObject1')
+        .getComponent(TestComponent);
+    });
+
+  // when add components to manager and run createAllUiComponents
+  SceneEntityManager.instance.addUiAssignedComponent(
+    TestComponentWithCustomeOnCreate,
+    'sceneObject1',
+    true,
+    new Map([]),
+  );
+  SceneEntityManager.instance.addUiAssignedComponent(
+    TestComponentWithCustomeOnCreate,
+    'sceneObject2',
+    true,
+    new Map([]),
+  );
+  await SceneEntityManager.instance.createAllUiAssignedComponents();
+
+  // then components should be created and possible to reference each other from their onCreate callback
+  const component1 = SceneEntityManager.instance
+    .getEntityById('sceneObject1')
+    .getComponent(TestComponentWithCustomeOnCreate);
+  const component2 = SceneEntityManager.instance
+    .getEntityById('sceneObject1')
+    .getComponent(TestComponentWithCustomeOnCreate);
+  expect(component1.onCreate).toBeCalledTimes(2);
+  expect(component2.onCreate).toBeCalledTimes(2);
+  expect(TestComponentWithCustomeOnCreate.anotherComponent).toBeDefined();
 });
