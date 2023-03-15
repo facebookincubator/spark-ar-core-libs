@@ -54,6 +54,14 @@ export class SceneEntityComponent {
   }
 
   /**
+   * Unique identifier of the component instance, looks like `sceneEntityId::componentClassName`
+   * Each scene entity can have only one component of each type
+   */
+  get identifier(): string {
+    return `${this._sceneEntity.identifier}::${this.constructor.name}`;
+  }
+
+  /**
    * Returns the current state of the component
    */
   get state(): SceneEntityComponentState {
@@ -151,8 +159,24 @@ export class SceneEntityComponent {
    * @param message
    */
   public logStats(message: string) {
-    Diagnostics.log(
-      `[${this._sceneEntity.identifier}][${this.constructor.name}][${this.state}] ${message}`,
-    );
+    Diagnostics.log(`[${this.identifier}][${this.state}] ${message}`);
+  }
+
+  /**
+   * Checks if target component is equal to the current one
+   * @param obj - target component to check
+   * @returns `true` if the target component is exactly the same as current and `false` otherwise
+   */
+  public equals(obj: SceneEntityComponent): boolean {
+    return this.identifier === obj.identifier;
+  }
+
+  /**
+   * Calculates the hashCode or unique identifier for the target component
+   * @param obj - target component
+   * @returns
+   */
+  public hashCode(obj: SceneEntityComponent): string {
+    return obj.identifier;
   }
 }
