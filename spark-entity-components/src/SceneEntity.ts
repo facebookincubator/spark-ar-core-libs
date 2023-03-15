@@ -85,7 +85,7 @@ export class SceneEntity {
 
   private subscribeToVisibilityChanges(): void {
     this._sceneObject.hidden.monitor({fireOnInitialValue: false}).subscribe(event => {
-      this.updateVisibility(event.newValue);
+      this.updateVisibility(!event.newValue);
     });
   }
 

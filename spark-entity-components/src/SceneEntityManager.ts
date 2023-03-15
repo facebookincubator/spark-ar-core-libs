@@ -62,9 +62,10 @@ export class SceneEntityManager implements SceneEntityComponentManager {
       await instance.resetSceneGraph(Scene.root, 'root');
     }
     SceneEntityFrameUpdateListener.instance.registerCallback(instance.onFrame.bind(instance));
+    instance._state = SceneEntityManagerState.CREATED;
   }
 
-  private async resetSceneGraph(sceneObject: Scene | SceneObjectBase, identifier: string) {
+  private async resetSceneGraph(sceneObject: Scene | Scene.SceneObjectBase, identifier: string) {
     this._sceneGraphRoot.set(identifier, [] as string[]);
     const children = await sceneObject.findByPath('*');
     const addToSceneGraph = async child => {
@@ -80,7 +81,7 @@ export class SceneEntityManager implements SceneEntityComponentManager {
    * @param parent the scene object which is the parent
    * @param child the child scene object
    */
-  public notifyChildAdded(parent: SceneObjectBase, child: SceneObjectBase) {
+  public notifyChildAdded(parent: Scene.SceneObjectBase, child: Scene.SceneObjectBase) {
     if (this._sceneGraphRoot == null) {
       return;
     }
@@ -95,10 +96,7 @@ export class SceneEntityManager implements SceneEntityComponentManager {
    */
   public async onFrame(frameUpdateInfo: FrameUpdateInfo): Promise<void> {
     this._activeComponents.forEach(component => {
-      if (component.sceneEntity.activeSelf) {
-        // We already checked that `onFrame` exists in component before adding to `activeComponents`
-        component.onFrame(frameUpdateInfo);
-      }
+      component.onFrame(frameUpdateInfo);
     });
   }
 
@@ -169,5 +167,12 @@ export class SceneEntityManager implements SceneEntityComponentManager {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Returns current state of the manager
+   */
+  public get state(): SceneEntityManagerState {
+    return this._state;
   }
 }

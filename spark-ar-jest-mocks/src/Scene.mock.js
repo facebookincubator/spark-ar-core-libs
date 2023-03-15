@@ -7,6 +7,6 @@
 
 export class SceneMock {
   get root() {
-    return null;
+    return this.mockRoot;
   }
 }
