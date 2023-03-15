@@ -12,6 +12,7 @@ export * from './Time.mock.js';
 export * from './Patches.mock.js';
 export * from './Reactive.mock.js';
 export * from './Signal.mock.js';
+export * from './Scene.mock.js';
 
 jest.mock(
   'Diagnostics',
@@ -75,3 +76,10 @@ jest.mock(
   },
   {virtual: true},
 );
+
+const mockScene = () => {
+  const {ScenelMock} = jest.requireActual('./Scene.mock.js');
+  return new SceneMock();
+};
+
+jest.mock('Scene', () => mockScene, {virtual: true});
