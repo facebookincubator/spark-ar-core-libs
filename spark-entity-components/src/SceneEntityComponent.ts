@@ -32,7 +32,16 @@ export enum SceneEntityComponentState {
  */
 export class SceneEntityComponent {
   // The lifecycle state of the scene entity component
-  public _state: SceneEntityComponentState;
+  private _internalState: SceneEntityComponentState;
+
+  // Internal getter and setter of the state
+  private get _state(): SceneEntityComponentState {
+    return this._internalState;
+  }
+
+  private set _state(newState: SceneEntityComponentState) {
+    this._internalState = newState;
+  }
 
   // The individual enable state of the component. This is not connected to the visibility state of the Scene Object
   private _enabled: boolean;
@@ -47,7 +56,7 @@ export class SceneEntityComponent {
   }
 
   /**
-   * Returns if the current state of the component
+   * Returns the current state of the component
    */
   get state(): SceneEntityComponentState {
     return this._state;
