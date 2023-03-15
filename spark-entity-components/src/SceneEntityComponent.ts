@@ -20,8 +20,6 @@ export enum SceneEntityComponentState {
   UNSET,
   CREATING,
   CREATED,
-  STARTING,
-  STARTED,
   DESTROYED,
 }
 
@@ -71,6 +69,9 @@ export class SceneEntityComponent {
     if (!this['_manageCreationState']) {
       this._state = SceneEntityComponentState.CREATED;
     }
+
+    // For the backward compatibility reasons
+    await invokeAndWaitIfExists(this, 'onStart');
   }
 
   /**
@@ -81,29 +82,6 @@ export class SceneEntityComponent {
     if (this['_manageCreationState'] && this._state == SceneEntityComponentState.CREATING) {
       this._state = SceneEntityComponentState.CREATED;
     }
-  }
-
-  /**
-   * Called by the manager when the component is to be started
-   */
-  async start(): Promise<void> {
-    if (this._state == SceneEntityComponentState.UNSET) {
-      await this.create();
-    }
-    if (this['_manageCreationState'] && this._state == SceneEntityComponentState.CREATING) {
-      // creation is not complete
-      return;
-    }
-    if (
-      this._state == SceneEntityComponentState.STARTING ||
-      this._state == SceneEntityComponentState.STARTED
-    ) {
-      // Already started
-      return;
-    }
-    this._state = SceneEntityComponentState.STARTING;
-    await invokeIfExists(this, 'onStart');
-    this._state = SceneEntityComponentState.STARTED;
   }
 
   /**

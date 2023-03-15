@@ -214,15 +214,6 @@ export class SceneEntity {
 
   async startPending(): Promise<void> {
     await Promise.all(
-      this._components
-        .filter(
-          component =>
-            component.state === SceneEntityComponentState.UNSET ||
-            component.state === SceneEntityComponentState.CREATED,
-        )
-        .map(component => component.start()),
-    );
-    await Promise.all(
       this.children
         .filter(child => child.state === SceneEntityState.UNSET)
         .map(child => child.start()),
@@ -243,19 +234,10 @@ export class SceneEntity {
       return;
     }
 
-    if (
-      this._components.filter(component => component.state === SceneEntityComponentState.CREATED)
-        .length > 0
-    ) {
-      // We probably created this components lazily
-      // Triggering another round of startPending
-      SceneEntityManager.instance.onEntityUpdate(this);
-    }
-
     // Call enable or disable depending on whether the visibility change of the scene object
     // Hierarchical effects will automatically be handled by enableInHierarchy methods
     const enabledComponents = this._components.filter(
-      component => component.state === SceneEntityComponentState.STARTED && component.enabled,
+      component => component.state === SceneEntityComponentState.CREATED && component.enabled,
     );
     const currentVisibility = this._activeSelf;
     const newVisibility = this.isHiddenSignal && !this.isHiddenSignal.value;
@@ -289,7 +271,7 @@ export class SceneEntity {
 
     this._activeInHierarchy = isEnabled;
     const enabledComponents = this._components.filter(
-      component => component.state === SceneEntityComponentState.STARTED && component.enabled,
+      component => component.state === SceneEntityComponentState.CREATED && component.enabled,
     );
     enabledComponents.forEach(component =>
       invokeIfExists(component, isEnabled ? 'onEnable' : 'onDisable'),
