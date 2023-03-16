@@ -41,4 +41,8 @@ export class TimeMock {
     this._timeoutSubscription.add(subscription);
     return subscription;
   }
+
+  get ms() {
+    return this.mockMs;
+  }
 }

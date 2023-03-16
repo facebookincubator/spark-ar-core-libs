@@ -8,6 +8,7 @@
  */
 
 import Time from 'Time';
+import Reactive from 'Reactive';
 
 /**
  * Holder for information about the current frame
@@ -29,12 +30,12 @@ export type FrameUpdateInfo = {
 export type FrameUpdateCallback = (info: FrameUpdateInfo) => void;
 
 // Signal like types, these are the only forms of signals currently subscribable for snapshots
-export type SignalLike = BoolSignal | StringSignal | ScalarSignal;
+export type SignalLike = Reactive.BoolSignal | Reactive.StringSignal | Reactive.ScalarSignal;
 
 /**
  * A subscription class which holds on a mutable value which can be accessed by the caller
  */
-export class ValueSubscription<Type> implements Subscription {
+export class ValueSubscription<Type> implements Reactive.Subscription {
   private _getter: () => Type;
   private _unsubscribeCallback: () => void;
   constructor(getter: () => Type, unsubscribeCallback: () => void) {
@@ -80,7 +81,7 @@ export class SceneEntityFrameUpdateListener {
   }
 
   // The subscription which will fire on every frame
-  private _onFrameSubscription: Subscription;
+  private _onFrameSubscription: Reactive.Subscription;
 
   // Dictionary of monitored signals (signalName => signal)
   private _monitoredSignals: Map<string, SignalLike>;
@@ -125,12 +126,14 @@ export class SceneEntityFrameUpdateListener {
    * @param callback the callback which needs to run on every frame
    * @returns the disposable which unregisters this callback
    */
-  public registerCallback(callback: FrameUpdateCallback): Subscription {
+  public registerCallback(callback: FrameUpdateCallback): Reactive.Subscription {
     const callbackId = this.createNewSignalId();
     this._frameUpdateCallbacks.set(callbackId, callback);
     // TODO: Extract Subscription into its own class
     return new ValueSubscription(
-      () => {},
+      () => {
+        // Intentionally left empty
+      },
       () => this._frameUpdateCallbacks.delete(callbackId),
     );
   }
@@ -140,7 +143,7 @@ export class SceneEntityFrameUpdateListener {
    * @param callback the callback to run on the next frame
    * @returns a disposable version of the frame update callback, allowing you to unsubscribe within the same frame
    */
-  public registerNextFrameCallback(callback: FrameUpdateCallback): Subscription {
+  public registerNextFrameCallback(callback: FrameUpdateCallback): Reactive.Subscription {
     const disposableCallback = this.registerCallback(data => {
       try {
         callback(data);
