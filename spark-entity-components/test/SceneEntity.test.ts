@@ -11,6 +11,11 @@ import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntity, SceneEntityState} from '../src/SceneEntity';
 import {SceneEntityManager} from '../src/SceneEntityManager';
 import {SceneEntityComponentState, SceneEntityComponent} from '../src/SceneEntityComponent';
+import Scene from 'Scene';
+
+const mockDestroy = jest.fn();
+jest.mock('Scene');
+Scene.destroy = mockDestroy;
 
 jest.mock('../src/SceneEntityManager');
 
@@ -372,4 +377,41 @@ test('When destroy entity - all its components and children should be destroyed'
   expect(childEntity.state).toBe(SceneEntityState.DESTROYED);
   // forget main entity and it's child
   expect(mockManager.forgetEntity).toBeCalledTimes(2);
+});
+
+test('When destroy entity with destroySceneObject enabled - underlying scene object should be destroyed', () => {
+  // given create new entity
+  const createdEntity = createNewEntityForTests();
+  createdEntity.setActive = jest.fn();
+
+  // create child entity that is hidden
+  const childEntity = createNewEntityForTests();
+  childEntity.setActive = jest.fn();
+  mockManager.getEntitySceneChildren
+    .mockImplementationOnce(() => [childEntity])
+    .mockImplementationOnce(() => []);
+
+  // create component that is created and enabled and add it to the entity
+  const component = new SceneEntityComponent();
+  component['_enabled'] = true;
+  component['_internalState'] = SceneEntityComponentState.CREATED;
+  component.updateState = jest.fn();
+  component.create = jest.fn();
+  component['onDestroy'] = jest.fn();
+  createdEntity.addComponent(component);
+
+  // when destroy entity with destroySceneObject enabled
+  createdEntity.destroy(true);
+
+  // the entity, its children and components, and sceneObject should be destroyed
+  expect(createdEntity.components.length).toBe(0);
+  expect(component['onDestroy']).toBeCalledTimes(1);
+  expect(createdEntity.state).toBe(SceneEntityState.DESTROYED);
+  expect(component.state).toBe(SceneEntityComponentState.DESTROYED);
+  expect(childEntity.state).toBe(SceneEntityState.DESTROYED);
+  // forget main entity and it's child
+  expect(mockManager.forgetEntity).toBeCalledTimes(2);
+  expect(mockDestroy).toBeCalledTimes(2);
+  expect(mockDestroy.mock.calls[0][0]).toBe(createdEntity.sceneObject);
+  expect(mockDestroy.mock.calls[1][0]).toBe(childEntity.sceneObject);
 });

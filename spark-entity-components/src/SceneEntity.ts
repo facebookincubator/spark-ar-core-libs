@@ -339,10 +339,14 @@ export class SceneEntity {
    *
    * A destroyed scene entity cannot be reused, and you should create a new instance from the same scene object if possible.
    */
-  destroy(): void {
+  destroy(destroySceneObject = false): void {
     this.setActive(false);
-    this.children.forEach(c => c.destroy());
+    this.children.forEach(c => c.destroy(destroySceneObject));
     this.components.forEach(c => c.destroy());
+
+    if (destroySceneObject) {
+      Scene.destroy(this.sceneObject);
+    }
 
     SceneEntityManager.instance.forgetEntity(this.identifier);
     // Reset state, since this scene object can be re-used
