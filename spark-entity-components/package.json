@@ -1,6 +1,6 @@
 {
   "name": "spark-entity-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "src/index.ts",
   "description": "Experimental library to attach reusable scripts to scene objects, which allow for on-frame callbacks and imperative coding paradigm within Spark.",
   "license": "MIT",
