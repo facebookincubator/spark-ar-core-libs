@@ -13,11 +13,8 @@ import {SceneEntityManager} from '../src/SceneEntityManager';
 import {SceneEntityComponentState, SceneEntityComponent} from '../src/SceneEntityComponent';
 import Scene from 'Scene';
 
-const mockDestroy = jest.fn();
-jest.mock('Scene');
-Scene.destroy = mockDestroy;
-
 jest.mock('../src/SceneEntityManager');
+jest.mock('Scene');
 
 class ManagerMock {
   sceneEntityToReturn: any;
@@ -48,9 +45,25 @@ class SceneObjectMock {
 
 let mockManager = new ManagerMock();
 let mockSceneObject = new SceneObjectMock();
+let mockSceneObject1 = new SceneObjectMock();
+
+const mockDestroy = jest.fn();
+
+Scene.destroy = mockDestroy;
+Scene.mockRoot = {};
+Scene.mockRoot.findFirst = jest.fn();
+Scene.mockRoot.findByPath = jest.fn();
+Scene.mockRoot.findAll = jest.fn();
 
 beforeEach(() => {
+  jest.resetAllMocks();
+
+  Scene.mockRoot.findFirst.mockReturnValue(mockSceneObject);
+  Scene.mockRoot.findByPath.mockReturnValue([mockSceneObject]);
+  Scene.mockRoot.findAll.mockReturnValue([mockSceneObject, mockSceneObject1]);
+
   mockSceneObject = new SceneObjectMock();
+  mockSceneObject1 = new SceneObjectMock();
   mockManager = new ManagerMock();
   SceneEntityManager['instance'] = mockManager;
 });
@@ -86,6 +99,42 @@ test('When create entity that is already in manager then dont create new entity 
 
   // return existing one
   expect(createdEntity).toBe(entity);
+});
+
+test('When finding the first occurence of scene object with given name, create or reuse a shared entity', async () => {
+  const visibilityChangesMock = jest.fn();
+  jest
+    .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
+    .mockImplementation(visibilityChangesMock);
+
+  await SceneEntity.findFirst(mockSceneObject.identifier);
+
+  expect(Scene.mockRoot.findFirst).toBeCalledTimes(1);
+  expect(Scene.mockRoot.findFirst).toReturnWith(mockSceneObject);
+});
+
+test('When finding by path, query the scene root by the given path', async () => {
+  const visibilityChangesMock = jest.fn();
+  jest
+    .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
+    .mockImplementation(visibilityChangesMock);
+
+  await SceneEntity.findByPath('*');
+
+  expect(Scene.mockRoot.findByPath).toBeCalledTimes(1);
+  expect(Scene.mockRoot.findByPath).toReturnWith([mockSceneObject]);
+});
+
+test('When finding all scene objects with a given name, create or reuse a shared entity for all returned', async () => {
+  const visibilityChangesMock = jest.fn();
+  jest
+    .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
+    .mockImplementation(visibilityChangesMock);
+
+  await SceneEntity.findAll(mockSceneObject.identifier);
+
+  expect(Scene.mockRoot.findAll).toBeCalledTimes(1);
+  expect(Scene.mockRoot.findAll).toReturnWith([mockSceneObject, mockSceneObject1]);
 });
 
 test('When create entity that is not in manager then create new entity, subscribe to visibility changes and return it', () => {
