@@ -137,6 +137,27 @@ test('When finding all scene objects with a given name, create or reuse a shared
   expect(Scene.mockRoot.findAll).toReturnWith([mockSceneObject, mockSceneObject1]);
 });
 
+test('When getting component by function, return component which has that function', () => {
+  class TestComponent extends SceneEntityComponent {
+    testFn() {
+      return;
+    }
+  }
+
+  // given create new entity
+  const createdEntity = createNewEntityForTests();
+  // create testncomponent
+  const component = new TestComponent();
+  // mock test function
+  component.create = jest.fn();
+  component.testFn = jest.fn();
+
+  // add this component
+  createdEntity.addComponent(component);
+
+  expect(createdEntity.getComponentByFunction('testFn')).toStrictEqual([component]);
+});
+
 test('When create entity that is not in manager then create new entity, subscribe to visibility changes and return it', () => {
   const visibilityChangesMock = jest.fn();
   jest
@@ -276,6 +297,50 @@ test('When getOrAdd component and no existing create new component and return', 
   expect(createFunctionMock).toBeCalledTimes(1);
 });
 
+test('When getOrAddComponentByClassName existing will be returned', () => {
+  // given create new entity
+  const createdEntity = createNewEntityForTests();
+  // create component
+  const component = new SceneEntityComponent();
+  // mock async creation function
+  component.create = jest.fn();
+
+  // add this component
+  createdEntity.addComponent(component);
+
+  // when invoke getOrAddComponentByClassName
+  const returnedComponent = createdEntity.getOrAddComponentByClassName(
+    'SceneEntityComponent',
+    () => {
+      return new SceneEntityComponent();
+    },
+  );
+
+  // then returned existing one
+  expect(returnedComponent).toBe(component);
+});
+
+test('When getOrAddComponentByClassName and no existing create new component and return', () => {
+  // given create new entity
+  const createdEntity = createNewEntityForTests();
+
+  // mock async creation function
+  const createFunctionMock = jest.fn();
+  jest
+    .spyOn(SceneEntityComponent.prototype, 'create')
+    .mockImplementation(createFunctionMock as any);
+
+  // when invoke getOrAddComponentByClassName
+  const returnedComponent = createdEntity.getOrAddComponentByClassName('TestComponent', () => {
+    return new SceneEntityComponent();
+  });
+
+  // then returned existing one
+  expect(returnedComponent).toBeDefined();
+  // and create function should be called on component
+  expect(createFunctionMock).toBeCalledTimes(1);
+});
+
 test('When update visibility with same value - nothing should happen', () => {
   // when create new entity
   const createdEntity = createNewEntityForTests();
@@ -387,6 +452,26 @@ test('When removing component from entity - it should be removed and destroyed',
 
   // when invoke getOrAdd
   createdEntity.removeComponent(SceneEntityComponent);
+
+  // no components in entity
+  expect(createdEntity.components.length).toBe(0);
+  expect(component['onDestroy']).toBeCalledTimes(1);
+  expect(component.state).toBe(SceneEntityComponentState.DESTROYED);
+});
+
+test('When removing component by class name from entity - it should be removed and destroyed', () => {
+  // given create new entity
+  const createdEntity = createNewEntityForTests();
+  // create component
+  const component = new SceneEntityComponent();
+  component['onDestroy'] = jest.fn();
+  // mock async creation function
+  component.create = jest.fn();
+  // added component
+  createdEntity.addComponent(component);
+
+  // when invoke getOrAdd
+  createdEntity.removeComponentByClassName('SceneEntityComponent');
 
   // no components in entity
   expect(createdEntity.components.length).toBe(0);
