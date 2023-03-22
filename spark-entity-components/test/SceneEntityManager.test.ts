@@ -154,3 +154,29 @@ test('When call forget entity - it shouldnt be found', async () => {
   expect(SceneEntityManager.instance['_sceneEntities'].get('newSceneObject')).toBeUndefined();
   expect(SceneEntityManager.instance.getEntityById('newSceneObject')).toBeNull();
 });
+
+test('When call notify child added - a child should be added under the parent', () => {
+  const subscribeMock = jest.fn();
+  SceneEntityFrameUpdateListener['instance'] = {
+    registerCallback: subscribeMock,
+  };
+
+  const parentSceneObject = {
+    identifier: 'root',
+  };
+
+  const childSceneObject = {
+    identifier: 'child',
+  };
+
+  SceneEntityManager.instance['_sceneGraphRoot'] = new Map();
+  SceneEntityManager.instance['_sceneGraphRoot'].set('root', []);
+  SceneEntityManager.instance.onEntityUpdate(childSceneObject as any);
+
+  // when we call notify child added
+  SceneEntityManager.instance.notifyChildAdded(parentSceneObject, childSceneObject);
+
+  // a child should be added under the parent
+  expect(SceneEntityManager.instance.getEntitySceneChildren('root').length).toBe(1);
+  expect(SceneEntityManager.instance.getEntitySceneChildren('root')[0]).toBe(childSceneObject);
+});
