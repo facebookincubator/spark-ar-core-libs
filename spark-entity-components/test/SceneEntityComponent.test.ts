@@ -224,3 +224,12 @@ test('After component added to registry if its entity visibility changed - shoul
   expect(managerMock.componentInRegistry).toBe(true);
   expect((component as any).onEnable).toHaveBeenCalledTimes(2);
 });
+
+test('Getting sceneEntity should return the associated sceneEntity', async () => {
+  const component = new SceneEntityComponent(managerMock as any);
+
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
+
+  expect(component.sceneEntity).toBe(entityMock);
+});
