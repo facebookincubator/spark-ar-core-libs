@@ -79,12 +79,40 @@ test('After calling Create component and defining onFrame function it should be 
   // Component should be in the registry
   expect(managerMock.componentInRegistry).toBe(true);
 
+  // Component should be in active state
+  expect(component.active).toBe(true);
+
   // Component successfully created
   expect(component.state).toBe(SceneEntityComponentState.CREATED);
 
   // Component's callbacks onCreate and onStart should be called
   expect((component as any).onCreate).toHaveBeenCalledTimes(1);
   expect((component as any).onStart).toHaveBeenCalledTimes(1);
+});
+
+test('After calling Create component without onFrame function it should be active but not added to registry', async () => {
+  const component = new SceneEntityComponent(managerMock as any);
+  (component as any).onCreate = jest.fn();
+  (component as any).onStart = jest.fn();
+  (component as any).onEnable = jest.fn();
+
+  // Entity component attached to is visible
+  entityMock.isVisible = true;
+  await component.create(entityMock as any);
+
+  // Component should be in the registry
+  expect(managerMock.componentInRegistry).toBe(false);
+
+  // Component should be in active state
+  expect(component.active).toBe(true);
+
+  // Component successfully created
+  expect(component.state).toBe(SceneEntityComponentState.CREATED);
+
+  // Component's callbacks onCreate, onStart and onEnable should be called
+  expect((component as any).onCreate).toHaveBeenCalledTimes(1);
+  expect((component as any).onStart).toHaveBeenCalledTimes(1);
+  expect((component as any).onEnable).toHaveBeenCalledTimes(1);
 });
 
 test('After component added to registry if set enable to false - should be removed from registry', async () => {
@@ -106,15 +134,22 @@ test('After component added to registry if set enable to false - should be remov
   // Component successfully created
   expect(component.state).toBe(SceneEntityComponentState.CREATED);
 
-  // Component's callbacks onCreate and onStart should be called
+  // Component should be in active state
+  expect(component.active).toBe(true);
+
+  // Component's callbacks onCreate, onStart and onEnable should be called
   expect((component as any).onCreate).toHaveBeenCalledTimes(1);
   expect((component as any).onStart).toHaveBeenCalledTimes(1);
+  expect((component as any).onEnable).toHaveBeenCalledTimes(1);
 
   component.enabled = false;
 
   // Component should be removed from the registry
   expect(managerMock.componentInRegistry).toBe(false);
   expect((component as any).onDisable).toHaveBeenCalledTimes(1);
+
+  // Component should be in non active state
+  expect(component.active).toBe(false);
 
   component.enabled = true;
 
@@ -160,6 +195,7 @@ test('After calling Destroy component should change its state and be removed fro
   (component as any).onStart = jest.fn();
   (component as any).onFrame = jest.fn();
   (component as any).onDestroy = jest.fn();
+  (component as any).onDisable = jest.fn();
 
   // Entity component attached to is visible
   entityMock.isVisible = true;
@@ -180,6 +216,10 @@ test('After calling Destroy component should change its state and be removed fro
   // Component should be removed from the registry
   expect(managerMock.componentInRegistry).toBe(false);
   expect((component as any).onDestroy).toHaveBeenCalledTimes(1);
+  expect((component as any).onDisable).toHaveBeenCalledTimes(1);
+
+  // Component should be in non active state
+  expect(component.active).toBe(false);
 
   // Component destroyed
   expect(component.state).toBe(SceneEntityComponentState.DESTROYED);
@@ -216,6 +256,9 @@ test('After component added to registry if its entity visibility changed - shoul
   expect(managerMock.componentInRegistry).toBe(false);
   expect((component as any).onDisable).toHaveBeenCalledTimes(1);
 
+  // Component should be in non active state
+  expect(component.active).toBe(false);
+
   // Entity become visiblt again
   entityMock.isVisible = true;
   component.updateState();
@@ -223,6 +266,9 @@ test('After component added to registry if its entity visibility changed - shoul
   // Component should be in the registry again
   expect(managerMock.componentInRegistry).toBe(true);
   expect((component as any).onEnable).toHaveBeenCalledTimes(2);
+
+  // Component should be in active state
+  expect(component.active).toBe(true);
 });
 
 test('Getting sceneEntity should return the associated sceneEntity', async () => {

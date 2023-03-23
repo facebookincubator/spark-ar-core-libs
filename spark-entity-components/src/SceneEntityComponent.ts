@@ -54,6 +54,9 @@ export class SceneEntityComponent {
   // The individual enable state of the component. This is not connected to the visibility state of the Scene Object
   private _enabled: boolean;
 
+  // If component is active it means it's onFrame is being called (it's created, enabled and underlying scene object is visible)
+  private _active: boolean;
+
   // The scene object instance holding on to this component
   private _sceneEntity: SceneEntity;
 
@@ -67,25 +70,28 @@ export class SceneEntityComponent {
       return;
     }
 
-    if (
+    const isActive =
       this._state === SceneEntityComponentState.CREATED &&
       this._enabled === true &&
-      hasFunction(this, 'onFrame') &&
-      this._sceneEntity.isVisible
-    ) {
-      if (this._componentManager.addComponentToRegistry(this)) {
-        invokeIfExists(this, 'onEnable');
+      this._sceneEntity.isVisible;
+
+    if (isActive === true && this._active === false) {
+      this._active = true;
+      if (hasFunction(this, 'onFrame')) {
+        this._componentManager.addComponentToRegistry(this);
       }
-    } else {
-      if (this._componentManager.removeComponentFromRegistry(this)) {
-        invokeIfExists(this, 'onDisable');
-      }
+      invokeIfExists(this, 'onEnable');
+    } else if (isActive === false && this._active === true) {
+      this._active = false;
+      this._componentManager.removeComponentFromRegistry(this);
+      invokeIfExists(this, 'onDisable');
     }
   }
 
   constructor(manager: SceneEntityComponentManager = SceneEntityManager.instance) {
     this._state = SceneEntityComponentState.UNSET;
     this._enabled = true;
+    this._active = false;
     this._sceneEntity = null;
     this._componentManager = manager;
   }
@@ -103,6 +109,13 @@ export class SceneEntityComponent {
    */
   get state(): SceneEntityComponentState {
     return this._state;
+  }
+
+  /**
+   * Returns if the component is active - it's onFrame is being called
+   */
+  get active(): boolean {
+    return this._active;
   }
 
   /**
