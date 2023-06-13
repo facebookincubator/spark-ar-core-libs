@@ -10,14 +10,15 @@
 import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntityManager, SceneEntityManagerState} from '../src/SceneEntityManager';
 import {SceneEntityFrameUpdateListener} from '../src/SceneEntityFrameCallback';
-import Scene from 'Scene';
 import {SceneEntity} from '../src/SceneEntity';
+import {resetMockOverrides, addMockOverride} from '../mocks/mocks.js';
 
 jest.mock('../src/SceneEntityFrameCallback');
 jest.mock('../src/SceneEntity');
 
 beforeEach(() => {
   (SceneEntityManager['_instance'] as any) = null;
+  resetMockOverrides();
 });
 
 test('Just created scene entity manager should have state UNSET', () => {
@@ -70,9 +71,7 @@ test('When run manager with loadSceneGraph - it should create full shadow scene 
     identifier: 'child',
     findByPath: jest.fn().mockImplementation(() => []),
   };
-  Scene.mockRoot = {
-    findByPath: jest.fn().mockImplementationOnce(() => [childSceneObject]),
-  };
+  addMockOverride('Scene.root.findByPath').mockImplementationOnce(() => [childSceneObject]);
 
   // when manager run
   await SceneEntityManager.run({loadSceneGraph: true});

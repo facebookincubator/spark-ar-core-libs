@@ -2939,6 +2939,10 @@ optionator@^0.8.1:
     type-check "~0.3.2"
     word-wrap "~1.2.3"
 
+"spark-ar-libs@https://github.com/facebookincubator/spark-ar-core-libs.git#00fe34a":
+  version "0.0.0"
+  resolved "https://github.com/facebookincubator/spark-ar-core-libs.git#00fe34a4fd31e9270953c8cc604c16209cba127f"
+
 p-limit@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.3.0.tgz#3dd33c647a214fdfffd835933eb086da0dc21db1"

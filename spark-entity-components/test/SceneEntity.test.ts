@@ -11,10 +11,9 @@ import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntity, SceneEntityState} from '../src/SceneEntity';
 import {SceneEntityManager} from '../src/SceneEntityManager';
 import {SceneEntityComponentState, SceneEntityComponent} from '../src/SceneEntityComponent';
-import Scene from 'Scene';
+import {resetMockOverrides, addMockOverride} from '../mocks/mocks.js';
 
 jest.mock('../src/SceneEntityManager');
-jest.mock('Scene');
 
 class ManagerMock {
   sceneEntityToReturn: any;
@@ -45,25 +44,12 @@ class SceneObjectMock {
 
 let mockManager = new ManagerMock();
 let mockSceneObject = new SceneObjectMock();
-let mockSceneObject1 = new SceneObjectMock();
-
-const mockDestroy = jest.fn();
-
-Scene.destroy = mockDestroy;
-Scene.mockRoot = {};
-Scene.mockRoot.findFirst = jest.fn();
-Scene.mockRoot.findByPath = jest.fn();
-Scene.mockRoot.findAll = jest.fn();
 
 beforeEach(() => {
   jest.resetAllMocks();
-
-  Scene.mockRoot.findFirst.mockReturnValue(mockSceneObject);
-  Scene.mockRoot.findByPath.mockReturnValue([mockSceneObject]);
-  Scene.mockRoot.findAll.mockReturnValue([mockSceneObject, mockSceneObject1]);
+  resetMockOverrides();
 
   mockSceneObject = new SceneObjectMock();
-  mockSceneObject1 = new SceneObjectMock();
   mockManager = new ManagerMock();
   SceneEntityManager['instance'] = mockManager;
 });
@@ -106,11 +92,13 @@ test('When finding the first occurence of scene object with given name, create o
   jest
     .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
     .mockImplementation(visibilityChangesMock);
+  const findFirstMock = addMockOverride('Scene.root.findFirst');
+  findFirstMock.mockImplementation(() => mockSceneObject);
 
-  await SceneEntity.findFirst(mockSceneObject.identifier);
+  const sceneEntity = await SceneEntity.findFirst(mockSceneObject.identifier);
 
-  expect(Scene.mockRoot.findFirst).toBeCalledTimes(1);
-  expect(Scene.mockRoot.findFirst).toReturnWith(mockSceneObject);
+  expect(findFirstMock).toBeCalledTimes(1);
+  expect(sceneEntity['_sceneObject']).toEqual(mockSceneObject);
 });
 
 test('When finding by path, query the scene root by the given path', async () => {
@@ -118,11 +106,13 @@ test('When finding by path, query the scene root by the given path', async () =>
   jest
     .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
     .mockImplementation(visibilityChangesMock);
+  const findByPathMock = addMockOverride('Scene.root.findByPath');
+  findByPathMock.mockImplementation(() => [mockSceneObject, mockSceneObject]);
 
-  await SceneEntity.findByPath('*');
+  const sceneEntitys = await SceneEntity.findByPath('*');
 
-  expect(Scene.mockRoot.findByPath).toBeCalledTimes(1);
-  expect(Scene.mockRoot.findByPath).toReturnWith([mockSceneObject]);
+  expect(findByPathMock).toBeCalledTimes(1);
+  expect(sceneEntitys.length).toEqual(2);
 });
 
 test('When finding all scene objects with a given name, create or reuse a shared entity for all returned', async () => {
@@ -130,11 +120,13 @@ test('When finding all scene objects with a given name, create or reuse a shared
   jest
     .spyOn(SceneEntity.prototype, 'subscribeToVisibilityChanges')
     .mockImplementation(visibilityChangesMock);
+  const findByPathMock = addMockOverride('Scene.root.findAll');
+  findByPathMock.mockImplementation(() => [mockSceneObject, mockSceneObject]);
 
-  await SceneEntity.findAll(mockSceneObject.identifier);
+  const sceneEntitys = await SceneEntity.findAll(mockSceneObject.identifier);
 
-  expect(Scene.mockRoot.findAll).toBeCalledTimes(1);
-  expect(Scene.mockRoot.findAll).toReturnWith([mockSceneObject, mockSceneObject1]);
+  expect(findByPathMock).toBeCalledTimes(1);
+  expect(sceneEntitys.length).toEqual(2);
 });
 
 test('When getting component by function, return component which has that function', () => {
@@ -517,6 +509,7 @@ test('When destroy entity with destroySceneObject enabled - underlying scene obj
   // given create new entity
   const createdEntity = createNewEntityForTests();
   createdEntity.setActive = jest.fn();
+  const mockDestroy = addMockOverride('Scene.destroy');
 
   // create child entity that is hidden
   const childEntity = createNewEntityForTests();

@@ -9,19 +9,15 @@
 
 import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntityFrameUpdateListener} from '../src/SceneEntityFrameCallback';
-import Time from 'Time';
+import {resetMockOverrides, addMockOverride} from '../mocks/mocks.js';
 
 beforeEach(() => {
   (SceneEntityFrameUpdateListener['_instance'] as any) = null;
+  resetMockOverrides();
 });
 
 test('When create FrameUpdateListener - then it subscribes to onframe updates', () => {
-  const subscriptionMock = jest.fn();
-  Time.mockMs = {
-    monitor: () => ({
-      subscribeWithSnapshot: subscriptionMock,
-    }),
-  };
+  const subscriptionMock = addMockOverride('Time.ms.monitor.subscribeWithSnapshot');
 
   // when create listener
   const listener = SceneEntityFrameUpdateListener.instance;
@@ -33,12 +29,6 @@ test('When create FrameUpdateListener - then it subscribes to onframe updates', 
 
 test('When register callback in FrameUpdateListener - then this callback will be called per frame', () => {
   // given listener is created
-  const subscriptionMock = jest.fn();
-  Time.mockMs = {
-    monitor: () => ({
-      subscribeWithSnapshot: subscriptionMock,
-    }),
-  };
   const listener = SceneEntityFrameUpdateListener.instance;
   const onFrameCallback = jest.fn();
 
@@ -52,12 +42,6 @@ test('When register callback in FrameUpdateListener - then this callback will be
 
 test('Given registered callback in FrameUpdateListener, when use unsubscribe function - then this callback will NOT be called per frame', () => {
   // given listener is created
-  const subscriptionMock = jest.fn();
-  Time.mockMs = {
-    monitor: () => ({
-      subscribeWithSnapshot: subscriptionMock,
-    }),
-  };
   const listener = SceneEntityFrameUpdateListener.instance;
   const onFrameCallback = jest.fn();
 
@@ -75,12 +59,6 @@ test('Given registered callback in FrameUpdateListener, when use unsubscribe fun
 
 test('When register monitoring signal in FrameUpdateListener - then monitored value can be retrieved per frame', () => {
   // given listener is created
-  const subscriptionMock = jest.fn();
-  Time.mockMs = {
-    monitor: () => ({
-      subscribeWithSnapshot: subscriptionMock,
-    }),
-  };
   const listener = SceneEntityFrameUpdateListener.instance;
   const lastPinValue = 42;
   const snapshotValue = 55;

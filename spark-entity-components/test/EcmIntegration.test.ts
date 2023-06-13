@@ -11,7 +11,7 @@ import {expect, test, jest, beforeEach} from '@jest/globals';
 import {SceneEntityManager} from '../src/SceneEntityManager';
 import {SceneEntityComponent} from '../src/SceneEntityComponent';
 import {SceneEntityFrameUpdateListener} from '../src/SceneEntityFrameCallback';
-import Scene from 'Scene';
+import {resetMockOverrides, addMockOverride} from '../mocks/mocks.js';
 
 jest.mock('../src/SceneEntityFrameCallback');
 
@@ -51,6 +51,7 @@ function getActiveSceneObject(identifier: string): any {
 
 beforeEach(() => {
   (SceneEntityManager['_instance'] as any) = null;
+  resetMockOverrides();
 });
 
 test('Run manager on visible SceneObjects with loadScene, then add components and when call OnFrame on manager - compoenents should get onFrame', async () => {
@@ -63,9 +64,10 @@ test('Run manager on visible SceneObjects with loadScene, then add components an
   const childSceneObject2 = getActiveSceneObject('child2');
 
   // Scene root returns two children
-  Scene.mockRoot = {
-    findByPath: jest.fn().mockImplementationOnce(() => [childSceneObject1, childSceneObject2]),
-  };
+  addMockOverride('Scene.root.findByPath').mockImplementationOnce(() => [
+    childSceneObject1,
+    childSceneObject2,
+  ]);
 
   // run manager
   await SceneEntityManager.run({loadSceneGraph: true});
@@ -141,12 +143,10 @@ test('When we add UI assigned components - manager adds them in one shot so duti
   const childSceneObject2 = getActiveSceneObject('sceneObject2');
 
   // Scene root returns two children
-  Scene.mockRoot = {
-    findFirst: jest
-      .fn()
-      .mockImplementationOnce(() => childSceneObject1)
-      .mockImplementationOnce(() => childSceneObject2),
-  };
+  addMockOverride('Scene.root.findFirst')
+    .mockImplementationOnce(() => childSceneObject1)
+    .mockImplementationOnce(() => childSceneObject2);
+
   TestComponentWithCustomeOnCreate.customOnCreate = jest
     .fn()
     .mockImplementationOnce(jest.fn())

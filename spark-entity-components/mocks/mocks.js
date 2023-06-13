@@ -5,7 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-module.exports = {
-  setupFiles: ['<rootDir>/mocks/mocks.js'],
-  transformIgnorePatterns: [],
-};
+export {resetMockOverrides, addMockOverride} from 'spark-ar-libs/spark-ar-dynamic-mocks/src/index';
