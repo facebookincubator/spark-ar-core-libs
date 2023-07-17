@@ -15,10 +15,6 @@
   },
   "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/tree/main/spark-entity-components",
   "devDependencies": {
-    "@babel/core": "7.18.5",
-    "@babel/preset-env": "7.18.2",
-    "@babel/preset-flow": "7.17.12",
-    "@babel/preset-typescript": "7.17.12",
     "@types/jest": "28.1.1",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",

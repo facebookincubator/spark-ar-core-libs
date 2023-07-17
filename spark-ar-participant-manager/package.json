@@ -15,8 +15,6 @@
   },
   "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/tree/main/spark-ar-participant-manager",
   "devDependencies": {
-    "@babel/core": "~7.14",
-    "@babel/preset-env": "~7.14",
     "jest": "27.5.1"
   },
   "scripts": {

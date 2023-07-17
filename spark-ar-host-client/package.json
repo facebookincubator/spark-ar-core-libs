@@ -18,8 +18,6 @@
     "spark-ar-participant-manager": "1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.14",
-    "@babel/preset-env": "~7.14",
     "jest": "27.5.1"
   },
   "scripts": {
