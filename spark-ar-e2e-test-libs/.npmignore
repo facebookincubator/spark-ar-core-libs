@@ -1,0 +1,4 @@
+# these tests rely on files outside of this npm dependency
+jest.config.cjs
+babel.config.cjs
+tests/
