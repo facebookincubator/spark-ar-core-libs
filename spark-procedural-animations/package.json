@@ -1,0 +1,32 @@
+{
+  "name": "spark-procedural-animations",
+  "version": "0.9.4",
+  "description": "Procedural animations for 3D characters in Spark AR Studio",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebookincubator/spark-ar-core-libs.git"
+  },
+  "bin": {
+    "install-local-check": "install-local-check.js"
+  },
+  "author": "spark-ar-core-libs",
+  "devDependencies": {
+    "@types/jest": "28.1.1",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "8.18.0",
+    "eslint-plugin-security": "1.5.0",
+    "jest": "27.5.1",
+    "ts-jest": "28.0.5",
+    "typescript": "4.7.3",
+    "spark-ar-libs": "https://github.com/facebookincubator/spark-ar-core-libs.git#00fe34a"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint -c .eslintrc --ext .ts,.js .",
+    "postinstall": "node install-local-check && rm -r tests examples docs || echo 'Not deleting'"
+  }
+}
