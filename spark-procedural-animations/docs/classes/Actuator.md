@@ -62,7 +62,7 @@ Creates an instance of actuator.
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1635
+spark.procedural-animations.objects.ts:1696
 
 ## Properties
 
@@ -72,7 +72,7 @@ spark.procedural-animations.objects.ts:1635
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1625
+spark.procedural-animations.objects.ts:1686
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1628
+spark.procedural-animations.objects.ts:1689
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1629
+spark.procedural-animations.objects.ts:1690
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1626
+spark.procedural-animations.objects.ts:1687
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1624
+spark.procedural-animations.objects.ts:1685
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1627
+spark.procedural-animations.objects.ts:1688
 
 ## Accessors
 
@@ -138,7 +138,7 @@ Gets handle
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1652
+spark.procedural-animations.objects.ts:1713
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1778
+spark.procedural-animations.objects.ts:1839
 
 ___
 
@@ -168,7 +168,7 @@ movement progress object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1658
+spark.procedural-animations.objects.ts:1719
 
 ___
 
@@ -184,7 +184,7 @@ Gets name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1646
+spark.procedural-animations.objects.ts:1707
 
 ___
 
@@ -200,7 +200,7 @@ reset movement
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1670
+spark.procedural-animations.objects.ts:1731
 
 ___
 
@@ -216,7 +216,7 @@ reset rotation
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1678
+spark.procedural-animations.objects.ts:1739
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1773
+spark.procedural-animations.objects.ts:1834
 
 ___
 
@@ -246,7 +246,7 @@ rotation progress object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1664
+spark.procedural-animations.objects.ts:1725
 
 ## Methods
 
@@ -275,7 +275,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1689
+spark.procedural-animations.objects.ts:1750
 
 ___
 
@@ -300,7 +300,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1717
+spark.procedural-animations.objects.ts:1778
 
 ___
 
@@ -325,7 +325,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1700
+spark.procedural-animations.objects.ts:1761
 
 ___
 
@@ -350,7 +350,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1746
+spark.procedural-animations.objects.ts:1807
 
 ___
 
@@ -375,7 +375,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1733
+spark.procedural-animations.objects.ts:1794
 
 ___
 
@@ -389,7 +389,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1763
+spark.procedural-animations.objects.ts:1824
 
 ___
 
@@ -403,7 +403,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1768
+spark.procedural-animations.objects.ts:1829
 
 ___
 
@@ -425,7 +425,7 @@ Sets movement progress
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1793
+spark.procedural-animations.objects.ts:1854
 
 ___
 
@@ -447,7 +447,7 @@ Sets rotation progress
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1786
+spark.procedural-animations.objects.ts:1847
 
 ___
 
@@ -472,4 +472,4 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1759
+spark.procedural-animations.objects.ts:1820

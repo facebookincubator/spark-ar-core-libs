@@ -27,7 +27,7 @@ Common hand poses
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:816
+spark.procedural-animations.humanoid-characters.ts:799
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:817
+spark.procedural-animations.humanoid-characters.ts:800
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:815
+spark.procedural-animations.humanoid-characters.ts:798
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:814
+spark.procedural-animations.humanoid-characters.ts:797
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:823
+spark.procedural-animations.humanoid-characters.ts:806
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:818
+spark.procedural-animations.humanoid-characters.ts:801
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:819
+spark.procedural-animations.humanoid-characters.ts:802
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:822
+spark.procedural-animations.humanoid-characters.ts:805
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:821
+spark.procedural-animations.humanoid-characters.ts:804
 
 ___
 
@@ -117,4 +117,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:820
+spark.procedural-animations.humanoid-characters.ts:803

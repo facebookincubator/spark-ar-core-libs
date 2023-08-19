@@ -45,7 +45,7 @@ IIkFactory.name
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:216
+spark.procedural-animations.humanoid-characters.ts:196
 
 ## Methods
 
@@ -74,7 +74,7 @@ ik
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:226
+spark.procedural-animations.humanoid-characters.ts:206
 
 ___
 
@@ -98,4 +98,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:219
+spark.procedural-animations.humanoid-characters.ts:199

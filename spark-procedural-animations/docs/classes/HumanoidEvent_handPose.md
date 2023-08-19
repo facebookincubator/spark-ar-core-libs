@@ -46,7 +46,7 @@ Creates an instance of humanoid event hand pose.
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:837
+spark.procedural-animations.humanoid-characters.ts:820
 
 ## Properties
 
@@ -58,7 +58,7 @@ function to control pose taking curve
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:842
+spark.procedural-animations.humanoid-characters.ts:825
 
 ___
 
@@ -70,7 +70,7 @@ character label, if "*" is used, then it will apply to all characters
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:838
+spark.procedural-animations.humanoid-characters.ts:821
 
 ___
 
@@ -82,7 +82,7 @@ hand pose (from enum HandPose)
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:840
+spark.procedural-animations.humanoid-characters.ts:823
 
 ___
 
@@ -94,7 +94,7 @@ seconds to take the pose
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:841
+spark.procedural-animations.humanoid-characters.ts:824
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:839
+spark.procedural-animations.humanoid-characters.ts:822
 
 ## Accessors
 
@@ -124,4 +124,4 @@ IBaseEvent.eventName
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:844
+spark.procedural-animations.humanoid-characters.ts:827

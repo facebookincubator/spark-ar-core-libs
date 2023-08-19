@@ -63,7 +63,7 @@ Behavior executor - used to execute behaviors, based on spark Time Module
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:627
+spark.procedural-animations.behaviors.ts:636
 
 ## Properties
 
@@ -73,7 +73,7 @@ spark.procedural-animations.behaviors.ts:627
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:626
+spark.procedural-animations.behaviors.ts:635
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:622
+spark.procedural-animations.behaviors.ts:631
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:621
+spark.procedural-animations.behaviors.ts:630
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:625
+spark.procedural-animations.behaviors.ts:634
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:623
+spark.procedural-animations.behaviors.ts:632
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:624
+spark.procedural-animations.behaviors.ts:633
 
 ## Accessors
 
@@ -139,7 +139,7 @@ Frames per second
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:670
+spark.procedural-animations.behaviors.ts:679
 
 ___
 
@@ -155,7 +155,7 @@ Current frame number
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:652
+spark.procedural-animations.behaviors.ts:661
 
 ___
 
@@ -171,7 +171,7 @@ Number milliseconds
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:640
+spark.procedural-animations.behaviors.ts:649
 
 ___
 
@@ -191,7 +191,7 @@ BehaviorManager.numberBehaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:407
+spark.procedural-animations.behaviors.ts:410
 
 ___
 
@@ -207,7 +207,7 @@ Object Manager instance
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:658
+spark.procedural-animations.behaviors.ts:667
 
 ___
 
@@ -223,7 +223,7 @@ Number seconds
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:646
+spark.procedural-animations.behaviors.ts:655
 
 ___
 
@@ -239,7 +239,7 @@ Smooth delta time, between frames
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:664
+spark.procedural-animations.behaviors.ts:673
 
 ## Methods
 
@@ -253,7 +253,7 @@ Add behavior
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Behavior`](Behavior.md) |
+| `T` | extends [`Behavior`](Behavior.md)<`T`\> |
 
 #### Parameters
 
@@ -271,7 +271,7 @@ Add behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:506
+spark.procedural-animations.behaviors.ts:515
 
 ___
 
@@ -293,7 +293,7 @@ Adds frame finalizer
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:694
+spark.procedural-animations.behaviors.ts:703
 
 ___
 
@@ -313,7 +313,7 @@ Finishes all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:472
+spark.procedural-animations.behaviors.ts:481
 
 ___
 
@@ -333,7 +333,7 @@ Force finishes (with cancellation of all follow up actions) all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:488
+spark.procedural-animations.behaviors.ts:497
 
 ___
 
@@ -361,7 +361,7 @@ the reference to this behavior manager
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:517
+spark.procedural-animations.behaviors.ts:526
 
 ___
 
@@ -381,7 +381,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:674
+spark.procedural-animations.behaviors.ts:683
 
 ___
 
@@ -401,4 +401,4 @@ Updates all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:413
+spark.procedural-animations.behaviors.ts:416

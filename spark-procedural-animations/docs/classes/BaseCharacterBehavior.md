@@ -96,7 +96,7 @@ Behavior holder - contains multiple child behaviors, if finished all child behav
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`CharacterFactory`](CharacterFactory.md) |
+| `T` | extends [`CharacterFactory`](CharacterFactory.md)<`T`\> |
 
 #### Parameters
 
@@ -110,7 +110,7 @@ Behavior holder - contains multiple child behaviors, if finished all child behav
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:334
+spark.procedural-animations.base-character.ts:333
 
 ## Properties
 
@@ -120,7 +120,7 @@ spark.procedural-animations.base-character.ts:334
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:330
+spark.procedural-animations.base-character.ts:329
 
 ## Accessors
 
@@ -134,7 +134,7 @@ spark.procedural-animations.base-character.ts:330
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:331
+spark.procedural-animations.base-character.ts:330
 
 ___
 
@@ -154,7 +154,7 @@ BehaviorHolder.followUp
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:369
+spark.procedural-animations.behaviors.ts:370
 
 ___
 
@@ -172,7 +172,7 @@ BehaviorHolder.id
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:96
+spark.procedural-animations.behaviors.ts:97
 
 ___
 
@@ -192,7 +192,7 @@ BehaviorHolder.isDisposed
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:393
+spark.procedural-animations.behaviors.ts:394
 
 ___
 
@@ -212,7 +212,7 @@ BehaviorHolder.isFinished
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:381
+spark.procedural-animations.behaviors.ts:382
 
 ___
 
@@ -232,7 +232,7 @@ BehaviorHolder.isForceFinished
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:387
+spark.procedural-animations.behaviors.ts:388
 
 ___
 
@@ -252,7 +252,7 @@ BehaviorHolder.isInitialized
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:375
+spark.procedural-animations.behaviors.ts:376
 
 ___
 
@@ -272,7 +272,7 @@ BehaviorHolder.label
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:363
+spark.procedural-animations.behaviors.ts:364
 
 ___
 
@@ -292,7 +292,7 @@ BehaviorHolder.numberBehaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1264
+spark.procedural-animations.behaviors.ts:1273
 
 ## Methods
 
@@ -320,7 +320,7 @@ reference of the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:346
+spark.procedural-animations.behaviors.ts:347
 
 ___
 
@@ -334,8 +334,8 @@ Creates and plays behavior
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`\> | the type of the behavior to create |
-| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md) | type of the factory |
+| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`, `T`\> | the type of the behavior to create |
+| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md)<`TFactory`\> | type of the factory |
 
 #### Parameters
 
@@ -351,7 +351,7 @@ newly created behavior
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:358
+spark.procedural-animations.base-character.ts:357
 
 ___
 
@@ -365,8 +365,8 @@ Creates behavior
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`\> | the type of the behavior to create |
-| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md) | type of the factory |
+| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`, `T`\> | the type of the behavior to create |
+| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md)<`TFactory`\> | type of the factory |
 
 #### Parameters
 
@@ -382,7 +382,7 @@ newly created behavior
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:345
+spark.procedural-animations.base-character.ts:344
 
 ___
 
@@ -402,7 +402,7 @@ Disposes behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:120
+spark.procedural-animations.behaviors.ts:121
 
 ___
 
@@ -430,7 +430,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:153
+spark.procedural-animations.behaviors.ts:154
 
 ___
 
@@ -458,7 +458,7 @@ reference of the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:335
+spark.procedural-animations.behaviors.ts:336
 
 ___
 
@@ -478,7 +478,7 @@ Finishes the holder and invokes finish on all child behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1239
+spark.procedural-animations.behaviors.ts:1248
 
 ___
 
@@ -498,7 +498,7 @@ Force finishes the holder (cancelling all follow up actions) and invokes force f
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1246
+spark.procedural-animations.behaviors.ts:1255
 
 ___
 
@@ -526,7 +526,7 @@ reference to this holder
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1257
+spark.procedural-animations.behaviors.ts:1266
 
 ___
 
@@ -548,7 +548,7 @@ reference of the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:314
+spark.procedural-animations.behaviors.ts:315
 
 ___
 
@@ -577,7 +577,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:213
+spark.procedural-animations.behaviors.ts:214
 
 ___
 
@@ -608,7 +608,7 @@ the reference to the newly created cycle behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1213
+spark.procedural-animations.behaviors.ts:1222
 
 ___
 
@@ -638,7 +638,7 @@ the reference to the newly created cycle behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1198
+spark.procedural-animations.behaviors.ts:1207
 
 ___
 
@@ -669,7 +669,7 @@ the reference to the newly created time behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1164
+spark.procedural-animations.behaviors.ts:1173
 
 ___
 
@@ -699,7 +699,7 @@ the reference to the newly created interval behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1121
+spark.procedural-animations.behaviors.ts:1130
 
 ___
 
@@ -729,7 +729,7 @@ the reference to the newly created random interval behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1149
+spark.procedural-animations.behaviors.ts:1158
 
 ___
 
@@ -749,7 +749,7 @@ function called once before the behavior execution starts
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:102
+spark.procedural-animations.behaviors.ts:103
 
 ___
 
@@ -769,7 +769,7 @@ internal function to mark that the behavior is initialized
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:108
+spark.procedural-animations.behaviors.ts:109
 
 ___
 
@@ -795,7 +795,7 @@ Executes action on the next frame
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1091
+spark.procedural-animations.behaviors.ts:1100
 
 ___
 
@@ -809,7 +809,7 @@ Play behavior in this behavior holder
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Behavior`](Behavior.md) |
+| `T` | extends [`Behavior`](Behavior.md)<`T`\> |
 
 #### Parameters
 
@@ -829,7 +829,7 @@ reference to the behavior being played
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1064
+spark.procedural-animations.behaviors.ts:1073
 
 ___
 
@@ -859,7 +859,7 @@ the reference to the newly created cycle behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1187
+spark.procedural-animations.behaviors.ts:1196
 
 ___
 
@@ -888,7 +888,7 @@ the reference to the newly created cycle behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1227
+spark.procedural-animations.behaviors.ts:1236
 
 ___
 
@@ -918,7 +918,7 @@ the reference to the newly created time behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1101
+spark.procedural-animations.behaviors.ts:1110
 
 ___
 
@@ -946,7 +946,7 @@ the refefence to the newly created behavior holder
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1073
+spark.procedural-animations.behaviors.ts:1082
 
 ___
 
@@ -976,7 +976,7 @@ the reference to the newly created interval behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1111
+spark.procedural-animations.behaviors.ts:1120
 
 ___
 
@@ -1004,7 +1004,7 @@ on
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:355
+spark.procedural-animations.behaviors.ts:356
 
 ___
 
@@ -1034,7 +1034,7 @@ the reference to the newly created random interval behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1135
+spark.procedural-animations.behaviors.ts:1144
 
 ___
 
@@ -1062,7 +1062,7 @@ the refefence to the newly created skip gframes behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1084
+spark.procedural-animations.behaviors.ts:1093
 
 ___
 
@@ -1090,7 +1090,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:170
+spark.procedural-animations.behaviors.ts:171
 
 ___
 
@@ -1120,7 +1120,7 @@ the instance of the cycle behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:260
+spark.procedural-animations.behaviors.ts:261
 
 ___
 
@@ -1149,7 +1149,7 @@ the instance of the cycle behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:285
+spark.procedural-animations.behaviors.ts:286
 
 ___
 
@@ -1180,7 +1180,7 @@ the instance of the cycle behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:271
+spark.procedural-animations.behaviors.ts:272
 
 ___
 
@@ -1210,7 +1210,7 @@ the instance of the cycle behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:295
+spark.procedural-animations.behaviors.ts:296
 
 ___
 
@@ -1241,7 +1241,7 @@ the instance of the time behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:245
+spark.procedural-animations.behaviors.ts:246
 
 ___
 
@@ -1270,7 +1270,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:190
+spark.procedural-animations.behaviors.ts:191
 
 ___
 
@@ -1284,7 +1284,7 @@ Specifies another behavior to execute after this one ends
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `T` | extends [`Behavior`](Behavior.md) | the type of the other behavior |
+| `T` | extends [`Behavior`](Behavior.md)<`T`\> | the type of the other behavior |
 
 #### Parameters
 
@@ -1304,7 +1304,7 @@ the instance of the other behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:223
+spark.procedural-animations.behaviors.ts:224
 
 ___
 
@@ -1334,7 +1334,7 @@ the instance of the time behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:234
+spark.procedural-animations.behaviors.ts:235
 
 ___
 
@@ -1362,7 +1362,7 @@ the instance of the wait behavior that follows the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:307
+spark.procedural-animations.behaviors.ts:308
 
 ___
 
@@ -1382,7 +1382,7 @@ Invokes update on all child behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1233
+spark.procedural-animations.behaviors.ts:1242
 
 ___
 
@@ -1410,7 +1410,7 @@ the reference to the newly created wait behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:1177
+spark.procedural-animations.behaviors.ts:1186
 
 ___
 
@@ -1438,7 +1438,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:180
+spark.procedural-animations.behaviors.ts:181
 
 ___
 
@@ -1467,7 +1467,7 @@ reference to the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:204
+spark.procedural-animations.behaviors.ts:205
 
 ___
 
@@ -1495,4 +1495,4 @@ reference of the current behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:326
+spark.procedural-animations.behaviors.ts:327

@@ -28,4 +28,4 @@ interface that contains update method
 
 #### Defined in
 
-spark.procedural-animations.core.ts:99
+spark.procedural-animations.core.ts:100

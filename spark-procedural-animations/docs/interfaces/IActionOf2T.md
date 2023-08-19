@@ -31,4 +31,4 @@ and returns no value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:45
+spark.procedural-animations.core.ts:46

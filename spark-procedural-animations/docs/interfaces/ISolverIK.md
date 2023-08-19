@@ -35,7 +35,7 @@ character IK solver
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:114
+spark.procedural-animations.base-character.ts:113
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:113
+spark.procedural-animations.base-character.ts:112

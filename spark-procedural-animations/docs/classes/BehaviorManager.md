@@ -39,7 +39,7 @@
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:400
+spark.procedural-animations.behaviors.ts:403
 
 ## Properties
 
@@ -49,7 +49,7 @@ spark.procedural-animations.behaviors.ts:400
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:398
+spark.procedural-animations.behaviors.ts:401
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:399
+spark.procedural-animations.behaviors.ts:402
 
 ## Accessors
 
@@ -75,7 +75,7 @@ Number of behaviors currently running
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:407
+spark.procedural-animations.behaviors.ts:410
 
 ## Methods
 
@@ -89,7 +89,7 @@ Add behavior
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Behavior`](Behavior.md) |
+| `T` | extends [`Behavior`](Behavior.md)<`T`\> |
 
 #### Parameters
 
@@ -103,7 +103,7 @@ Add behavior
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:506
+spark.procedural-animations.behaviors.ts:515
 
 ___
 
@@ -119,7 +119,7 @@ Finishes all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:472
+spark.procedural-animations.behaviors.ts:481
 
 ___
 
@@ -135,7 +135,7 @@ Force finishes (with cancellation of all follow up actions) all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:488
+spark.procedural-animations.behaviors.ts:497
 
 ___
 
@@ -159,7 +159,7 @@ the reference to this behavior manager
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:517
+spark.procedural-animations.behaviors.ts:526
 
 ___
 
@@ -175,4 +175,4 @@ Updates all behaviors
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:413
+spark.procedural-animations.behaviors.ts:416

@@ -52,7 +52,7 @@ Creates an instance of scalar actuator.
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1541
+spark.procedural-animations.objects.ts:1602
 
 ## Properties
 
@@ -62,7 +62,7 @@ spark.procedural-animations.objects.ts:1541
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1531
+spark.procedural-animations.objects.ts:1592
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1533
+spark.procedural-animations.objects.ts:1594
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1532
+spark.procedural-animations.objects.ts:1593
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1534
+spark.procedural-animations.objects.ts:1595
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1535
+spark.procedural-animations.objects.ts:1596
 
 ## Accessors
 
@@ -122,7 +122,7 @@ IActuatorApplierHolder.a
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1557
+spark.procedural-animations.objects.ts:1618
 
 ___
 
@@ -142,7 +142,7 @@ IActuatorApplierHolder.actuator
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1551
+spark.procedural-animations.objects.ts:1612
 
 ___
 
@@ -158,7 +158,7 @@ clears any previous values
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1575
+spark.procedural-animations.objects.ts:1636
 
 ___
 
@@ -174,7 +174,7 @@ Gets value
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1563
+spark.procedural-animations.objects.ts:1624
 
 • `set` **value**(`n`): `void`
 
@@ -192,7 +192,7 @@ Sets value
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1569
+spark.procedural-animations.objects.ts:1630
 
 ## Methods
 
@@ -221,7 +221,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1607
+spark.procedural-animations.objects.ts:1668
 
 ___
 
@@ -245,7 +245,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1586
+spark.procedural-animations.objects.ts:1647
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1617
+spark.procedural-animations.objects.ts:1678
 
 ___
 
@@ -283,4 +283,4 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1596
+spark.procedural-animations.objects.ts:1657

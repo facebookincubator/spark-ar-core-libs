@@ -26,7 +26,7 @@
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:647
+spark.procedural-animations.objects.ts:678
 
 • `set` **pos**(`p`): `void`
 
@@ -42,7 +42,7 @@ spark.procedural-animations.objects.ts:647
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:648
+spark.procedural-animations.objects.ts:679
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:649
+spark.procedural-animations.objects.ts:680
 
 • `set` **rot**(`r`): `void`
 
@@ -72,7 +72,7 @@ spark.procedural-animations.objects.ts:649
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:650
+spark.procedural-animations.objects.ts:681
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:651
+spark.procedural-animations.objects.ts:682
 
 • `set` **sca**(`s`): `void`
 
@@ -102,4 +102,4 @@ spark.procedural-animations.objects.ts:651
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:652
+spark.procedural-animations.objects.ts:683

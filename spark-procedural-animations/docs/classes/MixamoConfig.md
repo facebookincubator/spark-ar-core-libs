@@ -41,7 +41,7 @@ Character configuration
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1207
+spark.procedural-animations.humanoid-characters.ts:1186
 
 ## Properties
 
@@ -55,7 +55,7 @@ spark.procedural-animations.humanoid-characters.ts:1207
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1173
+spark.procedural-animations.humanoid-characters.ts:1154
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1174
+spark.procedural-animations.humanoid-characters.ts:1155
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1175
+spark.procedural-animations.humanoid-characters.ts:1156
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1200
+spark.procedural-animations.humanoid-characters.ts:1179
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1191
+spark.procedural-animations.humanoid-characters.ts:1170
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1187
+spark.procedural-animations.humanoid-characters.ts:1167
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1179
+spark.procedural-animations.humanoid-characters.ts:1159
 
 ___
 
@@ -139,7 +139,7 @@ arm rest from down degrees
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1528
+spark.procedural-animations.humanoid-characters.ts:1507
 
 ___
 
@@ -155,7 +155,7 @@ if not null will be invoked when character is initialized
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1515
+spark.procedural-animations.humanoid-characters.ts:1494
 
 ## Accessors
 
@@ -175,7 +175,7 @@ ICharacterConfig.jointsData
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1516
+spark.procedural-animations.humanoid-characters.ts:1495
 
 ___
 
@@ -195,7 +195,7 @@ ICharacterConfig.jointsMap
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1519
+spark.procedural-animations.humanoid-characters.ts:1498
 
 ___
 
@@ -215,7 +215,7 @@ ICharacterConfig.reverseJointsMap
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1522
+spark.procedural-animations.humanoid-characters.ts:1501
 
 ___
 
@@ -235,4 +235,4 @@ ICharacterConfig.type
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1525
+spark.procedural-animations.humanoid-characters.ts:1504

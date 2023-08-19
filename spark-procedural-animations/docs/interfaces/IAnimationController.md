@@ -20,7 +20,7 @@ Invoked on animation initialization
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `character` | [`HumanoidCharacter`](../classes/HumanoidCharacter.md) | character |
+| `character` | [`BaseCharacter`](../classes/BaseCharacter.md) | character |
 | `holder` | [`BehaviorHolder`](../classes/BehaviorHolder.md) | behavior holder |
 
 #### Returns
@@ -29,4 +29,4 @@ Invoked on animation initialization
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1563
+spark.procedural-animations.base-character.ts:965

@@ -36,7 +36,7 @@ character extender
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:106
+spark.procedural-animations.base-character.ts:105
 
 ## Methods
 
@@ -56,4 +56,4 @@ spark.procedural-animations.base-character.ts:106
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:107
+spark.procedural-animations.base-character.ts:106

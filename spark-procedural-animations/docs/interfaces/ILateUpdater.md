@@ -36,7 +36,7 @@ IIdentifiable.identifier
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:54
+spark.procedural-animations.behaviors.ts:55
 
 ## Methods
 
@@ -50,4 +50,4 @@ spark.procedural-animations.behaviors.ts:54
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:66
+spark.procedural-animations.behaviors.ts:67

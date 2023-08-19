@@ -28,7 +28,7 @@ Returns actuator (shortcut alias)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:61
+spark.procedural-animations.objects.ts:62
 
 ___
 
@@ -44,4 +44,4 @@ Returns actuator
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:57
+spark.procedural-animations.objects.ts:58

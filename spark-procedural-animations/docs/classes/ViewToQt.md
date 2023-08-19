@@ -37,7 +37,7 @@ Creates an instance of view to Qt
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2318
+spark.procedural-animations.objects.ts:2379
 
 ## Properties
 
@@ -47,7 +47,7 @@ spark.procedural-animations.objects.ts:2318
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2311
+spark.procedural-animations.objects.ts:2372
 
 ___
 
@@ -59,7 +59,7 @@ factory function, takes object view as argument and returns quaternion
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2320
+spark.procedural-animations.objects.ts:2381
 
 ___
 
@@ -71,7 +71,7 @@ if set to true creation function will be invoked on each frame as oposed to on i
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2321
+spark.procedural-animations.objects.ts:2382
 
 ___
 
@@ -83,7 +83,7 @@ object view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2319
+spark.procedural-animations.objects.ts:2380
 
 ## Accessors
 
@@ -99,4 +99,4 @@ Gets Qt computed each time if dynamic or cached otherwise
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2328
+spark.procedural-animations.objects.ts:2389

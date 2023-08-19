@@ -32,7 +32,7 @@ arm rest from down degrees
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:96
+spark.procedural-animations.base-character.ts:95
 
 ___
 
@@ -44,7 +44,7 @@ if not null will be invoked when character is initialized
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:100
+spark.procedural-animations.base-character.ts:99
 
 ## Accessors
 
@@ -60,7 +60,7 @@ JointData by joint name
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:80
+spark.procedural-animations.base-character.ts:79
 
 ___
 
@@ -76,7 +76,7 @@ joint name hyerarchy map
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:84
+spark.procedural-animations.base-character.ts:83
 
 ___
 
@@ -92,7 +92,7 @@ reversed joint name hyerarchy map
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:88
+spark.procedural-animations.base-character.ts:87
 
 ___
 
@@ -108,4 +108,4 @@ characterb type
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:92
+spark.procedural-animations.base-character.ts:91

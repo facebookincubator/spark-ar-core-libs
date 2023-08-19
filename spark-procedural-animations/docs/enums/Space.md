@@ -19,7 +19,7 @@ Space enum that can be local or world
 
 #### Defined in
 
-spark.procedural-animations.core.ts:24
+spark.procedural-animations.core.ts:25
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:25
+spark.procedural-animations.core.ts:26

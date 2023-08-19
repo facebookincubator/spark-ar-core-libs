@@ -55,7 +55,7 @@ factory
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:207
+spark.procedural-animations.base-character.ts:206
 
 ## Properties
 
@@ -65,7 +65,7 @@ spark.procedural-animations.base-character.ts:207
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:202
+spark.procedural-animations.base-character.ts:201
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:203
+spark.procedural-animations.base-character.ts:202
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:205
+spark.procedural-animations.base-character.ts:204
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:204
+spark.procedural-animations.base-character.ts:203
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:199
+spark.procedural-animations.base-character.ts:198
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:201
+spark.procedural-animations.base-character.ts:200
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:206
+spark.procedural-animations.base-character.ts:205
 
 ## Accessors
 
@@ -143,7 +143,7 @@ spark.procedural-animations.base-character.ts:206
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:241
+spark.procedural-animations.base-character.ts:240
 
 ___
 
@@ -161,7 +161,7 @@ IFactory.resources
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:244
+spark.procedural-animations.base-character.ts:243
 
 ## Methods
 
@@ -188,7 +188,7 @@ character
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:232
+spark.procedural-animations.base-character.ts:231
 
 ___
 
@@ -202,8 +202,8 @@ Creates behavior
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`\> | the type of the behavior to create |
-| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md) | type of the factory |
+| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`, `T`\> | the type of the behavior to create |
+| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md)<`TFactory`\> | type of the factory |
 
 #### Parameters
 
@@ -219,7 +219,7 @@ newly created behavior
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:312
+spark.procedural-animations.base-character.ts:311
 
 ___
 
@@ -240,7 +240,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:217
+spark.procedural-animations.base-character.ts:216
 
 ___
 
@@ -260,7 +260,7 @@ Disposes character factory
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:322
+spark.procedural-animations.base-character.ts:321
 
 ___
 
@@ -288,7 +288,7 @@ service by name
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:253
+spark.procedural-animations.base-character.ts:252
 
 ___
 
@@ -308,7 +308,7 @@ Initializes async
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:271
+spark.procedural-animations.base-character.ts:270
 
 ___
 
@@ -322,7 +322,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:221
+spark.procedural-animations.base-character.ts:220
 
 ___
 
@@ -346,7 +346,7 @@ Sets service
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:263
+spark.procedural-animations.base-character.ts:262
 
 ___
 
@@ -360,8 +360,8 @@ Specify main behavior to start
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`\> | the type of the behavior |
-| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md) | type of the factory |
+| `T` | extends [`BaseCharacterBehavior`](BaseCharacterBehavior.md)<`TFactory`, `T`\> | the type of the behavior |
+| `TFactory` | extends [`CharacterFactory`](CharacterFactory.md)<`TFactory`\> | type of the factory |
 
 #### Parameters
 
@@ -375,4 +375,4 @@ Specify main behavior to start
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:299
+spark.procedural-animations.base-character.ts:298

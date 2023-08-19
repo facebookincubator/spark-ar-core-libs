@@ -8,14 +8,14 @@ Terrain provider
 
 ### Methods
 
-- [getHeightAndFillNormalBy2D](ITerrainProvider.md#getheightandfillnormalby2d)
+- [getHeightAndFillNormalByXY](ITerrainProvider.md#getheightandfillnormalbyxy)
 - [tryFillPointAndNormalByRay](ITerrainProvider.md#tryfillpointandnormalbyray)
 
 ## Methods
 
-### getHeightAndFillNormalBy2D
+### getHeightAndFillNormalByXY
 
-▸ **getHeightAndFillNormalBy2D**(`point`, `normal?`): `number`
+▸ **getHeightAndFillNormalByXY**(`x`, `y`, `normal?`, `cacheKey?`): `number`
 
 returns height by 2D point and fills passed normal vector for that 2D point
 
@@ -23,8 +23,10 @@ returns height by 2D point and fills passed normal vector for that 2D point
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `point` | [`IV2Readonly`](IV2Readonly.md) | 2D point |
+| `x` | `number` | 2D position x value |
+| `y` | `number` | 2D position y value |
 | `normal?` | [`V3`](../classes/V3.md) | optional normal to fill |
+| `cacheKey?` | `number` | optional cache key - must be integer between 0 and 7, if not provider cacheId 0 will be used |
 
 #### Returns
 
@@ -34,7 +36,7 @@ height for that 2D point
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:377
+spark.procedural-animations.base-character.ts:378
 
 ___
 
@@ -60,4 +62,4 @@ true if ray intersects with terrain, false otherwise
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:385
+spark.procedural-animations.base-character.ts:386

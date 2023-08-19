@@ -23,7 +23,7 @@ Interface used for object pooling
 
 ### Accessors
 
-- [hasActive](ObjectPoolManager.md#hasactive)
+- [isActive](ObjectPoolManager.md#isactive)
 - [scopeId](ObjectPoolManager.md#scopeid)
 
 ### Methods
@@ -48,7 +48,7 @@ Interface used for object pooling
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:77
+spark.procedural-animations.pool.ts:81
 
 ## Properties
 
@@ -58,7 +58,7 @@ spark.procedural-animations.pool.ts:77
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:75
+spark.procedural-animations.pool.ts:79
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:74
+spark.procedural-animations.pool.ts:78
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:73
+spark.procedural-animations.pool.ts:77
 
 ___
 
@@ -90,15 +90,21 @@ ___
 
 • **enabled**: `boolean`
 
+Enable or disable the puul
+
+#### Implementation of
+
+[IObjectPool](../interfaces/IObjectPool.md).[enabled](../interfaces/IObjectPool.md#enabled)
+
 #### Defined in
 
-spark.procedural-animations.pool.ts:76
+spark.procedural-animations.pool.ts:80
 
 ## Accessors
 
-### hasActive
+### isActive
 
-• `get` **hasActive**(): `boolean`
+• `get` **isActive**(): `boolean`
 
 Flag indicating if the scope is active, i.e. open
 
@@ -108,11 +114,11 @@ Flag indicating if the scope is active, i.e. open
 
 #### Implementation of
 
-IObjectPool.hasActive
+IObjectPool.isActive
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:87
+spark.procedural-animations.pool.ts:91
 
 ___
 
@@ -132,7 +138,7 @@ IObjectPool.scopeId
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:93
+spark.procedural-animations.pool.ts:97
 
 ## Methods
 
@@ -160,7 +166,7 @@ scope id
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:113
+spark.procedural-animations.pool.ts:117
 
 ___
 
@@ -186,7 +192,7 @@ Invoke to mark en of scope
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:123
+spark.procedural-animations.pool.ts:127
 
 ___
 
@@ -206,7 +212,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:154
+spark.procedural-animations.pool.ts:158
 
 ___
 
@@ -220,7 +226,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:166
+spark.procedural-animations.pool.ts:170
 
 ___
 
@@ -241,7 +247,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:174
+spark.procedural-animations.pool.ts:178
 
 ___
 
@@ -269,7 +275,7 @@ object
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:132
+spark.procedural-animations.pool.ts:136
 
 ___
 
@@ -283,7 +289,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:163
+spark.procedural-animations.pool.ts:167
 
 ___
 
@@ -297,7 +303,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:169
+spark.procedural-animations.pool.ts:173
 
 ___
 
@@ -324,7 +330,7 @@ sets object to the pool of the requested type
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:143
+spark.procedural-animations.pool.ts:147
 
 ___
 
@@ -344,7 +350,7 @@ Marks and of frame
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:151
+spark.procedural-animations.pool.ts:155
 
 ___
 
@@ -370,4 +376,4 @@ Throws error if open scope is not matching the current
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:100
+spark.procedural-animations.pool.ts:104

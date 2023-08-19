@@ -23,4 +23,4 @@ and returns value of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:66
+spark.procedural-animations.core.ts:67

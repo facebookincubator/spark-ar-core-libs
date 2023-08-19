@@ -24,17 +24,22 @@
 
 ### Accessors
 
+- [back](Qt.md#back)
 - [bk](Qt.md#bk)
 - [dn](Qt.md#dn)
+- [down](Qt.md#down)
 - [ensureReadonly](Qt.md#ensurereadonly)
 - [ensureWritable](Qt.md#ensurewritable)
+- [forward](Qt.md#forward)
 - [fw](Qt.md#fw)
 - [horzFw](Qt.md#horzfw)
 - [isChanged](Qt.md#ischanged)
+- [left](Qt.md#left)
 - [lt](Qt.md#lt)
 - [normalized](Qt.md#normalized)
 - [permanent](Qt.md#permanent)
 - [readonly](Qt.md#readonly)
+- [right](Qt.md#right)
 - [rt](Qt.md#rt)
 - [up](Qt.md#up)
 - [w](Qt.md#w)
@@ -93,7 +98,7 @@
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3012
+spark.procedural-animations.math-3d.ts:3062
 
 ## Properties
 
@@ -103,7 +108,7 @@ spark.procedural-animations.math-3d.ts:3012
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3009
+spark.procedural-animations.math-3d.ts:3059
 
 ___
 
@@ -113,7 +118,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3010
+spark.procedural-animations.math-3d.ts:3060
 
 ___
 
@@ -123,7 +128,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3008
+spark.procedural-animations.math-3d.ts:3058
 
 ___
 
@@ -133,7 +138,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3005
+spark.procedural-animations.math-3d.ts:3055
 
 ___
 
@@ -143,7 +148,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3006
+spark.procedural-animations.math-3d.ts:3056
 
 ___
 
@@ -153,7 +158,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3007
+spark.procedural-animations.math-3d.ts:3057
 
 ___
 
@@ -163,9 +168,29 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3011
+spark.procedural-animations.math-3d.ts:3061
 
 ## Accessors
+
+### back
+
+• `get` **back**(): [`V3`](V3.md)
+
+Computes back direction for that rotation as normalized unit vector
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Implementation of
+
+IQtReadonly.back
+
+#### Defined in
+
+spark.procedural-animations.math-3d.ts:3198
+
+___
 
 ### bk
 
@@ -183,7 +208,7 @@ IQtReadonly.bk
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3136
+spark.procedural-animations.math-3d.ts:3192
 
 ___
 
@@ -203,7 +228,27 @@ IQtReadonly.dn
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3148
+spark.procedural-animations.math-3d.ts:3210
+
+___
+
+### down
+
+• `get` **down**(): [`V3`](V3.md)
+
+Computes down direction for that rotation as normalized unit vector
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Implementation of
+
+IQtReadonly.down
+
+#### Defined in
+
+spark.procedural-animations.math-3d.ts:3216
 
 ___
 
@@ -223,7 +268,7 @@ IQtReadonly.ensureReadonly
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3201
+spark.procedural-animations.math-3d.ts:3281
 
 ___
 
@@ -243,7 +288,27 @@ IQtReadonly.ensureWritable
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3252
+spark.procedural-animations.math-3d.ts:3332
+
+___
+
+### forward
+
+• `get` **forward**(): [`V3`](V3.md)
+
+Computes forward direction for that rotation as normalized unit vector
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Implementation of
+
+IQtReadonly.forward
+
+#### Defined in
+
+spark.procedural-animations.math-3d.ts:3186
 
 ___
 
@@ -263,7 +328,7 @@ IQtReadonly.fw
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3130
+spark.procedural-animations.math-3d.ts:3180
 
 ___
 
@@ -283,7 +348,7 @@ IQtReadonly.horzFw
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3166
+spark.procedural-animations.math-3d.ts:3246
 
 ___
 
@@ -299,7 +364,27 @@ Flag indicating whether is changed
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3172
+spark.procedural-animations.math-3d.ts:3252
+
+___
+
+### left
+
+• `get` **left**(): [`V3`](V3.md)
+
+Computes left direction for that rotation as normalized unit vector
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Implementation of
+
+IQtReadonly.left
+
+#### Defined in
+
+spark.procedural-animations.math-3d.ts:3228
 
 ___
 
@@ -319,7 +404,7 @@ IQtReadonly.lt
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3154
+spark.procedural-animations.math-3d.ts:3222
 
 ___
 
@@ -339,7 +424,7 @@ IQtReadonly.normalized
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3272
+spark.procedural-animations.math-3d.ts:3352
 
 ___
 
@@ -355,7 +440,7 @@ Clones Qt quaternion, regardless if object pool is active, or not it will create
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3056
+spark.procedural-animations.math-3d.ts:3106
 
 ___
 
@@ -371,7 +456,27 @@ Creates new QtReadonly vector with the same x, y, z and w values
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3195
+spark.procedural-animations.math-3d.ts:3275
+
+___
+
+### right
+
+• `get` **right**(): [`V3`](V3.md)
+
+Computes right direction for that rotation as normalized unit vector
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Implementation of
+
+IQtReadonly.right
+
+#### Defined in
+
+spark.procedural-animations.math-3d.ts:3240
 
 ___
 
@@ -391,7 +496,7 @@ IQtReadonly.rt
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3160
+spark.procedural-animations.math-3d.ts:3234
 
 ___
 
@@ -411,7 +516,7 @@ IQtReadonly.up
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3142
+spark.procedural-animations.math-3d.ts:3204
 
 ___
 
@@ -431,7 +536,7 @@ IQtReadonly.w
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3115
+spark.procedural-animations.math-3d.ts:3165
 
 • `set` **w**(`n`): `void`
 
@@ -453,7 +558,7 @@ IQtReadonly.w
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3122
+spark.procedural-animations.math-3d.ts:3172
 
 ___
 
@@ -473,7 +578,7 @@ IQtReadonly.x
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3070
+spark.procedural-animations.math-3d.ts:3120
 
 • `set` **x**(`n`): `void`
 
@@ -495,7 +600,7 @@ IQtReadonly.x
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3077
+spark.procedural-animations.math-3d.ts:3127
 
 ___
 
@@ -515,7 +620,7 @@ IQtReadonly.y
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3085
+spark.procedural-animations.math-3d.ts:3135
 
 • `set` **y**(`n`): `void`
 
@@ -537,7 +642,7 @@ IQtReadonly.y
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3092
+spark.procedural-animations.math-3d.ts:3142
 
 ___
 
@@ -557,7 +662,7 @@ IQtReadonly.z
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3100
+spark.procedural-animations.math-3d.ts:3150
 
 • `set` **z**(`n`): `void`
 
@@ -579,7 +684,7 @@ IQtReadonly.z
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3107
+spark.procedural-animations.math-3d.ts:3157
 
 ## Methods
 
@@ -605,7 +710,7 @@ Returns new quaternion that represents addition to the current quaternion of ano
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3437
+spark.procedural-animations.math-3d.ts:3517
 
 ___
 
@@ -627,7 +732,7 @@ Updates the current quaternion so to apply addition to the current quaternion of
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3444
+spark.procedural-animations.math-3d.ts:3524
 
 ___
 
@@ -643,7 +748,7 @@ Clones quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3231
+spark.procedural-animations.math-3d.ts:3311
 
 ___
 
@@ -663,7 +768,7 @@ Clones as writable, implementation of IQtReadonly interface
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3213
+spark.procedural-animations.math-3d.ts:3293
 
 ___
 
@@ -683,7 +788,7 @@ Clones as writable, implementation of IQtReadonly interface
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3207
+spark.procedural-animations.math-3d.ts:3287
 
 ___
 
@@ -711,7 +816,7 @@ degrees rotation
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3409
+spark.procedural-animations.math-3d.ts:3489
 
 ___
 
@@ -737,7 +842,7 @@ Dot product with another quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3401
+spark.procedural-animations.math-3d.ts:3481
 
 ___
 
@@ -765,7 +870,7 @@ value
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3221
+spark.procedural-animations.math-3d.ts:3301
 
 ___
 
@@ -785,7 +890,7 @@ Returns new quaternion that represents invertion of current quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3356
+spark.procedural-animations.math-3d.ts:3436
 
 ___
 
@@ -801,7 +906,7 @@ Updates this quaternion so to invert the current quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3362
+spark.procedural-animations.math-3d.ts:3442
 
 ___
 
@@ -830,7 +935,7 @@ true if equal
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3261
+spark.procedural-animations.math-3d.ts:3341
 
 ___
 
@@ -846,7 +951,7 @@ Markes it as changed
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3244
+spark.procedural-animations.math-3d.ts:3324
 
 ___
 
@@ -872,7 +977,7 @@ Returns new quaternion that represents multiplication of the current quaternion 
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3380
+spark.procedural-animations.math-3d.ts:3460
 
 ___
 
@@ -898,7 +1003,7 @@ Returns new quaternion that represents multiplication of the current quaternion 
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3419
+spark.procedural-animations.math-3d.ts:3499
 
 ___
 
@@ -920,7 +1025,7 @@ Updated the current quaternion to apply multiplication of the current quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3426
+spark.procedural-animations.math-3d.ts:3506
 
 ___
 
@@ -946,7 +1051,7 @@ Returns new quaternion that represents multiplication of the current quaternion 
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3455
+spark.procedural-animations.math-3d.ts:3535
 
 ___
 
@@ -968,7 +1073,7 @@ Updates this quaternion so that it applies multiplication of the current quatern
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3387
+spark.procedural-animations.math-3d.ts:3467
 
 ___
 
@@ -984,7 +1089,7 @@ Normalizes current quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3289
+spark.procedural-animations.math-3d.ts:3369
 
 ___
 
@@ -1000,7 +1105,7 @@ Markes it as processed
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3237
+spark.procedural-animations.math-3d.ts:3317
 
 ___
 
@@ -1027,7 +1132,7 @@ Returns new quaternion that represents spherical linear interpolation from one r
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3338
+spark.procedural-animations.math-3d.ts:3418
 
 ___
 
@@ -1051,7 +1156,7 @@ from array wxyz
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3320
+spark.procedural-animations.math-3d.ts:3400
 
 ___
 
@@ -1073,7 +1178,7 @@ Sets from another quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3307
+spark.procedural-animations.math-3d.ts:3387
 
 ___
 
@@ -1095,7 +1200,7 @@ Sets pool scope
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3063
+spark.procedural-animations.math-3d.ts:3113
 
 ___
 
@@ -1117,7 +1222,7 @@ tuple of degrees and axis
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3394
+spark.procedural-animations.math-3d.ts:3474
 
 ___
 
@@ -1137,7 +1242,7 @@ Returns new quaternion that represents converts quaternion to vector representat
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3332
+spark.procedural-animations.math-3d.ts:3412
 
 ___
 
@@ -1163,7 +1268,7 @@ Returns new quaternion that represents convertion of local rotation to global pr
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3344
+spark.procedural-animations.math-3d.ts:3424
 
 ___
 
@@ -1189,7 +1294,7 @@ Returns new quaternion that represents convertion of global rotation to local pr
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3350
+spark.procedural-animations.math-3d.ts:3430
 
 ___
 
@@ -1205,7 +1310,7 @@ String representation of quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3178
+spark.procedural-animations.math-3d.ts:3258
 
 ___
 
@@ -1231,7 +1336,7 @@ returns string representation of this quaternion rounded to n decimal places
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3185
+spark.procedural-animations.math-3d.ts:3265
 
 ___
 
@@ -1256,7 +1361,7 @@ Creates Qt quaternion, if object pool is active, and has available objects will 
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3027
+spark.procedural-animations.math-3d.ts:3077
 
 ___
 
@@ -1281,4 +1386,4 @@ Creates Qt quaternion, regardless if object pool is active, or not it will creat
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3050
+spark.procedural-animations.math-3d.ts:3100

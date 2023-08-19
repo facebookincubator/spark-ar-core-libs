@@ -49,7 +49,7 @@ A list of randoim values of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:725
+spark.procedural-animations.core.ts:726
 
 ## Properties
 
@@ -59,7 +59,7 @@ spark.procedural-animations.core.ts:725
 
 #### Defined in
 
-spark.procedural-animations.core.ts:724
+spark.procedural-animations.core.ts:725
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:725
+spark.procedural-animations.core.ts:726
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:725
+spark.procedural-animations.core.ts:726
 
 ## Methods
 
@@ -93,7 +93,7 @@ spark.procedural-animations.core.ts:725
 
 #### Defined in
 
-spark.procedural-animations.core.ts:752
+spark.procedural-animations.core.ts:753
 
 ___
 
@@ -109,7 +109,7 @@ Returns next random value of the list, after using all values shuffles the list
 
 #### Defined in
 
-spark.procedural-animations.core.ts:733
+spark.procedural-animations.core.ts:734
 
 ___
 
@@ -131,4 +131,4 @@ Returns next random value of the list with condition, after using all values shu
 
 #### Defined in
 
-spark.procedural-animations.core.ts:740
+spark.procedural-animations.core.ts:741

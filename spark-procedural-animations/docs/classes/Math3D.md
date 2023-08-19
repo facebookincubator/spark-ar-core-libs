@@ -12,7 +12,6 @@
 
 ### Methods
 
-- [alternativeQuaternionToEuler](Math3D.md#alternativequaterniontoeuler)
 - [convertV2ToV3](Math3D.md#convertv2tov3)
 - [convertV3ToV2](Math3D.md#convertv3tov2)
 - [cubicBezierV3](Math3D.md#cubicbezierv3)
@@ -60,26 +59,6 @@
 
 ## Methods
 
-### alternativeQuaternionToEuler
-
-▸ `Static` `Private` **alternativeQuaternionToEuler**(`q`): [`V3`](V3.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `q` | [`IQtReadonly`](../interfaces/IQtReadonly.md) |
-
-#### Returns
-
-[`V3`](V3.md)
-
-#### Defined in
-
-spark.procedural-animations.math-3d.ts:3918
-
-___
-
 ### convertV2ToV3
 
 ▸ `Static` **convertV2ToV3**(`vec2`, `xUnit`, `yUnit`, `origin?`): [`V3`](V3.md)
@@ -103,7 +82,7 @@ V3
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4319
+spark.procedural-animations.math-3d.ts:4362
 
 ___
 
@@ -130,7 +109,7 @@ V2
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4300
+spark.procedural-animations.math-3d.ts:4343
 
 ___
 
@@ -158,7 +137,7 @@ point on curve
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4192
+spark.procedural-animations.math-3d.ts:4235
 
 ___
 
@@ -181,7 +160,7 @@ Compared two vectors if they are pointing in the same direction, clones and retu
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3822
+spark.procedural-animations.math-3d.ts:3902
 
 ___
 
@@ -207,7 +186,7 @@ normal
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3867
+spark.procedural-animations.math-3d.ts:3947
 
 ___
 
@@ -232,7 +211,7 @@ normal with vectors
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3878
+spark.procedural-animations.math-3d.ts:3958
 
 ___
 
@@ -257,7 +236,7 @@ real up
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3701
+spark.procedural-animations.math-3d.ts:3781
 
 ___
 
@@ -281,7 +260,7 @@ inverted quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4064
+spark.procedural-animations.math-3d.ts:4107
 
 ___
 
@@ -305,7 +284,7 @@ true if equal using dot product
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4104
+spark.procedural-animations.math-3d.ts:4147
 
 ___
 
@@ -330,7 +309,7 @@ true if pointing in different directions
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3814
+spark.procedural-animations.math-3d.ts:3894
 
 ___
 
@@ -356,7 +335,7 @@ true if point above plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3773
+spark.procedural-animations.math-3d.ts:3853
 
 ___
 
@@ -382,7 +361,7 @@ true if point below plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3757
+spark.procedural-animations.math-3d.ts:3837
 
 ___
 
@@ -407,7 +386,7 @@ true if point within polygon
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4336
+spark.procedural-animations.math-3d.ts:4379
 
 ___
 
@@ -433,7 +412,7 @@ true if point within polygon
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4362
+spark.procedural-animations.math-3d.ts:4405
 
 ___
 
@@ -458,7 +437,7 @@ true if pointing same direction
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3805
+spark.procedural-animations.math-3d.ts:3885
 
 ___
 
@@ -483,7 +462,7 @@ true if vector above plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3786
+spark.procedural-animations.math-3d.ts:3866
 
 ___
 
@@ -508,7 +487,7 @@ true if vector below plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3796
+spark.procedural-animations.math-3d.ts:3876
 
 ___
 
@@ -535,7 +514,7 @@ point result of multiplication of quaternion and point
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3656
+spark.procedural-animations.math-3d.ts:3736
 
 ___
 
@@ -560,7 +539,7 @@ vector
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4113
+spark.procedural-animations.math-3d.ts:4156
 
 ___
 
@@ -583,7 +562,7 @@ Multiplys quaternions
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4002
+spark.procedural-animations.math-3d.ts:4045
 
 ___
 
@@ -608,7 +587,7 @@ unit vection (direction) after projection on a plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3712
+spark.procedural-animations.math-3d.ts:3792
 
 ___
 
@@ -634,7 +613,7 @@ point on line after prokection
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3744
+spark.procedural-animations.math-3d.ts:3824
 
 ___
 
@@ -660,7 +639,7 @@ projected point on plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3833
+spark.procedural-animations.math-3d.ts:3913
 
 ___
 
@@ -686,7 +665,7 @@ up direction projected onto the current node forward plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4388
+spark.procedural-animations.math-3d.ts:4431
 
 ___
 
@@ -711,7 +690,7 @@ vector after projection on the normal
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3731
+spark.procedural-animations.math-3d.ts:3811
 
 ___
 
@@ -736,7 +715,7 @@ vector projection on the plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3721
+spark.procedural-animations.math-3d.ts:3801
 
 ___
 
@@ -763,7 +742,7 @@ point on curve
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4140
+spark.procedural-animations.math-3d.ts:4183
 
 ___
 
@@ -785,7 +764,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4081
+spark.procedural-animations.math-3d.ts:4124
 
 ___
 
@@ -809,7 +788,7 @@ euler
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3895
+spark.procedural-animations.math-3d.ts:3975
 
 ___
 
@@ -835,7 +814,7 @@ point reflection over plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3850
+spark.procedural-animations.math-3d.ts:3930
 
 ___
 
@@ -863,7 +842,7 @@ point on curve
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4231
+spark.procedural-animations.math-3d.ts:4274
 
 ___
 
@@ -890,7 +869,7 @@ point on curve
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4175
+spark.procedural-animations.math-3d.ts:4218
 
 ___
 
@@ -916,7 +895,7 @@ rotated vector
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3682
+spark.procedural-animations.math-3d.ts:3762
 
 ___
 
@@ -943,7 +922,7 @@ rotated point
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3619
+spark.procedural-animations.math-3d.ts:3699
 
 ___
 
@@ -969,7 +948,7 @@ returns the same quaternion passed as first parameter
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4279
+spark.procedural-animations.math-3d.ts:4322
 
 ___
 
@@ -995,7 +974,7 @@ reference to the quaternion passed as first argument
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4034
+spark.procedural-animations.math-3d.ts:4077
 
 ___
 
@@ -1021,7 +1000,7 @@ quaternion that represent transition from one to another quaternion, that much p
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3955
+spark.procedural-animations.math-3d.ts:3998
 
 ___
 
@@ -1048,4 +1027,4 @@ quaternion
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:4248
+spark.procedural-animations.math-3d.ts:4291

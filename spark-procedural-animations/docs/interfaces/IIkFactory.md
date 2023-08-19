@@ -41,7 +41,7 @@ ICharacterExtender.name
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:106
+spark.procedural-animations.base-character.ts:105
 
 ## Methods
 
@@ -66,7 +66,7 @@ inverse kinematics chain
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:940
+spark.procedural-animations.base-character.ts:957
 
 ___
 
@@ -90,4 +90,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:107
+spark.procedural-animations.base-character.ts:106

@@ -39,7 +39,7 @@
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1532
+spark.procedural-animations.humanoid-characters.ts:1511
 
 ## Properties
 
@@ -49,7 +49,7 @@ spark.procedural-animations.humanoid-characters.ts:1532
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1531
+spark.procedural-animations.humanoid-characters.ts:1510
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1532
+spark.procedural-animations.humanoid-characters.ts:1511
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1532
+spark.procedural-animations.humanoid-characters.ts:1511
 
 ## Accessors
 
@@ -83,7 +83,7 @@ spark.procedural-animations.humanoid-characters.ts:1532
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1553
+spark.procedural-animations.humanoid-characters.ts:1532
 
 ## Methods
 
@@ -103,7 +103,7 @@ spark.procedural-animations.humanoid-characters.ts:1553
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1548
+spark.procedural-animations.humanoid-characters.ts:1527
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1543
+spark.procedural-animations.humanoid-characters.ts:1522
 
 ___
 
@@ -137,4 +137,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1535
+spark.procedural-animations.humanoid-characters.ts:1514

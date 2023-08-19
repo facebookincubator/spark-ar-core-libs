@@ -49,7 +49,7 @@ Wrapper of Scene Object Base that keeps track of scene object hierarchy
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:256
+spark.procedural-animations.objects.ts:257
 
 ## Properties
 
@@ -59,7 +59,7 @@ spark.procedural-animations.objects.ts:256
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:254
+spark.procedural-animations.objects.ts:255
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:250
+spark.procedural-animations.objects.ts:251
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:251
+spark.procedural-animations.objects.ts:252
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:253
+spark.procedural-animations.objects.ts:254
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:252
+spark.procedural-animations.objects.ts:253
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:255
+spark.procedural-animations.objects.ts:256
 
 ## Accessors
 
@@ -125,7 +125,7 @@ Gets children
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:301
+spark.procedural-animations.objects.ts:302
 
 ___
 
@@ -141,7 +141,7 @@ Gets identifier
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:283
+spark.procedural-animations.objects.ts:284
 
 ___
 
@@ -157,7 +157,7 @@ Gets name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:289
+spark.procedural-animations.objects.ts:290
 
 ___
 
@@ -173,7 +173,7 @@ Gets parent
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:307
+spark.procedural-animations.objects.ts:308
 
 • `set` **parent**(`p`): `void`
 
@@ -191,7 +191,7 @@ Sets parent
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:313
+spark.procedural-animations.objects.ts:314
 
 ___
 
@@ -207,7 +207,7 @@ Gets path
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:321
+spark.procedural-animations.objects.ts:322
 
 ___
 
@@ -223,7 +223,7 @@ Gets tree name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:295
+spark.procedural-animations.objects.ts:296
 
 ## Methods
 
@@ -245,7 +245,7 @@ Creates object summary wrapper from SceneObjectBase
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:269
+spark.procedural-animations.objects.ts:270
 
 ___
 
@@ -268,4 +268,4 @@ Creates virtual object with ID and Name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:277
+spark.procedural-animations.objects.ts:278

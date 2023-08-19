@@ -29,4 +29,4 @@ and returns no value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:38
+spark.procedural-animations.core.ts:39

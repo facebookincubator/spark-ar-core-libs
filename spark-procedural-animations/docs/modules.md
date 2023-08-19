@@ -134,6 +134,7 @@
 
 - [Deg2Rad](modules.md#deg2rad)
 - [PI](modules.md#pi)
+- [PIx2](modules.md#pix2)
 - [Rad2Deg](modules.md#rad2deg)
 - [characterDeafultName](modules.md#characterdeafultname)
 - [finishedBehavior](modules.md#finishedbehavior)
@@ -211,7 +212,7 @@
 - [playHolder](modules.md#playholder)
 - [playInterval](modules.md#playinterval)
 - [pow](modules.md#pow)
-- [powInverted](modules.md#powinverted)
+- [powSwitch01](modules.md#powswitch01)
 - [rndFactoryOf](modules.md#rndfactoryof)
 - [rndOf](modules.md#rndof)
 - [rndOf2](modules.md#rndof2)
@@ -268,7 +269,7 @@ reference to CycleBvr instance, that can be used to finish it
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:43
+spark.procedural-animations.behaviors.ts:44
 
 ___
 
@@ -288,7 +289,7 @@ reference to CycleBvr instance, that can be used to finish it
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:49
+spark.procedural-animations.behaviors.ts:50
 
 ___
 
@@ -315,7 +316,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:410
+spark.procedural-animations.base-character.ts:411
 
 ## Variables
 
@@ -325,7 +326,7 @@ spark.procedural-animations.base-character.ts:410
 
 #### Defined in
 
-spark.procedural-animations.core.ts:17
+spark.procedural-animations.core.ts:18
 
 ___
 
@@ -334,11 +335,21 @@ ___
 • `Const` **PI**: `number` = `Math.PI`
 
 Spark Procedural Animations - Core Functions, Data Structures
-version 0.1.5
+version 0.9.4
 
 #### Defined in
 
 spark.procedural-animations.core.ts:16
+
+___
+
+### PIx2
+
+• `Const` **PIx2**: `number`
+
+#### Defined in
+
+spark.procedural-animations.core.ts:17
 
 ___
 
@@ -348,7 +359,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:18
+spark.procedural-animations.core.ts:19
 
 ___
 
@@ -358,7 +369,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:184
+spark.procedural-animations.base-character.ts:183
 
 ___
 
@@ -368,7 +379,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:805
+spark.procedural-animations.behaviors.ts:814
 
 ___
 
@@ -378,7 +389,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:699
+spark.procedural-animations.behaviors.ts:708
 
 ___
 
@@ -398,7 +409,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:698
+spark.procedural-animations.behaviors.ts:707
 
 ___
 
@@ -408,7 +419,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:180
+spark.procedural-animations.pool.ts:184
 
 ___
 
@@ -420,7 +431,7 @@ global random seed
 
 #### Defined in
 
-spark.procedural-animations.core.ts:282
+spark.procedural-animations.core.ts:283
 
 ___
 
@@ -430,7 +441,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:806
+spark.procedural-animations.behaviors.ts:815
 
 ## Functions
 
@@ -452,7 +463,7 @@ Returns positive value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:221
+spark.procedural-animations.core.ts:222
 
 ___
 
@@ -475,7 +486,7 @@ apply actuators
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1801
+spark.procedural-animations.objects.ts:1862
 
 ___
 
@@ -499,7 +510,7 @@ apply and merge actuators
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1809
+spark.procedural-animations.objects.ts:1870
 
 ___
 
@@ -522,7 +533,7 @@ Returns average value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:214
+spark.procedural-animations.core.ts:215
 
 ___
 
@@ -552,7 +563,7 @@ Returns Y value of function that draws bezier curve
 
 #### Defined in
 
-spark.procedural-animations.core.ts:595
+spark.procedural-animations.core.ts:596
 
 ___
 
@@ -578,7 +589,7 @@ Returns Y value of function that draws bezier curve
 
 #### Defined in
 
-spark.procedural-animations.core.ts:540
+spark.procedural-animations.core.ts:541
 
 ___
 
@@ -614,7 +625,7 @@ Returns Y value of function that draws 2 bezier curve that are joined
 
 #### Defined in
 
-spark.procedural-animations.core.ts:561
+spark.procedural-animations.core.ts:562
 
 ___
 
@@ -642,7 +653,7 @@ Builds object hierarchy
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:841
+spark.procedural-animations.base-character.ts:858
 
 ___
 
@@ -666,7 +677,7 @@ Ensures a given number is within a given range
 
 #### Defined in
 
-spark.procedural-animations.core.ts:393
+spark.procedural-animations.core.ts:394
 
 ___
 
@@ -688,7 +699,7 @@ Ensures a given number is between 0 and 1
 
 #### Defined in
 
-spark.procedural-animations.core.ts:402
+spark.procedural-animations.core.ts:403
 
 ___
 
@@ -710,7 +721,7 @@ Returns the cosine of a number.
 
 #### Defined in
 
-spark.procedural-animations.core.ts:176
+spark.procedural-animations.core.ts:177
 
 ___
 
@@ -718,7 +729,7 @@ ___
 
 ▸ **cosLimitX01**(`x`): `number`
 
-Returns the cosine of a number, where cycle is limited between 0 and 1 for X axis
+Returns the cosine of a number, where wave length (X) is limited between 0 and 1
 
 #### Parameters
 
@@ -732,7 +743,7 @@ Returns the cosine of a number, where cycle is limited between 0 and 1 for X axi
 
 #### Defined in
 
-spark.procedural-animations.core.ts:162
+spark.procedural-animations.core.ts:163
 
 ___
 
@@ -740,7 +751,7 @@ ___
 
 ▸ **cosLimitXY01**(`x`): `number`
 
-Returns the cosine of a number, where cycle is limited between 0 and 1 for both X and Y axes
+Returns the cosine of a number, where wave length and amplitude (X and Y) are limited betwen 0 and 1
 
 #### Parameters
 
@@ -754,7 +765,7 @@ Returns the cosine of a number, where cycle is limited between 0 and 1 for both 
 
 #### Defined in
 
-spark.procedural-animations.core.ts:155
+spark.procedural-animations.core.ts:156
 
 ___
 
@@ -776,7 +787,7 @@ Ensures passed behaviors are force finished
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:717
+spark.procedural-animations.behaviors.ts:726
 
 ___
 
@@ -802,7 +813,7 @@ Exponential average
 
 #### Defined in
 
-spark.procedural-animations.core.ts:526
+spark.procedural-animations.core.ts:527
 
 ___
 
@@ -824,7 +835,7 @@ Finish behaviors marked as unique with specific label
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:73
+spark.procedural-animations.behaviors.ts:74
 
 ___
 
@@ -850,7 +861,7 @@ matching number number of the given range
 
 #### Defined in
 
-spark.procedural-animations.core.ts:474
+spark.procedural-animations.core.ts:475
 
 ___
 
@@ -876,7 +887,7 @@ number between 0 and 1
 
 #### Defined in
 
-spark.procedural-animations.core.ts:452
+spark.procedural-animations.core.ts:453
 
 ___
 
@@ -902,7 +913,7 @@ number between 0 and 1
 
 #### Defined in
 
-spark.procedural-animations.core.ts:463
+spark.procedural-animations.core.ts:464
 
 ___
 
@@ -924,7 +935,7 @@ Function that draws half circle between 0 and 1
 
 #### Defined in
 
-spark.procedural-animations.core.ts:169
+spark.procedural-animations.core.ts:170
 
 ___
 
@@ -949,7 +960,7 @@ vector
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:922
+spark.procedural-animations.base-character.ts:939
 
 ___
 
@@ -975,7 +986,7 @@ matching number number of the given range
 
 #### Defined in
 
-spark.procedural-animations.core.ts:504
+spark.procedural-animations.core.ts:505
 
 ___
 
@@ -1048,7 +1059,7 @@ Verifies that 2 numbers are equal within a given delta value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:356
+spark.procedural-animations.core.ts:357
 
 ___
 
@@ -1072,7 +1083,7 @@ object wrap
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2644
+spark.procedural-animations.objects.ts:2705
 
 ___
 
@@ -1123,7 +1134,7 @@ Looks at world point after spine IK chain is solved
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:773
+spark.procedural-animations.humanoid-characters.ts:756
 
 ___
 
@@ -1746,7 +1757,7 @@ Returns maximum value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:206
+spark.procedural-animations.core.ts:207
 
 ___
 
@@ -1769,7 +1780,7 @@ Returns minimum value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:198
+spark.procedural-animations.core.ts:199
 
 ___
 
@@ -1795,7 +1806,7 @@ average
 
 #### Defined in
 
-spark.procedural-animations.core.ts:515
+spark.procedural-animations.core.ts:516
 
 ___
 
@@ -1867,7 +1878,7 @@ Returns noise
 
 #### Defined in
 
-spark.procedural-animations.core.ts:287
+spark.procedural-animations.core.ts:288
 
 ___
 
@@ -1881,7 +1892,7 @@ executes a given behavior on the main behavior executor
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Behavior`](classes/Behavior.md) |
+| `T` | extends [`Behavior`](classes/Behavior.md)<`T`\> |
 
 #### Parameters
 
@@ -1895,7 +1906,7 @@ executes a given behavior on the main behavior executor
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:704
+spark.procedural-animations.behaviors.ts:713
 
 ___
 
@@ -1919,7 +1930,7 @@ executes a cycle behavior on the main behavior executor and returns reference to
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:749
+spark.procedural-animations.behaviors.ts:758
 
 ___
 
@@ -1942,7 +1953,7 @@ executes a cycle behavior with cycle length of 1 second on the main behavior exe
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:761
+spark.procedural-animations.behaviors.ts:770
 
 ___
 
@@ -1966,7 +1977,7 @@ executes a time behavior on the main behavior executor and returns reference to 
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:736
+spark.procedural-animations.behaviors.ts:745
 
 ___
 
@@ -1982,7 +1993,7 @@ executes a behavior holder on the main behavior executor and returns reference t
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:710
+spark.procedural-animations.behaviors.ts:719
 
 ___
 
@@ -2006,7 +2017,7 @@ executes a inetrval behavior on the main behavior executor and returns reference
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:770
+spark.procedural-animations.behaviors.ts:779
 
 ___
 
@@ -2029,15 +2040,15 @@ Returns the value of a base expression taken to a specified power.
 
 #### Defined in
 
-spark.procedural-animations.core.ts:119
+spark.procedural-animations.core.ts:120
 
 ___
 
-### powInverted
+### powSwitch01
 
-▸ **powInverted**(`x`, `y`): `number`
+▸ **powSwitch01**(`x`, `y`): `number`
 
-Returns inverted version of pow function, where places of 0,0 and 1,1 are switched
+Returns version of pow function, where places of 0,0 and 1,1 are switched
 
 #### Parameters
 
@@ -2052,7 +2063,7 @@ Returns inverted version of pow function, where places of 0,0 and 1,1 are switch
 
 #### Defined in
 
-spark.procedural-animations.core.ts:127
+spark.procedural-animations.core.ts:128
 
 ___
 
@@ -2081,7 +2092,7 @@ Use it when creation of each value is costly so to create only the chosen one
 
 #### Defined in
 
-spark.procedural-animations.core.ts:345
+spark.procedural-animations.core.ts:346
 
 ___
 
@@ -2109,7 +2120,7 @@ Returns random of list of values of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:335
+spark.procedural-animations.core.ts:336
 
 ___
 
@@ -2138,7 +2149,7 @@ Returns random of 2 values of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:307
+spark.procedural-animations.core.ts:308
 
 ___
 
@@ -2168,7 +2179,7 @@ Returns random of 3 values of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:316
+spark.procedural-animations.core.ts:317
 
 ___
 
@@ -2199,7 +2210,7 @@ Returns random of 4 values of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:327
+spark.procedural-animations.core.ts:328
 
 ___
 
@@ -2270,7 +2281,7 @@ Returns value by index, if the index is out of bounds the function it will round
 
 #### Defined in
 
-spark.procedural-animations.core.ts:242
+spark.procedural-animations.core.ts:243
 
 ___
 
@@ -2292,7 +2303,7 @@ Returns the difference between current time in seconds and the time passed as ar
 
 #### Defined in
 
-spark.procedural-animations.core.ts:234
+spark.procedural-animations.core.ts:235
 
 ___
 
@@ -2308,7 +2319,7 @@ Returns current time in seconds
 
 #### Defined in
 
-spark.procedural-animations.core.ts:227
+spark.procedural-animations.core.ts:228
 
 ___
 
@@ -2336,7 +2347,7 @@ Takes array of generic type T and returns new array with the values shuffled
 
 #### Defined in
 
-spark.procedural-animations.core.ts:380
+spark.procedural-animations.core.ts:381
 
 ___
 
@@ -2364,7 +2375,7 @@ Takes array of generic type T and returns the same array with the values shuffle
 
 #### Defined in
 
-spark.procedural-animations.core.ts:363
+spark.procedural-animations.core.ts:364
 
 ___
 
@@ -2386,7 +2397,7 @@ Returns -1 if x is negative and 1 otherwise
 
 #### Defined in
 
-spark.procedural-animations.core.ts:190
+spark.procedural-animations.core.ts:191
 
 ___
 
@@ -2408,7 +2419,7 @@ Returns the sine of a number.
 
 #### Defined in
 
-spark.procedural-animations.core.ts:134
+spark.procedural-animations.core.ts:135
 
 ___
 
@@ -2416,7 +2427,7 @@ ___
 
 ▸ **sinLimitX01**(`x`): `number`
 
-Returns the sine of a number, where cycle is limited between 0 and 1 for X axis
+Returns the sine of a number, where wave length (X) is limited between 0 and 1
 
 #### Parameters
 
@@ -2430,7 +2441,7 @@ Returns the sine of a number, where cycle is limited between 0 and 1 for X axis
 
 #### Defined in
 
-spark.procedural-animations.core.ts:148
+spark.procedural-animations.core.ts:149
 
 ___
 
@@ -2438,7 +2449,7 @@ ___
 
 ▸ **sinLimitXY01**(`x`): `number`
 
-Returns the sine of a number, where cycle is limited between 0 and 1 for both X and Y axes
+Returns the sine of a number, where wave length and amplitude (X and Y) are limited betwen 0 and 1
 
 #### Parameters
 
@@ -2452,7 +2463,7 @@ Returns the sine of a number, where cycle is limited between 0 and 1 for both X 
 
 #### Defined in
 
-spark.procedural-animations.core.ts:141
+spark.procedural-animations.core.ts:142
 
 ___
 
@@ -2476,7 +2487,7 @@ frames
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:782
+spark.procedural-animations.behaviors.ts:791
 
 ___
 
@@ -2500,7 +2511,7 @@ smootherstep function
 
 #### Defined in
 
-spark.procedural-animations.core.ts:439
+spark.procedural-animations.core.ts:440
 
 ___
 
@@ -2522,7 +2533,7 @@ smootherstep function betwen 0 and 1, equivalent of smootherstep(0, 1, x)
 
 #### Defined in
 
-spark.procedural-animations.core.ts:430
+spark.procedural-animations.core.ts:431
 
 ___
 
@@ -2546,7 +2557,7 @@ smoothstep function
 
 #### Defined in
 
-spark.procedural-animations.core.ts:420
+spark.procedural-animations.core.ts:421
 
 ___
 
@@ -2568,7 +2579,7 @@ smoothstep function betwen 0 and 1, equivalent of smoothstep(0, 1, x)
 
 #### Defined in
 
-spark.procedural-animations.core.ts:411
+spark.procedural-animations.core.ts:412
 
 ___
 
@@ -2590,7 +2601,7 @@ Returns the square root of a number.
 
 #### Defined in
 
-spark.procedural-animations.core.ts:183
+spark.procedural-animations.core.ts:184
 
 ___
 
@@ -2647,7 +2658,7 @@ ___
 
 ### throwError
 
-▸ **throwError**(`message`): `any`
+▸ **throwError**(`message`): `void`
 
 Throws error
 
@@ -2659,11 +2670,11 @@ Throws error
 
 #### Returns
 
-`any`
+`void`
 
 #### Defined in
 
-spark.procedural-animations.core.ts:111
+spark.procedural-animations.core.ts:112
 
 ___
 
@@ -2790,7 +2801,7 @@ height that falls on the bottom side of a triangle
 
 #### Defined in
 
-spark.procedural-animations.core.ts:489
+spark.procedural-animations.core.ts:490
 
 ___
 
@@ -2861,4 +2872,4 @@ executes a wait behavior on the main behavior executor and returns reference to 
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:727
+spark.procedural-animations.behaviors.ts:736

@@ -41,7 +41,7 @@
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:183
+spark.procedural-animations.pool.ts:187
 
 ## Properties
 
@@ -51,7 +51,7 @@ spark.procedural-animations.pool.ts:183
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:183
+spark.procedural-animations.pool.ts:187
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:182
+spark.procedural-animations.pool.ts:186
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:183
+spark.procedural-animations.pool.ts:187
 
 ## Accessors
 
@@ -87,7 +87,7 @@ Gets action to execute after IK is solved
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:229
+spark.procedural-animations.pool.ts:233
 
 ___
 
@@ -103,7 +103,7 @@ Clones as permanent post solve action, i.e. not recycled by pool
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:216
+spark.procedural-animations.pool.ts:220
 
 ___
 
@@ -119,7 +119,7 @@ Gets number to pass to function (usually progress)
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:222
+spark.procedural-animations.pool.ts:226
 
 ## Methods
 
@@ -143,7 +143,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:238
+spark.procedural-animations.pool.ts:242
 
 ___
 
@@ -166,7 +166,7 @@ Creates post solve action
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:191
+spark.procedural-animations.pool.ts:195
 
 ___
 
@@ -189,4 +189,4 @@ Creates permanent post solve action, i.e. not recycled by pool
 
 #### Defined in
 
-spark.procedural-animations.pool.ts:210
+spark.procedural-animations.pool.ts:214

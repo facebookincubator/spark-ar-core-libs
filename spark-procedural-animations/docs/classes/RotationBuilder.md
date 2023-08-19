@@ -53,7 +53,7 @@ Creates an instance of rotation builder.
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1825
+spark.procedural-animations.objects.ts:1886
 
 ## Properties
 
@@ -63,7 +63,7 @@ spark.procedural-animations.objects.ts:1825
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1815
+spark.procedural-animations.objects.ts:1876
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1819
+spark.procedural-animations.objects.ts:1880
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1816
+spark.procedural-animations.objects.ts:1877
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1817
+spark.procedural-animations.objects.ts:1878
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1820
+spark.procedural-animations.objects.ts:1881
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1818
+spark.procedural-animations.objects.ts:1879
 
 ## Accessors
 
@@ -129,7 +129,7 @@ Creates or recycles MovementBuilder
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1832
+spark.procedural-animations.objects.ts:1893
 
 ___
 
@@ -145,7 +145,7 @@ Clears movement
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1838
+spark.procedural-animations.objects.ts:1899
 
 ## Methods
 
@@ -172,7 +172,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1945
+spark.procedural-animations.objects.ts:2006
 
 ___
 
@@ -190,7 +190,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1865
+spark.procedural-animations.objects.ts:1926
 
 ___
 
@@ -208,7 +208,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1873
+spark.procedural-animations.objects.ts:1934
 
 ___
 
@@ -226,7 +226,7 @@ actuator
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1961
+spark.procedural-animations.objects.ts:2022
 
 ___
 
@@ -240,7 +240,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1968
+spark.procedural-animations.objects.ts:2029
 
 ___
 
@@ -265,7 +265,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1883
+spark.procedural-animations.objects.ts:1944
 
 ___
 
@@ -289,7 +289,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1892
+spark.procedural-animations.objects.ts:1953
 
 ___
 
@@ -305,7 +305,7 @@ Recycles rotation
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1844
+spark.procedural-animations.objects.ts:1905
 
 ___
 
@@ -330,7 +330,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1911
+spark.procedural-animations.objects.ts:1972
 
 ___
 
@@ -357,7 +357,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1923
+spark.procedural-animations.objects.ts:1984
 
 ___
 
@@ -381,7 +381,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1901
+spark.procedural-animations.objects.ts:1962
 
 ___
 
@@ -406,4 +406,4 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1857
+spark.procedural-animations.objects.ts:1918

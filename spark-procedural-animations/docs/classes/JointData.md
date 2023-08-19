@@ -40,7 +40,7 @@ Joint data
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:63
+spark.procedural-animations.base-character.ts:62
 
 ## Properties
 
@@ -50,7 +50,7 @@ spark.procedural-animations.base-character.ts:63
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:68
+spark.procedural-animations.base-character.ts:67
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:69
+spark.procedural-animations.base-character.ts:68
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:70
+spark.procedural-animations.base-character.ts:69
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:64
+spark.procedural-animations.base-character.ts:63
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:65
+spark.procedural-animations.base-character.ts:64
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:67
+spark.procedural-animations.base-character.ts:66
 
 ___
 
@@ -110,4 +110,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:66
+spark.procedural-animations.base-character.ts:65

@@ -16,4 +16,4 @@ interface of a function that accepts no argument and returns no value
 
 #### Defined in
 
-spark.procedural-animations.core.ts:31
+spark.procedural-animations.core.ts:32

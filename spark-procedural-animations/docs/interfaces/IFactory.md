@@ -40,7 +40,7 @@ factory
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:120
+spark.procedural-animations.base-character.ts:119
 
 ## Methods
 
@@ -58,7 +58,7 @@ spark.procedural-animations.base-character.ts:120
 
 #### Defined in
 
-spark.procedural-animations.core.ts:93
+spark.procedural-animations.core.ts:94
 
 ___
 
@@ -80,7 +80,7 @@ returns service by name
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:125
+spark.procedural-animations.base-character.ts:124
 
 ___
 
@@ -98,4 +98,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:105
+spark.procedural-animations.core.ts:106

@@ -36,4 +36,4 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:51
+spark.procedural-animations.objects.ts:52

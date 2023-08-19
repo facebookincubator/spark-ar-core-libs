@@ -34,4 +34,4 @@ and returns value of generic type T4
 
 #### Defined in
 
-spark.procedural-animations.core.ts:87
+spark.procedural-animations.core.ts:88

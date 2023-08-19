@@ -37,7 +37,7 @@
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:400
+spark.procedural-animations.base-character.ts:401
 
 ## Properties
 
@@ -47,7 +47,7 @@ spark.procedural-animations.base-character.ts:400
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:393
+spark.procedural-animations.base-character.ts:394
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:394
+spark.procedural-animations.base-character.ts:395
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:395
+spark.procedural-animations.base-character.ts:396
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:403
+spark.procedural-animations.base-character.ts:404
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:396
+spark.procedural-animations.base-character.ts:397
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:401
+spark.procedural-animations.base-character.ts:402
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:398
+spark.procedural-animations.base-character.ts:399
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:402
+spark.procedural-animations.base-character.ts:403
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:397
+spark.procedural-animations.base-character.ts:398
 
 ___
 
@@ -137,4 +137,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:399
+spark.procedural-animations.base-character.ts:400

@@ -45,7 +45,7 @@ Creates an instance of view to v3
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2288
+spark.procedural-animations.objects.ts:2349
 
 ## Properties
 
@@ -55,7 +55,7 @@ spark.procedural-animations.objects.ts:2288
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2279
+spark.procedural-animations.objects.ts:2340
 
 ___
 
@@ -67,7 +67,7 @@ factory function, takes object view as argument and returns vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2290
+spark.procedural-animations.objects.ts:2351
 
 ___
 
@@ -79,7 +79,7 @@ if set to true creation function will be invoked on each frame as oposed to on i
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2291
+spark.procedural-animations.objects.ts:2352
 
 ___
 
@@ -91,7 +91,7 @@ when set to false will not apply object factor normalization (by default true)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2292
+spark.procedural-animations.objects.ts:2353
 
 ___
 
@@ -103,7 +103,7 @@ space where object should be placed (local or world)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2293
+spark.procedural-animations.objects.ts:2354
 
 ___
 
@@ -115,7 +115,7 @@ object view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2289
+spark.procedural-animations.objects.ts:2350
 
 ## Accessors
 
@@ -131,7 +131,7 @@ Gets V3 computed each time if dynamic or cached otherwise
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2300
+spark.procedural-animations.objects.ts:2361
 
 ## Methods
 
@@ -145,4 +145,4 @@ spark.procedural-animations.objects.ts:2300
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:2303
+spark.procedural-animations.objects.ts:2364

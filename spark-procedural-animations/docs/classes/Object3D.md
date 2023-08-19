@@ -51,10 +51,13 @@ interface of object with postToNative function
 
 - [a](Object3D.md#a)
 - [actuator](Object3D.md#actuator)
+- [back](Object3D.md#back)
 - [bk](Object3D.md#bk)
 - [dn](Object3D.md#dn)
+- [down](Object3D.md#down)
 - [enablePostToNative](Object3D.md#enableposttonative)
 - [factor](Object3D.md#factor)
+- [forward](Object3D.md#forward)
 - [fw](Object3D.md#fw)
 - [identifier](Object3D.md#identifier)
 - [iniBk](Object3D.md#inibk)
@@ -70,6 +73,7 @@ interface of object with postToNative function
 - [iniRt](Object3D.md#inirt)
 - [iniSca](Object3D.md#inisca)
 - [iniUp](Object3D.md#iniup)
+- [left](Object3D.md#left)
 - [lt](Object3D.md#lt)
 - [model](Object3D.md#model)
 - [name](Object3D.md#name)
@@ -78,6 +82,7 @@ interface of object with postToNative function
 - [posX](Object3D.md#posx)
 - [posY](Object3D.md#posy)
 - [posZ](Object3D.md#posz)
+- [right](Object3D.md#right)
 - [rot](Object3D.md#rot)
 - [rt](Object3D.md#rt)
 - [sca](Object3D.md#sca)
@@ -136,7 +141,7 @@ interface of object with postToNative function
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:675
+spark.procedural-animations.objects.ts:706
 
 ## Properties
 
@@ -146,7 +151,7 @@ spark.procedural-animations.objects.ts:675
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:671
+spark.procedural-animations.objects.ts:702
 
 ___
 
@@ -156,7 +161,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:670
+spark.procedural-animations.objects.ts:701
 
 ___
 
@@ -166,7 +171,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:669
+spark.procedural-animations.objects.ts:700
 
 ___
 
@@ -176,7 +181,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:663
+spark.procedural-animations.objects.ts:694
 
 ___
 
@@ -186,7 +191,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:665
+spark.procedural-animations.objects.ts:696
 
 ___
 
@@ -196,7 +201,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:662
+spark.procedural-animations.objects.ts:693
 
 ___
 
@@ -206,7 +211,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:664
+spark.procedural-animations.objects.ts:695
 
 ___
 
@@ -216,7 +221,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:658
+spark.procedural-animations.objects.ts:689
 
 ___
 
@@ -226,7 +231,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:657
+spark.procedural-animations.objects.ts:688
 
 ___
 
@@ -236,7 +241,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:660
+spark.procedural-animations.objects.ts:691
 
 ___
 
@@ -246,7 +251,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:673
+spark.procedural-animations.objects.ts:704
 
 ___
 
@@ -256,7 +261,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:667
+spark.procedural-animations.objects.ts:698
 
 ___
 
@@ -266,7 +271,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:666
+spark.procedural-animations.objects.ts:697
 
 ___
 
@@ -276,7 +281,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:668
+spark.procedural-animations.objects.ts:699
 
 ___
 
@@ -286,7 +291,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:661
+spark.procedural-animations.objects.ts:692
 
 ___
 
@@ -296,7 +301,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:659
+spark.procedural-animations.objects.ts:690
 
 ___
 
@@ -306,7 +311,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:672
+spark.procedural-animations.objects.ts:703
 
 ___
 
@@ -316,7 +321,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:674
+spark.procedural-animations.objects.ts:705
 
 ___
 
@@ -326,7 +331,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:680
+spark.procedural-animations.objects.ts:711
 
 ## Accessors
 
@@ -346,7 +351,7 @@ IActuatorApplierHolder.a
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:845
+spark.procedural-animations.objects.ts:906
 
 ___
 
@@ -366,7 +371,23 @@ IActuatorApplierHolder.actuator
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:838
+spark.procedural-animations.objects.ts:899
+
+___
+
+### back
+
+• `get` **back**(): [`V3`](V3.md)
+
+back direction based on view
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:851
 
 ___
 
@@ -382,7 +403,7 @@ back direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:808
+spark.procedural-animations.objects.ts:845
 
 ___
 
@@ -398,7 +419,23 @@ down direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:814
+spark.procedural-animations.objects.ts:857
+
+___
+
+### down
+
+• `get` **down**(): [`V3`](V3.md)
+
+down direction based on view
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:863
 
 ___
 
@@ -414,7 +451,7 @@ Gets enable post to native flag
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1030
+spark.procedural-animations.objects.ts:1091
 
 • `set` **enablePostToNative**(`b`): `void`
 
@@ -432,7 +469,7 @@ Sets enable post to native flag
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1036
+spark.procedural-animations.objects.ts:1097
 
 ___
 
@@ -448,7 +485,7 @@ get numeric factor used to normalize actuator commands, for example to define nu
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:863
+spark.procedural-animations.objects.ts:924
 
 • `set` **factor**(`f`): `void`
 
@@ -466,7 +503,23 @@ set numeric factor used to normalize actuator commands, for example to define nu
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:869
+spark.procedural-animations.objects.ts:930
+
+___
+
+### forward
+
+• `get` **forward**(): [`V3`](V3.md)
+
+forward direction based on view
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:833
 
 ___
 
@@ -482,7 +535,7 @@ forward direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:796
+spark.procedural-animations.objects.ts:827
 
 ___
 
@@ -502,7 +555,7 @@ IPosterToNative.identifier
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:790
+spark.procedural-animations.objects.ts:821
 
 ___
 
@@ -518,7 +571,7 @@ initial back direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:979
+spark.procedural-animations.objects.ts:1040
 
 ___
 
@@ -534,7 +587,7 @@ initial down direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:991
+spark.procedural-animations.objects.ts:1052
 
 ___
 
@@ -550,7 +603,7 @@ initial forward direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:973
+spark.procedural-animations.objects.ts:1034
 
 ___
 
@@ -566,7 +619,7 @@ initial left direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1003
+spark.procedural-animations.objects.ts:1064
 
 ___
 
@@ -582,7 +635,7 @@ initial position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:955
+spark.procedural-animations.objects.ts:1016
 
 ___
 
@@ -598,7 +651,7 @@ initial position in worlds space
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1137
+spark.procedural-animations.objects.ts:1199
 
 ___
 
@@ -614,7 +667,7 @@ initial position divided by the factor
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:961
+spark.procedural-animations.objects.ts:1022
 
 ___
 
@@ -630,7 +683,7 @@ magnitude of the initial position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1009
+spark.procedural-animations.objects.ts:1070
 
 ___
 
@@ -646,7 +699,7 @@ initial rotation quaternion
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:949
+spark.procedural-animations.objects.ts:1010
 
 ___
 
@@ -662,7 +715,7 @@ initial rotation in worlds space
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1143
+spark.procedural-animations.objects.ts:1205
 
 ___
 
@@ -678,7 +731,7 @@ initial right direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:997
+spark.procedural-animations.objects.ts:1058
 
 ___
 
@@ -694,7 +747,7 @@ initial scale
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:967
+spark.procedural-animations.objects.ts:1028
 
 ___
 
@@ -710,7 +763,23 @@ initial up direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:985
+spark.procedural-animations.objects.ts:1046
+
+___
+
+### left
+
+• `get` **left**(): [`V3`](V3.md)
+
+left direction based on view
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:875
 
 ___
 
@@ -726,7 +795,7 @@ left direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:820
+spark.procedural-animations.objects.ts:869
 
 ___
 
@@ -742,7 +811,7 @@ Gets model reference (optional)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1060
+spark.procedural-animations.objects.ts:1121
 
 ___
 
@@ -758,7 +827,7 @@ name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:851
+spark.procedural-animations.objects.ts:912
 
 ___
 
@@ -774,7 +843,7 @@ get parent object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1042
+spark.procedural-animations.objects.ts:1103
 
 • `set` **parent**(`p`): `void`
 
@@ -792,7 +861,7 @@ set parent object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1048
+spark.procedural-animations.objects.ts:1109
 
 ___
 
@@ -812,7 +881,7 @@ ITransformData.pos
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:889
+spark.procedural-animations.objects.ts:950
 
 • `set` **pos**(`p`): `void`
 
@@ -834,7 +903,7 @@ ITransformData.pos
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:913
+spark.procedural-animations.objects.ts:974
 
 ___
 
@@ -850,7 +919,7 @@ get position x
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:895
+spark.procedural-animations.objects.ts:956
 
 ___
 
@@ -866,7 +935,7 @@ get position y
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:901
+spark.procedural-animations.objects.ts:962
 
 ___
 
@@ -882,7 +951,23 @@ get position z
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:907
+spark.procedural-animations.objects.ts:968
+
+___
+
+### right
+
+• `get` **right**(): [`V3`](V3.md)
+
+right direction based on view
+
+#### Returns
+
+[`V3`](V3.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:887
 
 ___
 
@@ -902,7 +987,7 @@ ITransformData.rot
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:921
+spark.procedural-animations.objects.ts:982
 
 • `set` **rot**(`q`): `void`
 
@@ -924,7 +1009,7 @@ ITransformData.rot
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:927
+spark.procedural-animations.objects.ts:988
 
 ___
 
@@ -940,7 +1025,7 @@ right direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:826
+spark.procedural-animations.objects.ts:881
 
 ___
 
@@ -960,7 +1045,7 @@ ITransformData.sca
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:935
+spark.procedural-animations.objects.ts:996
 
 • `set` **sca**(`s`): `void`
 
@@ -982,7 +1067,7 @@ ITransformData.sca
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:941
+spark.procedural-animations.objects.ts:1002
 
 ___
 
@@ -998,7 +1083,7 @@ get object scale - local
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1015
+spark.procedural-animations.objects.ts:1076
 
 • `set` **scale**(`n`): `void`
 
@@ -1016,7 +1101,7 @@ set object scale - local
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1021
+spark.procedural-animations.objects.ts:1082
 
 ___
 
@@ -1032,7 +1117,7 @@ Gets summary
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1054
+spark.procedural-animations.objects.ts:1115
 
 ___
 
@@ -1048,7 +1133,7 @@ transform wrapper
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:832
+spark.procedural-animations.objects.ts:893
 
 ___
 
@@ -1064,7 +1149,7 @@ tree name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:857
+spark.procedural-animations.objects.ts:918
 
 ___
 
@@ -1080,7 +1165,7 @@ up direction based on view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:802
+spark.procedural-animations.objects.ts:839
 
 ___
 
@@ -1096,7 +1181,7 @@ alias for object view - used to redefine directions
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:883
+spark.procedural-animations.objects.ts:944
 
 ___
 
@@ -1112,7 +1197,7 @@ object view - used to redefine directions
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:877
+spark.procedural-animations.objects.ts:938
 
 ___
 
@@ -1128,7 +1213,7 @@ get world position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1177
+spark.procedural-animations.objects.ts:1239
 
 • `set` **worldPos**(`p`): `void`
 
@@ -1146,7 +1231,7 @@ set world position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1186
+spark.procedural-animations.objects.ts:1248
 
 ___
 
@@ -1162,7 +1247,7 @@ get world rotation - quaternion
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1125
+spark.procedural-animations.objects.ts:1187
 
 • `set` **worldRot**(`q`): `void`
 
@@ -1180,7 +1265,7 @@ set world rotation - quaternion
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1131
+spark.procedural-animations.objects.ts:1193
 
 ## Methods
 
@@ -1202,7 +1287,7 @@ Adds position to current rotation (local space)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1268
+spark.procedural-animations.objects.ts:1330
 
 ___
 
@@ -1224,7 +1309,7 @@ Adds rotation to current rotation (local space)
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1261
+spark.procedural-animations.objects.ts:1323
 
 ___
 
@@ -1245,7 +1330,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1251
+spark.procedural-animations.objects.ts:1313
 
 ___
 
@@ -1269,7 +1354,7 @@ self reference to the object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:740
+spark.procedural-animations.objects.ts:771
 
 ___
 
@@ -1289,7 +1374,7 @@ Removes object from posters to native
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:753
+spark.procedural-animations.objects.ts:784
 
 ___
 
@@ -1314,7 +1399,7 @@ world position representation of the input local position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1197
+spark.procedural-animations.objects.ts:1259
 
 ___
 
@@ -1339,7 +1424,7 @@ world rotation representation of the input local rotation
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1166
+spark.procedural-animations.objects.ts:1228
 
 ___
 
@@ -1364,7 +1449,7 @@ world vector representation of the input local vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1217
+spark.procedural-animations.objects.ts:1279
 
 ___
 
@@ -1385,7 +1470,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1318
+spark.procedural-animations.objects.ts:1380
 
 ___
 
@@ -1410,7 +1495,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1109
+spark.procedural-animations.objects.ts:1170
 
 ___
 
@@ -1435,7 +1520,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1098
+spark.procedural-animations.objects.ts:1159
 
 ___
 
@@ -1455,7 +1540,7 @@ Posts to native position, rotation, scale
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:759
+spark.procedural-animations.objects.ts:790
 
 ___
 
@@ -1479,7 +1564,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1068
+spark.procedural-animations.objects.ts:1129
 
 ___
 
@@ -1503,7 +1588,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1078
+spark.procedural-animations.objects.ts:1139
 
 ___
 
@@ -1527,7 +1612,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1088
+spark.procedural-animations.objects.ts:1149
 
 ___
 
@@ -1551,7 +1636,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1277
+spark.procedural-animations.objects.ts:1339
 
 ___
 
@@ -1575,7 +1660,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1286
+spark.procedural-animations.objects.ts:1348
 
 ___
 
@@ -1599,7 +1684,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1295
+spark.procedural-animations.objects.ts:1357
 
 ___
 
@@ -1626,7 +1711,7 @@ self reference to the object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:726
+spark.procedural-animations.objects.ts:757
 
 ___
 
@@ -1650,7 +1735,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1304
+spark.procedural-animations.objects.ts:1366
 
 ___
 
@@ -1674,7 +1759,7 @@ reference to iself
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1314
+spark.procedural-animations.objects.ts:1376
 
 ___
 
@@ -1699,7 +1784,7 @@ local position representation of the input world position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1236
+spark.procedural-animations.objects.ts:1298
 
 ___
 
@@ -1721,7 +1806,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1242
+spark.procedural-animations.objects.ts:1304
 
 ___
 
@@ -1746,4 +1831,4 @@ local rotation representation of the input world rotation
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:1152
+spark.procedural-animations.objects.ts:1214

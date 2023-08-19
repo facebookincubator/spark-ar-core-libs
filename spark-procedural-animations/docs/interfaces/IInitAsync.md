@@ -30,4 +30,4 @@ interface that contains initializeAsync method
 
 #### Defined in
 
-spark.procedural-animations.core.ts:105
+spark.procedural-animations.core.ts:106

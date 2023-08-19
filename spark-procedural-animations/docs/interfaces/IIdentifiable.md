@@ -30,4 +30,4 @@ interface of object containins string property identifier
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:54
+spark.procedural-animations.behaviors.ts:55

@@ -42,7 +42,7 @@
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:571
+spark.procedural-animations.objects.ts:602
 
 ## Properties
 
@@ -58,7 +58,7 @@ object of type SceneObjectBase
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:562
+spark.procedural-animations.objects.ts:593
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:563
+spark.procedural-animations.objects.ts:594
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:564
+spark.procedural-animations.objects.ts:595
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:565
+spark.procedural-animations.objects.ts:596
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:566
+spark.procedural-animations.objects.ts:597
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:567
+spark.procedural-animations.objects.ts:598
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:568
+spark.procedural-animations.objects.ts:599
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:569
+spark.procedural-animations.objects.ts:600
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:570
+spark.procedural-animations.objects.ts:601
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:571
+spark.procedural-animations.objects.ts:602
 
 ## Methods
 
@@ -162,7 +162,7 @@ spark.procedural-animations.objects.ts:571
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:633
+spark.procedural-animations.objects.ts:664
 
 ___
 
@@ -184,7 +184,7 @@ Sets object position
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:589
+spark.procedural-animations.objects.ts:620
 
 ___
 
@@ -206,7 +206,7 @@ Sets object rotation as euler
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:605
+spark.procedural-animations.objects.ts:636
 
 ___
 
@@ -228,4 +228,4 @@ Sets object scale
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:621
+spark.procedural-animations.objects.ts:652

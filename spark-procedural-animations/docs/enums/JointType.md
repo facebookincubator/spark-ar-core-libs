@@ -99,7 +99,7 @@ Known joint types
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:100
+spark.procedural-animations.humanoid-characters.ts:80
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:102
+spark.procedural-animations.humanoid-characters.ts:82
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:88
+spark.procedural-animations.humanoid-characters.ts:68
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:164
+spark.procedural-animations.humanoid-characters.ts:144
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:166
+spark.procedural-animations.humanoid-characters.ts:146
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:165
+spark.procedural-animations.humanoid-characters.ts:145
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:167
+spark.procedural-animations.humanoid-characters.ts:147
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:163
+spark.procedural-animations.humanoid-characters.ts:143
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:103
+spark.procedural-animations.humanoid-characters.ts:83
 
 ___
 
@@ -189,7 +189,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:108
+spark.procedural-animations.humanoid-characters.ts:88
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:107
+spark.procedural-animations.humanoid-characters.ts:87
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:104
+spark.procedural-animations.humanoid-characters.ts:84
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:91
+spark.procedural-animations.humanoid-characters.ts:71
 
 ___
 
@@ -229,7 +229,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:92
+spark.procedural-animations.humanoid-characters.ts:72
 
 ___
 
@@ -239,7 +239,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:156
+spark.procedural-animations.humanoid-characters.ts:136
 
 ___
 
@@ -249,7 +249,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:157
+spark.procedural-animations.humanoid-characters.ts:137
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:154
+spark.procedural-animations.humanoid-characters.ts:134
 
 ___
 
@@ -269,7 +269,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:155
+spark.procedural-animations.humanoid-characters.ts:135
 
 ___
 
@@ -279,7 +279,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:121
+spark.procedural-animations.humanoid-characters.ts:101
 
 ___
 
@@ -289,7 +289,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:120
+spark.procedural-animations.humanoid-characters.ts:100
 
 ___
 
@@ -299,7 +299,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:118
+spark.procedural-animations.humanoid-characters.ts:98
 
 ___
 
@@ -309,7 +309,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:119
+spark.procedural-animations.humanoid-characters.ts:99
 
 ___
 
@@ -319,7 +319,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:125
+spark.procedural-animations.humanoid-characters.ts:105
 
 ___
 
@@ -329,7 +329,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:124
+spark.procedural-animations.humanoid-characters.ts:104
 
 ___
 
@@ -339,7 +339,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:122
+spark.procedural-animations.humanoid-characters.ts:102
 
 ___
 
@@ -349,7 +349,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:123
+spark.procedural-animations.humanoid-characters.ts:103
 
 ___
 
@@ -359,7 +359,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:133
+spark.procedural-animations.humanoid-characters.ts:113
 
 ___
 
@@ -369,7 +369,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:132
+spark.procedural-animations.humanoid-characters.ts:112
 
 ___
 
@@ -379,7 +379,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:130
+spark.procedural-animations.humanoid-characters.ts:110
 
 ___
 
@@ -389,7 +389,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:131
+spark.procedural-animations.humanoid-characters.ts:111
 
 ___
 
@@ -399,7 +399,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:129
+spark.procedural-animations.humanoid-characters.ts:109
 
 ___
 
@@ -409,7 +409,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:128
+spark.procedural-animations.humanoid-characters.ts:108
 
 ___
 
@@ -419,7 +419,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:126
+spark.procedural-animations.humanoid-characters.ts:106
 
 ___
 
@@ -429,7 +429,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:127
+spark.procedural-animations.humanoid-characters.ts:107
 
 ___
 
@@ -439,7 +439,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:117
+spark.procedural-animations.humanoid-characters.ts:97
 
 ___
 
@@ -449,7 +449,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:115
+spark.procedural-animations.humanoid-characters.ts:95
 
 ___
 
@@ -459,7 +459,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:116
+spark.procedural-animations.humanoid-characters.ts:96
 
 ___
 
@@ -469,7 +469,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:114
+spark.procedural-animations.humanoid-characters.ts:94
 
 ___
 
@@ -479,7 +479,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:109
+spark.procedural-animations.humanoid-characters.ts:89
 
 ___
 
@@ -489,7 +489,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:90
+spark.procedural-animations.humanoid-characters.ts:70
 
 ___
 
@@ -499,7 +499,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:89
+spark.procedural-animations.humanoid-characters.ts:69
 
 ___
 
@@ -509,7 +509,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:106
+spark.procedural-animations.humanoid-characters.ts:86
 
 ___
 
@@ -519,7 +519,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:85
+spark.procedural-animations.humanoid-characters.ts:65
 
 ___
 
@@ -529,7 +529,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:101
+spark.procedural-animations.humanoid-characters.ts:81
 
 ___
 
@@ -539,7 +539,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:112
+spark.procedural-animations.humanoid-characters.ts:92
 
 ___
 
@@ -549,7 +549,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:111
+spark.procedural-animations.humanoid-characters.ts:91
 
 ___
 
@@ -559,7 +559,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:105
+spark.procedural-animations.humanoid-characters.ts:85
 
 ___
 
@@ -569,7 +569,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:95
+spark.procedural-animations.humanoid-characters.ts:75
 
 ___
 
@@ -579,7 +579,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:96
+spark.procedural-animations.humanoid-characters.ts:76
 
 ___
 
@@ -589,7 +589,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:160
+spark.procedural-animations.humanoid-characters.ts:140
 
 ___
 
@@ -599,7 +599,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:161
+spark.procedural-animations.humanoid-characters.ts:141
 
 ___
 
@@ -609,7 +609,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:158
+spark.procedural-animations.humanoid-characters.ts:138
 
 ___
 
@@ -619,7 +619,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:159
+spark.procedural-animations.humanoid-characters.ts:139
 
 ___
 
@@ -629,7 +629,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:141
+spark.procedural-animations.humanoid-characters.ts:121
 
 ___
 
@@ -639,7 +639,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:140
+spark.procedural-animations.humanoid-characters.ts:120
 
 ___
 
@@ -649,7 +649,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:138
+spark.procedural-animations.humanoid-characters.ts:118
 
 ___
 
@@ -659,7 +659,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:139
+spark.procedural-animations.humanoid-characters.ts:119
 
 ___
 
@@ -669,7 +669,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:145
+spark.procedural-animations.humanoid-characters.ts:125
 
 ___
 
@@ -679,7 +679,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:144
+spark.procedural-animations.humanoid-characters.ts:124
 
 ___
 
@@ -689,7 +689,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:142
+spark.procedural-animations.humanoid-characters.ts:122
 
 ___
 
@@ -699,7 +699,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:143
+spark.procedural-animations.humanoid-characters.ts:123
 
 ___
 
@@ -709,7 +709,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:153
+spark.procedural-animations.humanoid-characters.ts:133
 
 ___
 
@@ -719,7 +719,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:152
+spark.procedural-animations.humanoid-characters.ts:132
 
 ___
 
@@ -729,7 +729,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:150
+spark.procedural-animations.humanoid-characters.ts:130
 
 ___
 
@@ -739,7 +739,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:151
+spark.procedural-animations.humanoid-characters.ts:131
 
 ___
 
@@ -749,7 +749,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:149
+spark.procedural-animations.humanoid-characters.ts:129
 
 ___
 
@@ -759,7 +759,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:148
+spark.procedural-animations.humanoid-characters.ts:128
 
 ___
 
@@ -769,7 +769,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:146
+spark.procedural-animations.humanoid-characters.ts:126
 
 ___
 
@@ -779,7 +779,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:147
+spark.procedural-animations.humanoid-characters.ts:127
 
 ___
 
@@ -789,7 +789,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:137
+spark.procedural-animations.humanoid-characters.ts:117
 
 ___
 
@@ -799,7 +799,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:135
+spark.procedural-animations.humanoid-characters.ts:115
 
 ___
 
@@ -809,7 +809,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:136
+spark.procedural-animations.humanoid-characters.ts:116
 
 ___
 
@@ -819,7 +819,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:134
+spark.procedural-animations.humanoid-characters.ts:114
 
 ___
 
@@ -829,7 +829,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:113
+spark.procedural-animations.humanoid-characters.ts:93
 
 ___
 
@@ -839,7 +839,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:94
+spark.procedural-animations.humanoid-characters.ts:74
 
 ___
 
@@ -849,7 +849,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:93
+spark.procedural-animations.humanoid-characters.ts:73
 
 ___
 
@@ -859,7 +859,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:110
+spark.procedural-animations.humanoid-characters.ts:90
 
 ___
 
@@ -869,7 +869,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:86
+spark.procedural-animations.humanoid-characters.ts:66
 
 ___
 
@@ -879,7 +879,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:87
+spark.procedural-animations.humanoid-characters.ts:67
 
 ___
 
@@ -889,7 +889,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:97
+spark.procedural-animations.humanoid-characters.ts:77
 
 ___
 
@@ -899,7 +899,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:98
+spark.procedural-animations.humanoid-characters.ts:78
 
 ___
 
@@ -909,4 +909,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:99
+spark.procedural-animations.humanoid-characters.ts:79

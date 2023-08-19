@@ -27,7 +27,7 @@ Gets local | world space
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:71
+spark.procedural-animations.objects.ts:72
 
 • `set` **space**(`s`): `void`
 
@@ -45,7 +45,7 @@ Sets local | world space
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:75
+spark.procedural-animations.objects.ts:76
 
 ___
 
@@ -61,7 +61,7 @@ Type of progress
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:67
+spark.procedural-animations.objects.ts:68
 
 ## Methods
 
@@ -84,4 +84,4 @@ Invoke to apply progress
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:79
+spark.procedural-animations.objects.ts:80

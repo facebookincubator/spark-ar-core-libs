@@ -16,9 +16,13 @@ Interface used for object pooling
 
 ## Table of contents
 
+### Properties
+
+- [enabled](IObjectPool.md#enabled)
+
 ### Accessors
 
-- [hasActive](IObjectPool.md#hasactive)
+- [isActive](IObjectPool.md#isactive)
 - [scopeId](IObjectPool.md#scopeid)
 
 ### Methods
@@ -30,11 +34,23 @@ Interface used for object pooling
 - [update](IObjectPool.md#update)
 - [verifyScope](IObjectPool.md#verifyscope)
 
+## Properties
+
+### enabled
+
+• **enabled**: `boolean`
+
+Enable or disable the puul
+
+#### Defined in
+
+spark.procedural-animations.pool.ts:66
+
 ## Accessors
 
-### hasActive
+### isActive
 
-• `get` **hasActive**(): `boolean`
+• `get` **isActive**(): `boolean`
 
 Flag indicating if the scope is active, i.e. open
 
@@ -171,7 +187,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:99
+spark.procedural-animations.core.ts:100
 
 ___
 

@@ -49,7 +49,7 @@ Linked list of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:776
+spark.procedural-animations.core.ts:777
 
 ## Properties
 
@@ -59,7 +59,7 @@ spark.procedural-animations.core.ts:776
 
 #### Defined in
 
-spark.procedural-animations.core.ts:774
+spark.procedural-animations.core.ts:775
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:772
+spark.procedural-animations.core.ts:773
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:773
+spark.procedural-animations.core.ts:774
 
 ## Accessors
 
@@ -95,7 +95,7 @@ The number of elements in the linked list
 
 #### Defined in
 
-spark.procedural-animations.core.ts:797
+spark.procedural-animations.core.ts:798
 
 ___
 
@@ -111,7 +111,7 @@ The head node of the linked list or NULL if empty
 
 #### Defined in
 
-spark.procedural-animations.core.ts:785
+spark.procedural-animations.core.ts:786
 
 ___
 
@@ -127,7 +127,7 @@ The tail node of the linked list or NULL if empty
 
 #### Defined in
 
-spark.procedural-animations.core.ts:791
+spark.procedural-animations.core.ts:792
 
 ## Methods
 
@@ -143,7 +143,7 @@ Clears linked list
 
 #### Defined in
 
-spark.procedural-animations.core.ts:856
+spark.procedural-animations.core.ts:857
 
 ___
 
@@ -165,7 +165,7 @@ Delete node of linked list
 
 #### Defined in
 
-spark.procedural-animations.core.ts:839
+spark.procedural-animations.core.ts:840
 
 ___
 
@@ -187,7 +187,7 @@ Inserts value in the beginning of the linked list and returns newly created node
 
 #### Defined in
 
-spark.procedural-animations.core.ts:822
+spark.procedural-animations.core.ts:823
 
 ___
 
@@ -209,4 +209,4 @@ Inserts value at the end of the linked list and returns newly created node
 
 #### Defined in
 
-spark.procedural-animations.core.ts:804
+spark.procedural-animations.core.ts:805

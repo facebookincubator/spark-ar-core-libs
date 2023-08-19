@@ -28,7 +28,7 @@ Holder od a boolean
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1170
+spark.procedural-animations.humanoid-characters.ts:1151
 
 ## Properties
 
@@ -38,4 +38,4 @@ spark.procedural-animations.humanoid-characters.ts:1170
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1170
+spark.procedural-animations.humanoid-characters.ts:1151

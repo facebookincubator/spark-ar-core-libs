@@ -27,7 +27,7 @@
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:408
+spark.procedural-animations.base-character.ts:409
 
 ## Properties
 
@@ -37,7 +37,7 @@ spark.procedural-animations.base-character.ts:408
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:407
+spark.procedural-animations.base-character.ts:408
 
 ___
 
@@ -47,4 +47,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:408
+spark.procedural-animations.base-character.ts:409

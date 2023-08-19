@@ -33,4 +33,4 @@ interface that contains dispose method
 
 #### Defined in
 
-spark.procedural-animations.core.ts:93
+spark.procedural-animations.core.ts:94

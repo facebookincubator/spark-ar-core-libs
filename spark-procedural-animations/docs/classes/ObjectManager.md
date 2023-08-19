@@ -35,7 +35,7 @@ Object manager - used to manage 3D objects
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:546
+spark.procedural-animations.behaviors.ts:555
 
 ## Properties
 
@@ -49,7 +49,7 @@ spark.procedural-animations.behaviors.ts:546
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:543
+spark.procedural-animations.behaviors.ts:552
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:539
+spark.procedural-animations.behaviors.ts:548
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:542
+spark.procedural-animations.behaviors.ts:551
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:538
+spark.procedural-animations.behaviors.ts:547
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:537
+spark.procedural-animations.behaviors.ts:546
 
 ## Methods
 
@@ -115,7 +115,7 @@ Adds late updater object that implements ILateUpdater interface
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:556
+spark.procedural-animations.behaviors.ts:565
 
 ___
 
@@ -137,7 +137,7 @@ Adds poster to native object that implements IPosterToNative interface
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:577
+spark.procedural-animations.behaviors.ts:586
 
 ___
 
@@ -153,7 +153,7 @@ invokes late updaters
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:598
+spark.procedural-animations.behaviors.ts:607
 
 ___
 
@@ -169,7 +169,7 @@ invokes posters to native
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:608
+spark.procedural-animations.behaviors.ts:617
 
 ___
 
@@ -191,7 +191,7 @@ Removes late updater object
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:567
+spark.procedural-animations.behaviors.ts:576
 
 ___
 
@@ -213,4 +213,4 @@ Removes poster to native object
 
 #### Defined in
 
-spark.procedural-animations.behaviors.ts:588
+spark.procedural-animations.behaviors.ts:597

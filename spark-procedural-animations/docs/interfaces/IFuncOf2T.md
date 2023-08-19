@@ -30,4 +30,4 @@ and returns value of generic type T2
 
 #### Defined in
 
-spark.procedural-animations.core.ts:73
+spark.procedural-animations.core.ts:74

@@ -39,7 +39,7 @@ interface that contains initializeAsync method
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:196
+spark.procedural-animations.base-character.ts:195
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:195
+spark.procedural-animations.base-character.ts:194
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.base-character.ts:194
+spark.procedural-animations.base-character.ts:193
 
 ## Methods
 
@@ -85,4 +85,4 @@ spark.procedural-animations.base-character.ts:194
 
 #### Defined in
 
-spark.procedural-animations.core.ts:105
+spark.procedural-animations.core.ts:106

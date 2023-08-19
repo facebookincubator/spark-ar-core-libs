@@ -36,7 +36,7 @@
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:531
+spark.procedural-animations.objects.ts:562
 
 ## Accessors
 
@@ -50,7 +50,7 @@ spark.procedural-animations.objects.ts:531
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:532
+spark.procedural-animations.objects.ts:563
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:538
+spark.procedural-animations.objects.ts:569
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:535
+spark.procedural-animations.objects.ts:566
 
 ## Methods
 
@@ -98,4 +98,4 @@ spark.procedural-animations.objects.ts:535
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:541
+spark.procedural-animations.objects.ts:572

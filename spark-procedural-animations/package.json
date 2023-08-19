@@ -20,9 +20,11 @@
     "eslint": "8.18.0",
     "eslint-plugin-security": "1.5.0",
     "jest": "27.5.1",
+    "spark-ar-libs": "https://github.com/facebookincubator/spark-ar-core-libs.git#00fe34a",
     "ts-jest": "28.0.5",
-    "typescript": "4.7.3",
-    "spark-ar-libs": "https://github.com/facebookincubator/spark-ar-core-libs.git#00fe34a"
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-markdown": "^3.15.4",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "test": "jest",

@@ -16,4 +16,4 @@
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:826
+spark.procedural-animations.humanoid-characters.ts:809

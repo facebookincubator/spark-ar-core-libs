@@ -42,16 +42,21 @@ Object that represents orientation in 3D space
 
 ### Accessors
 
+- [back](ObjView.md#back)
+- [down](ObjView.md#down)
+- [forward](ObjView.md#forward)
 - [iniBk](ObjView.md#inibk)
 - [iniDn](ObjView.md#inidn)
 - [iniFw](ObjView.md#inifw)
 - [iniLt](ObjView.md#inilt)
 - [iniRt](ObjView.md#inirt)
 - [iniUp](ObjView.md#iniup)
+- [left](ObjView.md#left)
 - [o](ObjView.md#o)
 - [obj](ObjView.md#obj)
 - [p](ObjView.md#p)
 - [parent](ObjView.md#parent)
+- [right](ObjView.md#right)
 
 ### Methods
 
@@ -77,7 +82,7 @@ Creates an instance of object view.
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:407
+spark.procedural-animations.objects.ts:408
 
 ## Properties
 
@@ -87,7 +92,7 @@ spark.procedural-animations.objects.ts:407
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:386
+spark.procedural-animations.objects.ts:387
 
 ___
 
@@ -97,7 +102,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:390
+spark.procedural-animations.objects.ts:391
 
 ___
 
@@ -107,7 +112,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:385
+spark.procedural-animations.objects.ts:386
 
 ___
 
@@ -117,7 +122,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:388
+spark.procedural-animations.objects.ts:389
 
 ___
 
@@ -127,7 +132,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:387
+spark.procedural-animations.objects.ts:388
 
 ___
 
@@ -137,7 +142,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:389
+spark.procedural-animations.objects.ts:390
 
 ___
 
@@ -147,7 +152,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:398
+spark.procedural-animations.objects.ts:399
 
 ___
 
@@ -157,7 +162,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:396
+spark.procedural-animations.objects.ts:397
 
 ___
 
@@ -167,7 +172,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:397
+spark.procedural-animations.objects.ts:398
 
 ___
 
@@ -183,7 +188,7 @@ back direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:342
+spark.procedural-animations.objects.ts:343
 
 ___
 
@@ -199,7 +204,7 @@ down direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:358
+spark.procedural-animations.objects.ts:359
 
 ___
 
@@ -215,7 +220,7 @@ forward direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:338
+spark.procedural-animations.objects.ts:339
 
 ___
 
@@ -227,7 +232,7 @@ back direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:367
+spark.procedural-animations.objects.ts:368
 
 ___
 
@@ -239,7 +244,7 @@ down direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:383
+spark.procedural-animations.objects.ts:384
 
 ___
 
@@ -251,7 +256,7 @@ forward direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:363
+spark.procedural-animations.objects.ts:364
 
 ___
 
@@ -261,7 +266,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:394
+spark.procedural-animations.objects.ts:395
 
 ___
 
@@ -273,7 +278,7 @@ left direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:375
+spark.procedural-animations.objects.ts:376
 
 ___
 
@@ -285,7 +290,7 @@ right direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:371
+spark.procedural-animations.objects.ts:372
 
 ___
 
@@ -297,7 +302,7 @@ up direction without adjustment - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:379
+spark.procedural-animations.objects.ts:380
 
 ___
 
@@ -307,7 +312,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:392
+spark.procedural-animations.objects.ts:393
 
 ___
 
@@ -323,7 +328,7 @@ left direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:350
+spark.procedural-animations.objects.ts:351
 
 ___
 
@@ -339,7 +344,7 @@ right direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:346
+spark.procedural-animations.objects.ts:347
 
 ___
 
@@ -355,9 +360,57 @@ up direction - unit vector
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:354
+spark.procedural-animations.objects.ts:355
 
 ## Accessors
+
+### back
+
+• `get` **back**(): [`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+back direction - unit vector
+
+#### Returns
+
+[`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:546
+
+___
+
+### down
+
+• `get` **down**(): [`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+down direction - unit vector
+
+#### Returns
+
+[`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:552
+
+___
+
+### forward
+
+• `get` **forward**(): [`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+forward direction - unit vector
+
+#### Returns
+
+[`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:528
+
+___
 
 ### iniBk
 
@@ -371,7 +424,7 @@ iniitial back direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:473
+spark.procedural-animations.objects.ts:474
 
 ___
 
@@ -387,7 +440,7 @@ iniitial down direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:497
+spark.procedural-animations.objects.ts:498
 
 ___
 
@@ -403,7 +456,7 @@ iniitial forward direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:467
+spark.procedural-animations.objects.ts:468
 
 ___
 
@@ -419,7 +472,7 @@ iniitial left direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:485
+spark.procedural-animations.objects.ts:486
 
 ___
 
@@ -435,7 +488,7 @@ iniitial right direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:479
+spark.procedural-animations.objects.ts:480
 
 ___
 
@@ -451,7 +504,23 @@ iniitial up direction
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:491
+spark.procedural-animations.objects.ts:492
+
+___
+
+### left
+
+• `get` **left**(): [`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+left direction - unit vector
+
+#### Returns
+
+[`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:534
 
 ___
 
@@ -467,7 +536,7 @@ alias reference to the object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:509
+spark.procedural-animations.objects.ts:510
 
 ___
 
@@ -483,7 +552,7 @@ reference to the object
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:503
+spark.procedural-animations.objects.ts:504
 
 ___
 
@@ -499,7 +568,7 @@ alias for parent view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:521
+spark.procedural-animations.objects.ts:522
 
 ___
 
@@ -515,7 +584,23 @@ parent view
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:515
+spark.procedural-animations.objects.ts:516
+
+___
+
+### right
+
+• `get` **right**(): [`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+right direction - unit vector
+
+#### Returns
+
+[`IV3Readonly`](../interfaces/IV3Readonly.md)
+
+#### Defined in
+
+spark.procedural-animations.objects.ts:540
 
 ## Methods
 
@@ -531,4 +616,4 @@ Recomputes initial directions
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:456
+spark.procedural-animations.objects.ts:457

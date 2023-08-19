@@ -55,7 +55,7 @@ extender for hand poses
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:870
+spark.procedural-animations.humanoid-characters.ts:853
 
 ## Properties
 
@@ -65,7 +65,7 @@ spark.procedural-animations.humanoid-characters.ts:870
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:868
+spark.procedural-animations.humanoid-characters.ts:851
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:867
+spark.procedural-animations.humanoid-characters.ts:850
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:866
+spark.procedural-animations.humanoid-characters.ts:849
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:863
+spark.procedural-animations.humanoid-characters.ts:846
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:864
+spark.procedural-animations.humanoid-characters.ts:847
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:869
+spark.procedural-animations.humanoid-characters.ts:852
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:865
+spark.procedural-animations.humanoid-characters.ts:848
 
 ## Accessors
 
@@ -151,7 +151,7 @@ ICharacterExtender.name
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:877
+spark.procedural-animations.humanoid-characters.ts:860
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:883
+spark.procedural-animations.humanoid-characters.ts:866
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:880
+spark.procedural-animations.humanoid-characters.ts:863
 
 ## Methods
 
@@ -201,7 +201,7 @@ spark.procedural-animations.humanoid-characters.ts:880
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1038
+spark.procedural-animations.humanoid-characters.ts:1021
 
 ___
 
@@ -221,7 +221,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1087
+spark.procedural-animations.humanoid-characters.ts:1070
 
 ___
 
@@ -247,7 +247,7 @@ Defines hand poses
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:889
+spark.procedural-animations.humanoid-characters.ts:872
 
 ___
 
@@ -267,7 +267,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1018
+spark.procedural-animations.humanoid-characters.ts:1001
 
 ___
 
@@ -287,7 +287,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1105
+spark.procedural-animations.humanoid-characters.ts:1086
 
 ___
 
@@ -308,7 +308,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1084
+spark.procedural-animations.humanoid-characters.ts:1067
 
 ___
 
@@ -328,7 +328,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1081
+spark.procedural-animations.humanoid-characters.ts:1064
 
 ___
 
@@ -348,4 +348,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:1078
+spark.procedural-animations.humanoid-characters.ts:1061

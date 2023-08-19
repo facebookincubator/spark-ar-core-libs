@@ -41,7 +41,7 @@
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:143
+spark.procedural-animations.objects.ts:144
 
 ## Properties
 
@@ -51,7 +51,7 @@ spark.procedural-animations.objects.ts:143
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:142
+spark.procedural-animations.objects.ts:143
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:140
+spark.procedural-animations.objects.ts:141
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:138
+spark.procedural-animations.objects.ts:139
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:139
+spark.procedural-animations.objects.ts:140
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:141
+spark.procedural-animations.objects.ts:142
 
 ## Accessors
 
@@ -123,7 +123,7 @@ IResourcesManager.objects
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:230
+spark.procedural-animations.objects.ts:231
 
 ___
 
@@ -143,7 +143,7 @@ IResourcesManager.objectsById
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:242
+spark.procedural-animations.objects.ts:243
 
 ___
 
@@ -163,7 +163,7 @@ IResourcesManager.objectsByPath
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:236
+spark.procedural-animations.objects.ts:237
 
 ## Methods
 
@@ -191,7 +191,7 @@ first object by name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:170
+spark.procedural-animations.objects.ts:171
 
 ___
 
@@ -219,7 +219,7 @@ first object by name or path
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:178
+spark.procedural-animations.objects.ts:179
 
 ___
 
@@ -247,7 +247,7 @@ first path by name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:155
+spark.procedural-animations.objects.ts:156
 
 ___
 
@@ -275,4 +275,4 @@ all objects async
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:188
+spark.procedural-animations.objects.ts:189

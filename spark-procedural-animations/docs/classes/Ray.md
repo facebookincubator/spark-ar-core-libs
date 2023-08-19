@@ -38,7 +38,7 @@
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3462
+spark.procedural-animations.math-3d.ts:3542
 
 ## Properties
 
@@ -48,7 +48,7 @@ spark.procedural-animations.math-3d.ts:3462
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3462
+spark.procedural-animations.math-3d.ts:3542
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3462
+spark.procedural-animations.math-3d.ts:3542
 
 ## Methods
 
@@ -83,7 +83,7 @@ the distance to plane
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3478
+spark.procedural-animations.math-3d.ts:3558
 
 ___
 
@@ -108,7 +108,7 @@ intersection point or NULL
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3494
+spark.procedural-animations.math-3d.ts:3574
 
 ___
 
@@ -133,7 +133,7 @@ nearest intersection point or NULL
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3535
+spark.procedural-animations.math-3d.ts:3615
 
 ___
 
@@ -158,7 +158,7 @@ furthest intersection point or NULL
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3569
+spark.procedural-animations.math-3d.ts:3649
 
 ___
 
@@ -183,7 +183,7 @@ tuple of both intersection points or tuple of 2 NULLs
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3514
+spark.procedural-animations.math-3d.ts:3594
 
 ___
 
@@ -207,7 +207,7 @@ reference to itself
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3468
+spark.procedural-animations.math-3d.ts:3548
 
 ___
 
@@ -223,4 +223,4 @@ String representation of the current ray
 
 #### Defined in
 
-spark.procedural-animations.math-3d.ts:3600
+spark.procedural-animations.math-3d.ts:3680

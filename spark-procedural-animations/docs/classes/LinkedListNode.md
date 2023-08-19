@@ -44,7 +44,7 @@ Linked list node of generic type T
 
 #### Defined in
 
-spark.procedural-animations.core.ts:766
+spark.procedural-animations.core.ts:767
 
 ## Properties
 
@@ -54,7 +54,7 @@ spark.procedural-animations.core.ts:766
 
 #### Defined in
 
-spark.procedural-animations.core.ts:766
+spark.procedural-animations.core.ts:767
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:766
+spark.procedural-animations.core.ts:767
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:764
+spark.procedural-animations.core.ts:765
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.core.ts:765
+spark.procedural-animations.core.ts:766

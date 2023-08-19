@@ -3,7 +3,7 @@
 # Enumeration: SparkProcAniSysEvents
 
 Spark Procedural Animations - Messenger
-version 0.1.5
+version 0.9.4
 
 ## Table of contents
 

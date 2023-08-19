@@ -35,7 +35,7 @@ List of all objects
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:127
+spark.procedural-animations.objects.ts:128
 
 ___
 
@@ -51,7 +51,7 @@ Hashtable of objects by ID
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:135
+spark.procedural-animations.objects.ts:136
 
 ___
 
@@ -67,7 +67,7 @@ Hashtable of objects by path
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:131
+spark.procedural-animations.objects.ts:132
 
 ## Methods
 
@@ -91,7 +91,7 @@ first object by name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:111
+spark.procedural-animations.objects.ts:112
 
 ___
 
@@ -115,7 +115,7 @@ first object by name or path
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:117
+spark.procedural-animations.objects.ts:118
 
 ___
 
@@ -139,7 +139,7 @@ first path by name
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:105
+spark.procedural-animations.objects.ts:106
 
 ___
 
@@ -163,4 +163,4 @@ all objects async
 
 #### Defined in
 
-spark.procedural-animations.objects.ts:123
+spark.procedural-animations.objects.ts:124

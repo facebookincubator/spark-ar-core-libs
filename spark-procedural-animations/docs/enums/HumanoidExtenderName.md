@@ -23,7 +23,7 @@ Known humanoid extender names
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:854
+spark.procedural-animations.humanoid-characters.ts:837
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:855
+spark.procedural-animations.humanoid-characters.ts:838
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:853
+spark.procedural-animations.humanoid-characters.ts:836
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:852
+spark.procedural-animations.humanoid-characters.ts:835
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:857
+spark.procedural-animations.humanoid-characters.ts:840
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-spark.procedural-animations.humanoid-characters.ts:856
+spark.procedural-animations.humanoid-characters.ts:839
