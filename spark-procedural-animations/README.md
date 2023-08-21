@@ -1,6 +1,6 @@
-![Meta Spark Studio](../../open_source/documentation_src/MetaSparkDark.png#gh-dark-mode-only)
+![Meta Spark Studio](https://github.com/facebookincubator/spark-ar-core-libs/raw/main/documentation_src/MetaSparkDark.png#gh-dark-mode-only)
 
-![Meta Spark Studio](../../open_source/documentation_src/MetaSparkLight.png#gh-light-mode-only)
+![Meta Spark Studio](https://github.com/facebookincubator/spark-ar-core-libs/raw/main/documentation_src/MetaSparkLight.png#gh-light-mode-only)
 
 # Spark Procedural Animation
 
@@ -17,12 +17,12 @@ The goal is not to replace the traditional ways of working with rigged 3D models
  * [core.ts](./src/spark.procedural-animations.core.ts) - core functions
  * [messenger.ts](./src/spark.procedural-animations.messenger.ts) - messenger object to be used for sending and receiving events
  * [pool.ts](./src/spark.procedural-animations.pool.ts) - object pool provider used to reduce heap allocations
- * [behaviors.ts](./src/spark.procedural-animations.behaviors.ts.ts) - animation management and scheduling infrastructure
- * [math-2d.ts](./src/spark.procedural-animations.math-2d.ts.ts) - 2D math objects and functions
- * [math-3d.ts](./src/spark.procedural-animations.math-3d.ts.ts) - 3D math objects and functions
- * [objects.ts](./src/spark.procedural-animations.objects.ts.ts) - infrastructure for working with SceneObjectBase
- * [base-character.ts](./src/spark.procedural-animations.base-character.ts.ts) - base character infrastructure and inverse kinematics
- * [humanoid-characters.ts](./src/spark.procedural-animations.humanoid-characters.ts.ts) - humanoid character specific infrastructure
+ * [behaviors.ts](./src/spark.procedural-animations.behaviors.ts) - animation management and scheduling infrastructure
+ * [math-2d.ts](./src/spark.procedural-animations.math-2d.ts) - 2D math objects and functions
+ * [math-3d.ts](./src/spark.procedural-animations.math-3d.ts) - 3D math objects and functions
+ * [objects.ts](./src/spark.procedural-animations.objects.ts) - infrastructure for working with SceneObjectBase
+ * [base-character.ts](./src/spark.procedural-animations.base-character.ts) - base character infrastructure and inverse kinematics
+ * [humanoid-characters.ts](./src/spark.procedural-animations.humanoid-characters.ts) - humanoid character specific infrastructure
 
 ### Common Abbreviations
 
