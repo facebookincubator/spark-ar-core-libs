@@ -12,6 +12,10 @@
   "bin": {
     "install-local-check": "install-local-check.js"
   },
+  "bugs": {
+    "url": "https://github.com/facebookincubator/spark-ar-core-libs/issues"
+  },
+  "homepage": "https://github.com/facebookincubator/spark-ar-core-libs/tree/main/spark-procedural-animations",
   "author": "spark-ar-core-libs",
   "devDependencies": {
     "@types/jest": "28.1.1",
