@@ -15,7 +15,9 @@ import {SparkAppUiDump} from './AppDriverTypes';
 export async function getSparkSceneGraph(appDriver: AppDriver, nodeId: string) {
   const nodeDumpView = await appDriver.inspectNodeViewDump({nodeId});
   const sparkAppUiDump = nodeDumpView as SparkAppUiDump;
-  expect(sparkAppUiDump.sparkSceneGraph).toBeTruthy();
+  if (!sparkAppUiDump.sparkSceneGraph) {
+    throw new Error("Can't find scene graph for node: " + nodeId);
+  }
   return sparkAppUiDump.sparkSceneGraph[nodeId];
 }
 
@@ -25,12 +27,12 @@ export async function getSparkSceneGraph(appDriver: AppDriver, nodeId: string) {
  */
 export async function getAugmentInfo(appDriver: AppDriver, blockName: string) {
   const augmentIds = await appDriver.inspectAugmentIds();
-  expect(augmentIds).toBeTruthy();
-  expect(augmentIds.length).toBeGreaterThanOrEqual(1);
-
   const augmentId = augmentIds.filter(augmentId => augmentId.includes(blockName));
+
   // for unique blockName
-  expect(augmentId.length).toBe(1);
+  if (augmentId.length !== 1) {
+    throw new Error("Can't find unique augmentId for blockName: " + blockName);
+  }
 
   const augmentInfo = await appDriver.inspectAugmentInfo({id: augmentId[0]});
   return augmentInfo;
@@ -43,7 +45,9 @@ export async function getAugmentInfo(appDriver: AppDriver, blockName: string) {
  */
 export async function getAugmentNodeId(appDriver: AppDriver, blockName: string) {
   const augmentInfo = await getAugmentInfo(appDriver, blockName);
-  expect(augmentInfo).toBeTruthy();
+  if (!augmentInfo) {
+    throw new Error("Can't find augmentId for blockName: " + blockName);
+  }
 
   return augmentInfo.nodes[0];
 }

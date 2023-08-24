@@ -8,3 +8,4 @@
 export * from './AppDriver';
 export * from './AppDriverTypes';
 export * from './SparkApis';
+export * from './SparkExec';
