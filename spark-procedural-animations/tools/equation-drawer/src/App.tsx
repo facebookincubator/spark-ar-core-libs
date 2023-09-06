@@ -19,9 +19,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '20px'}}>
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10px'}}>
       <div style={{textAlign: 'center'}}>
-        <h1>Spark Procedural Animations</h1>
+        <h5>Spark Procedural Animations</h5>
         <EquationInput onSubmit={handleEquationSubmit} />
         <CanvasComponent equation={equation} />
       </div>

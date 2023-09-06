@@ -25,9 +25,9 @@ const EquationInput: React.FC<EquationInputProps> = ({onSubmit}) => {
       <span className="input-group-text monospace-font" id="basic-addon1">
         f(x)=
       </span>
-      <input
-        type="text"
+      <textarea
         className="form-control monospace-font"
+        rows={3}
         value={equation}
         onChange={e => {
           setEquation(e.target.value);
