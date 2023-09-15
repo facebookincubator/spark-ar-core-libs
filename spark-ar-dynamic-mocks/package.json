@@ -1,7 +1,7 @@
 {
   "name": "spark-ar-dynamic-mocks",
   "version": "0.0.1",
-  "description": "",
+  "description": "Dynamic mocks for Spark AR Studio projects tests",
   "license": "MIT",
   "main": "src/index.js",
   "type": "module",
