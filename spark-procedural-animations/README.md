@@ -10,6 +10,17 @@ Procedural Animations are the kind of animations that use mathematical algorithm
 
 The goal is not to replace the traditional ways of working with rigged 3D models but rather to offer an alternative approach that may be more suitable in some case and less so in others.
 
+### Learning
+
+ * [Procedural animations overview](https://spark.meta.com/learn/guides/animation/procedural-animation-overview)
+ * [Procedural animation for a quadruped lizard character](https://spark.meta.com/learn/tutorials/animation/character-animation)
+ * [Humanoid character procedural animation](https://spark.meta.com/learn/tutorials/animation/humanoid-character-animation)
+ * [Converting keyframes to procedural animation](https://spark.meta.com/learn/tutorials/animation/recreating-a-keyframe-animation)
+
+### Tools
+
+ * [Graph library specific equations](https://facebookincubator.github.io/spark-procedural-animations/equation-drawer/)
+
 ### Technical Documentation and Source Files
 
 [Modules, Classes, Interfaces, Functions - Documentation](./docs/modules.md)
