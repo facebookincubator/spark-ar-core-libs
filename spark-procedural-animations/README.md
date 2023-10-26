@@ -12,10 +12,27 @@ The goal is not to replace the traditional ways of working with rigged 3D models
 
 ### Learning
 
+#### Setup
+
+To add scripting packages:
+ * Open **AR Library**.
+ * Select **Script Packages**.
+ * Select the **spark-procedural-animations** package.
+ * Click **Import Free**.
+ * Click the **Project Properties** gear icon toolbar .
+ * Click + in the Capabilities menu to add the following: Time Scripting Module, Scripting Writeable Signal Source.
+ * Click **Done**
+> Note: In your script, you need to import two modules: Scene and Reactive. The Scene module is used to access the scene object in your project. The Reactive module is used to create reactive scripts. Even if you don't use these modules directly in your script, it's important to include them at the top of your script so that they're available for use by other parts of your project.
+
+#### Introduction Tutorials
+ * [Custom humanoid character configuration](./examples/tutorial-custom-humanoid-character-configuration/README.md)
+
+
+#### Spark Learn Site Tutorials
  * [Procedural animations overview](https://spark.meta.com/learn/guides/animation/procedural-animation-overview)
  * [Procedural animation for a quadruped lizard character](https://spark.meta.com/learn/tutorials/animation/character-animation)
  * [Humanoid character procedural animation](https://spark.meta.com/learn/tutorials/animation/humanoid-character-animation)
- * [Converting keyframes to procedural animation](https://spark.meta.com/learn/tutorials/animation/recreating-a-keyframe-animation)
+ * [Converting keyframe to procedural animation](https://spark.meta.com/learn/tutorials/animation/recreating-a-keyframe-animation)
 
 ### Tools
 
