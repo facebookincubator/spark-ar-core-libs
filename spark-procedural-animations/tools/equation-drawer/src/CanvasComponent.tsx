@@ -13,8 +13,24 @@ interface CanvasComponentProps {
 }
 
 const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
+  const minZoom = 0.5;
+  const maxZoom = 2;
+  const zoomStep = 0.1;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [error, setError] = useState<string | null>(null);
+  const [currentZoom, setCurrentZoom] = useState(1);
+
+  const zoomIn = () => {
+    const newZoom = Math.min(currentZoom + zoomStep, maxZoom);
+    setCurrentZoom(newZoom);
+  };
+
+  const zoomOut = () => {
+    const newZoom = Math.max(currentZoom - zoomStep, minZoom);
+    setCurrentZoom(newZoom);
+  };
+
   // axis ranges
   const xRange = 8; // [-4, 4]
   const yRange = 4; // [-2, 2]
@@ -43,11 +59,11 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
     drawLine(ctx, yAxisStart, yAxisEnd, '#444'); // Y-axis
 
     // draw equation
-    const scale = canvasWidth / xRange;
+    const scale = (canvasWidth / xRange) * currentZoom;
     const stepSize = canvasWidth / xRange;
 
     // X-axis scale and labels
-    for (let x = -canvasWidth / 2; x <= canvasWidth / 2; x += stepSize) {
+    for (let x = 0; x <= canvasWidth / 2; x += stepSize) {
       if (Math.abs(x) < 0.0001) continue;
       drawLine(
         ctx,
@@ -60,14 +76,33 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       ctx.fillStyle = '#777';
       ctx.textAlign = 'center';
       ctx.fillText(
-        (x / scale).toString(),
+        (x / scale).toFixed(1),
+        x + canvasWidth / 2 - xAxisLabelOffset,
+        canvasHeight / 2 + xAxisLabelOffset,
+      );
+    }
+
+    for (let x = 0; x >= -canvasWidth / 2; x -= stepSize) {
+      if (Math.abs(x) < 0.0001) continue;
+      drawLine(
+        ctx,
+        {x: x + canvasWidth / 2, y: 0},
+        {x: x + canvasWidth / 2, y: canvasWidth},
+        'rgba(50, 50, 50, 0.5)',
+        1,
+      );
+      ctx.font = '14px Consolas';
+      ctx.fillStyle = '#777';
+      ctx.textAlign = 'center';
+      ctx.fillText(
+        (x / scale).toFixed(1),
         x + canvasWidth / 2 - xAxisLabelOffset,
         canvasHeight / 2 + xAxisLabelOffset,
       );
     }
 
     // Y-axis scale and labels
-    for (let y = -canvasHeight / 2; y <= canvasHeight / 2; y += stepSize) {
+    for (let y = 0; y <= canvasHeight / 2; y += stepSize) {
       drawLine(
         ctx,
         {x: 0, y: y + canvasHeight / 2},
@@ -79,7 +114,25 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       ctx.fillStyle = '#777';
       ctx.textAlign = 'right';
       ctx.fillText(
-        (-y / scale).toString(),
+        (-y / scale).toFixed(1),
+        canvasWidth / 2 - yAxisLabelOffset,
+        y + canvasHeight / 2 + yAxisLabelOffset * 2,
+      );
+    }
+
+    for (let y = 0; y >= -canvasHeight / 2; y -= stepSize) {
+      drawLine(
+        ctx,
+        {x: 0, y: y + canvasHeight / 2},
+        {x: canvasWidth, y: y + canvasHeight / 2},
+        'rgba(50, 50, 50, 0.5)',
+        1,
+      );
+      ctx.font = '14px Consolas';
+      ctx.fillStyle = '#777';
+      ctx.textAlign = 'right';
+      ctx.fillText(
+        (-y / scale).toFixed(1),
         canvasWidth / 2 - yAxisLabelOffset,
         y + canvasHeight / 2 + yAxisLabelOffset * 2,
       );
@@ -102,7 +155,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       setError(error.message.toString());
       console.error(`Invalid equation: "${equation}" `, error);
     }
-  }, [equation]);
+  }, [equation, currentZoom]);
 
   // draw a line between two points
   const drawLine = (
@@ -213,7 +266,22 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
   };
 
   return (
-    <div>
+    <div
+      className="d-flex justify-content-end align-items-start flex-column"
+      style={{position: 'relative'}}
+    >
+      <div
+        className="btn-group position-absolute top-0 end-0"
+        role="group"
+        aria-label="Basic outlined example"
+      >
+        <button type="button" className="btn btn-outline-secondary" onClick={zoomIn}>
+          +
+        </button>
+        <button type="button" className="btn btn-outline-secondary" onClick={zoomOut}>
+          -
+        </button>
+      </div>
       <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />
       {error && (
         <div className="alert alert-warning" role="alert">
