@@ -31,6 +31,14 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
     setCurrentZoom(newZoom);
   };
 
+  const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
+    if (e.deltaY < 0) {
+      zoomIn();
+    } else {
+      zoomOut();
+    }
+  };
+
   // axis ranges
   const xRange = 8; // [-4, 4]
   const yRange = 4; // [-2, 2]
@@ -155,7 +163,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       setError(error.message.toString());
       console.error(`Invalid equation: "${equation}" `, error);
     }
-  }, [equation, currentZoom]);
+  }, [equation, currentZoom, canvasWidth, canvasHeight, setError]);
 
   // draw a line between two points
   const drawLine = (
@@ -282,7 +290,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
           -
         </button>
       </div>
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />
+      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} onWheel={handleWheel} />
       {error && (
         <div className="alert alert-warning" role="alert">
           Error: {error}
