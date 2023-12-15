@@ -20,6 +20,11 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [currentZoom, setCurrentZoom] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
 
   const zoomIn = () => {
     const newZoom = Math.min(currentZoom + zoomStep, maxZoom);
@@ -48,73 +53,62 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
   const xAxisLabelOffset = 14;
   const yAxisLabelOffset = 8;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // clear canvas
+  const drawCoordinateSystem = (ctx: CanvasRenderingContext2D) => {
+    // Clear the canvas
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // draw axes
-    const xAxisStart = {x: 0, y: canvasHeight / 2};
-    const xAxisEnd = {x: canvasWidth, y: canvasHeight / 2};
-    const yAxisStart = {x: canvasWidth / 2, y: 0};
-    const yAxisEnd = {x: canvasWidth / 2, y: canvasHeight};
+    // Draw axes
+    const axisX = canvasWidth / 2 + offsetX;
+    const axisY = canvasHeight / 2 + offsetY;
+
+    const xAxisStart = {x: 0, y: axisY};
+    const xAxisEnd = {x: canvasWidth, y: axisY};
+    const yAxisStart = {x: axisX, y: 0};
+    const yAxisEnd = {x: axisX, y: canvasHeight};
     drawLine(ctx, xAxisStart, xAxisEnd, '#444'); // X-axis
     drawLine(ctx, yAxisStart, yAxisEnd, '#444'); // Y-axis
 
-    // draw equation
+    // Draw grid lines
     const scale = (canvasWidth / xRange) * currentZoom;
     const stepSize = canvasWidth / xRange;
 
-    // X-axis scale and labels
+    // Draw X-axis scale and labels
     for (let x = 0; x <= canvasWidth / 2; x += stepSize) {
       if (Math.abs(x) < 0.0001) continue;
       drawLine(
         ctx,
-        {x: x + canvasWidth / 2, y: 0},
-        {x: x + canvasWidth / 2, y: canvasWidth},
+        {x: x + axisX, y: 0},
+        {x: x + axisX, y: canvasWidth},
         'rgba(50, 50, 50, 0.5)',
         1,
       );
       ctx.font = '14px Consolas';
       ctx.fillStyle = '#777';
       ctx.textAlign = 'center';
-      ctx.fillText(
-        (x / scale).toFixed(1),
-        x + canvasWidth / 2 - xAxisLabelOffset,
-        canvasHeight / 2 + xAxisLabelOffset,
-      );
+      ctx.fillText((x / scale).toFixed(1), x + axisX - xAxisLabelOffset, axisY + xAxisLabelOffset);
     }
 
     for (let x = 0; x >= -canvasWidth / 2; x -= stepSize) {
       if (Math.abs(x) < 0.0001) continue;
       drawLine(
         ctx,
-        {x: x + canvasWidth / 2, y: 0},
-        {x: x + canvasWidth / 2, y: canvasWidth},
+        {x: x + axisX, y: 0},
+        {x: x + axisX, y: canvasWidth},
         'rgba(50, 50, 50, 0.5)',
         1,
       );
       ctx.font = '14px Consolas';
       ctx.fillStyle = '#777';
       ctx.textAlign = 'center';
-      ctx.fillText(
-        (x / scale).toFixed(1),
-        x + canvasWidth / 2 - xAxisLabelOffset,
-        canvasHeight / 2 + xAxisLabelOffset,
-      );
+      ctx.fillText((x / scale).toFixed(1), x + axisX - xAxisLabelOffset, axisY + xAxisLabelOffset);
     }
 
-    // Y-axis scale and labels
+    // Draw Y-axis scale and labels
     for (let y = 0; y <= canvasHeight / 2; y += stepSize) {
       drawLine(
         ctx,
-        {x: 0, y: y + canvasHeight / 2},
-        {x: canvasWidth, y: y + canvasHeight / 2},
+        {x: 0, y: y + axisY},
+        {x: canvasWidth, y: y + axisY},
         'rgba(50, 50, 50, 0.5)',
         1,
       );
@@ -123,16 +117,16 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       ctx.textAlign = 'right';
       ctx.fillText(
         (-y / scale).toFixed(1),
-        canvasWidth / 2 - yAxisLabelOffset,
-        y + canvasHeight / 2 + yAxisLabelOffset * 2,
+        axisX - yAxisLabelOffset,
+        y + axisY + yAxisLabelOffset * 2,
       );
     }
 
     for (let y = 0; y >= -canvasHeight / 2; y -= stepSize) {
       drawLine(
         ctx,
-        {x: 0, y: y + canvasHeight / 2},
-        {x: canvasWidth, y: y + canvasHeight / 2},
+        {x: 0, y: y + axisY},
+        {x: canvasWidth, y: y + axisY},
         'rgba(50, 50, 50, 0.5)',
         1,
       );
@@ -141,20 +135,21 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       ctx.textAlign = 'right';
       ctx.fillText(
         (-y / scale).toFixed(1),
-        canvasWidth / 2 - yAxisLabelOffset,
-        y + canvasHeight / 2 + yAxisLabelOffset * 2,
+        axisX - yAxisLabelOffset,
+        y + axisY + yAxisLabelOffset * 2,
       );
     }
 
+    // Draw the equation
     try {
       setError(null); // reset the error state
 
-      tryDrawBezier(ctx, equation, canvasWidth, canvasHeight, scale);
+      tryDrawBezier(ctx, equation, axisX, axisY, scale);
 
       ctx.beginPath();
       for (let x = -canvasWidth / 2; x <= canvasWidth / 2; x++) {
         const y = -evaluateFunction(equation, x / scale) * scale;
-        ctx.lineTo(x + canvasWidth / 2, y + canvasHeight / 2);
+        ctx.lineTo(x + axisX, y + axisY);
       }
       ctx.strokeStyle = '#f00';
       ctx.lineWidth = 2;
@@ -163,7 +158,50 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       setError(error.message.toString());
       console.error(`Invalid equation: "${equation}" `, error);
     }
-  }, [equation, currentZoom, canvasWidth, canvasHeight, setError]);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setStartY(e.clientY);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+
+    // Update offset based on mouse movement
+    setOffsetX(offsetX + deltaX);
+    setOffsetY(offsetY + deltaY);
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    // Redraw the coordinate system
+    drawCoordinateSystem(ctx);
+
+    // Update start position for the next move event
+    setStartX(e.clientX);
+    setStartY(e.clientY);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Draw the initial coordinate system
+    drawCoordinateSystem(ctx);
+  }, [equation, currentZoom, canvasWidth, canvasHeight, isDragging]);
 
   // draw a line between two points
   const drawLine = (
@@ -196,8 +234,8 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
   const tryDrawBezier = (
     ctx: CanvasRenderingContext2D,
     equation: string,
-    canvasWidth: number,
-    canvasHeight: number,
+    axisX: number,
+    axisY: number,
     scale: number,
   ): void => {
     equation = equation.replaceAll(/\s/g, '');
@@ -228,8 +266,8 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
     let dx2 = NaN;
     let dy2 = NaN;
 
-    const getX = (n: number): number => n * scale + canvasWidth / 2;
-    const getY = (n: number): number => -n * scale + canvasHeight / 2;
+    const getX = (n: number): number => n * scale + axisX;
+    const getY = (n: number): number => -n * scale + axisY;
 
     if (isBezier01 && arr.length === 4) {
       ax1 = getX(0);
@@ -290,7 +328,15 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
           -
         </button>
       </div>
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} onWheel={handleWheel} />
+      <canvas
+        ref={canvasRef}
+        width={canvasWidth}
+        height={canvasHeight}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      />
       {error && (
         <div className="alert alert-warning" role="alert">
           Error: {error}
