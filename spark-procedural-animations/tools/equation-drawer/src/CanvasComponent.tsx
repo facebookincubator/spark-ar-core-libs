@@ -73,7 +73,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
     const stepSize = canvasWidth / xRange;
 
     // Draw X-axis scale and labels
-    for (let x = 0; x <= canvasWidth / 2; x += stepSize) {
+    for (let x = 0; x + axisX <= canvasWidth; x += stepSize) {
       if (Math.abs(x) < 0.0001) continue;
       drawLine(
         ctx,
@@ -88,7 +88,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       ctx.fillText((x / scale).toFixed(1), x + axisX - xAxisLabelOffset, axisY + xAxisLabelOffset);
     }
 
-    for (let x = 0; x >= -canvasWidth / 2; x -= stepSize) {
+    for (let x = 0; x + axisX >= 0; x -= stepSize) {
       if (Math.abs(x) < 0.0001) continue;
       drawLine(
         ctx,
@@ -104,7 +104,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
     }
 
     // Draw Y-axis scale and labels
-    for (let y = 0; y <= canvasHeight / 2; y += stepSize) {
+    for (let y = 0; y + axisY <= canvasHeight; y += stepSize) {
       drawLine(
         ctx,
         {x: 0, y: y + axisY},
@@ -122,7 +122,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       );
     }
 
-    for (let y = 0; y >= -canvasHeight / 2; y -= stepSize) {
+    for (let y = 0; y + axisY >= 0; y -= stepSize) {
       drawLine(
         ctx,
         {x: 0, y: y + axisY},
@@ -147,7 +147,7 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({equation}) => {
       tryDrawBezier(ctx, equation, axisX, axisY, scale);
 
       ctx.beginPath();
-      for (let x = -canvasWidth / 2; x <= canvasWidth / 2; x++) {
+      for (let x = -axisX; x + axisX <= canvasWidth; x++) {
         const y = -evaluateFunction(equation, x / scale) * scale;
         ctx.lineTo(x + axisX, y + axisY);
       }
