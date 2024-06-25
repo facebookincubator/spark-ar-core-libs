@@ -148,6 +148,7 @@ var mockVoiceControlModule = DynamicMock('VoiceControl');
 var mockWeatherModule = DynamicMock('Weather');
 var mockWorldTrackingModule = DynamicMock('WorldTracking');
 var mockWorldUnderstandingModule = DynamicMock('WorldUnderstanding');
+var mockDataSync = DynamicMock('DataSync');
 
 jest.mock('Analytics', () => mockAnalytics, {virtual: true});
 jest.mock('AnalyticsModule', () => mockAnalyticsModule, {virtual: true});
@@ -227,3 +228,4 @@ jest.mock('VoiceControl', () => mockVoiceControlModule, {virtual: true});
 jest.mock('Weather', () => mockWeatherModule, {virtual: true});
 jest.mock('WorldTracking', () => mockWorldTrackingModule, {virtual: true});
 jest.mock('WorldUnderstanding', () => mockWorldUnderstandingModule, {virtual: true});
+jest.mock('DataSync', () => mockDataSync, {virtual: true});
