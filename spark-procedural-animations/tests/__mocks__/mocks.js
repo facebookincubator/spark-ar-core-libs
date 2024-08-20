@@ -209,10 +209,6 @@ var mockSegmentationModule = DynamicMock('Segmentation');
 jest.mock('Segmentation', () => mockSegmentationModule, {virtual: true});
 var mockUIModule = DynamicMock('UI');
 jest.mock('UI', () => mockUIModule, {virtual: true});
-var mockRecognitionTrackingModule = DynamicMock('RecognitionTracking');
-jest.mock('RecognitionTracking', () => mockRecognitionTrackingModule, {
-  virtual: true,
-});
 var mockPortalWorldModelModule = DynamicMock('PortalWorldModel');
 jest.mock('PortalWorldModel', () => mockPortalWorldModelModule, {
   virtual: true,
